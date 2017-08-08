@@ -26,11 +26,16 @@
    @extend .alert-info;
  }
 
- /* Red */
-$bgDefault      : #e74c3c;
-$bgHighlight    : #c0392b;
+ /* Blue */
+$bgDefault      : #337ab7;
+$bgHighlight    : #202D37;
 $colDefault     : #ecf0f1;
-$colHover       : #ffbbbc;
+$colHover       : #91AAB7;
+ /* Red */
+// $bgDefault      : #e74c3c;
+// $bgHighlight    : #c0392b;
+// $colDefault     : #ecf0f1;
+// $colHover       : #ffbbbc;
 /* Green * /
 $bgDefault      : #2ecc71;
 $bgHighlight    : #27ae60;

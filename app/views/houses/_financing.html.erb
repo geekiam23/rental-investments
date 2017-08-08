@@ -1,0 +1,66 @@
+<%= form_for @house do |f| %>
+  <% if house.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(house.errors.count, "error") %>.</h4>
+        <ul>
+          <% house.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+    </div>
+  <% end %>
+
+
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:purchase_price]) do %>
+        <%= f.label :purchase_price %>
+        <%= f.text_field :purchase_price, class: 'form-control', placeholder: "Enter Purchase Price" %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:after_value]) do %>
+        <%= f.label :after_value %>
+        <%= f.text_field :after_value, class: 'form-control', placeholder: "Enter After Value Price" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <%= form_group_tag(house.errors[:down_payment]) do %>
+        <%= f.label :down_payment %>
+        <%= f.text_field :down_payment, class: 'form-control', placeholder: "Enter Down Payment Amount" %>
+      <% end %>
+    </div>
+    <div class="col-md-4">
+      <%= form_group_tag(house.errors[:interest]) do %>
+        <%= f.label :interest %>
+        <%= f.text_field :interest, class: 'form-control', placeholder: "Enter Interest Amount" %>
+      <% end %>
+    </div>
+    <div class="col-md-4">
+      <%= form_group_tag(house.errors[:loan_term]) do %>
+        <%= f.label :loan_term %>
+        <%= f.text_field :loan_term, class: 'form-control', placeholder: "Enter Loan Term" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+    <%= form_group_tag(house.errors[:pmi_upfront]) do %>
+      <%= f.label :pmi_upfront %>
+      <%= f.text_field :pmi_upfront, class: 'form-control', placeholder: "Enter PMI Upfront Amount" %>
+    <% end %>
+    </div>
+    <div class="col-md-6">
+    <%= form_group_tag(house.errors[:pmi_recurring]) do %>
+      <%= f.label :pmi_recurring %>
+      <%= f.text_field :pmi_recurring, class: 'form-control', placeholder: "Enter PMI Recurring Amount" %>
+    <% end %>
+    </div>
+  </div>
+
+   <!-- <div class="form-group">
+     <%= f.submit "Next", class: 'btn btn-success' %>
+   </div> -->
+<% end %>

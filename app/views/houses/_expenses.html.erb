@@ -1,0 +1,69 @@
+<%= form_for @house do |f| %>
+  <% if house.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(house.errors.count, "error") %>.</h4>
+        <ul>
+          <% house.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+    </div>
+  <% end %>
+
+
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:expenses_total]) do %>
+        <%= f.label :expenses_total%>
+        <%= f.text_field :expenses_total, class: 'form-control', placeholder: "Enter Total Amount" %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:expenses_taxes]) do %>
+        <%= f.label :expenses_taxes %>
+        <%= f.text_field :expenses_taxes, class: 'form-control', placeholder: "Enter Taxes Amount" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:expenses_insurance]) do %>
+        <%= f.label :expenses_insurance %>
+        <%= f.text_field :expenses_insurance, class: 'form-control', placeholder: "Enter Insurance Amount" %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:expenses_management]) do %>
+        <%= f.label :expenses_management %>
+        <%= f.text_field :expenses_management, class: 'form-control', placeholder: "Enter Management Amount" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:expenses_maintanance]) do %>
+        <%= f.label :expenses_maintanance %>
+        <%= f.text_field :expenses_maintanance, class: 'form-control', placeholder: "Enter Maintance Amount" %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:expenses_expenditures]) do %>
+        <%= f.label :expenses_expenditures %>
+        <%= f.text_field :expenses_expenditures, class: 'form-control', placeholder: "Enter Capital Expenditures Amount" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:expenses_landscaping]) do %>
+        <%= f.label :expenses_landscaping %>
+        <%= f.text_field :expenses_landscaping, class: 'form-control', placeholder: "Enter Landscaping Amount" %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:expenses_misc]) do %>
+        <%= f.label :expenses_misc  %>
+        <%= f.text_field :expenses_misc, class: 'form-control', placeholder: "Enter Misc Landscaping Amount" %>
+      <% end %>
+    </div>
+<% end %>

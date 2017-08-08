@@ -1,0 +1,81 @@
+<%= form_for @house do |f| %>
+  <% if house.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(house.errors.count, "error") %>.</h4>
+        <ul>
+          <% house.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+    </div>
+  <% end %>
+
+
+
+
+
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:rehab_cost_exterior]) do %>
+        <%= f.label :rehab_cost_exterior %>
+        <%= f.text_field :rehab_cost_exterior, class: 'form-control', placeholder: "Enter Rehab Cost for Exterior" %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:rehab_cost_interior]) do %>
+        <%= f.label :rehab_cost_interior %>
+        <%= f.text_field :rehab_cost_interior, class: 'form-control', placeholder: "Enter Rehab Cost for Interior" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:rehab_cost_electrical]) do %>
+        <%= f.label :rehab_cost_electrical %>
+        <%= f.text_field :rehab_cost_electrical, class: 'form-control', placeholder: "Enter Rehab Cost for Electrical" %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:rehab_cost_plumbing]) do %>
+        <%= f.label :rehab_cost_plumbing %>
+        <%= f.text_field :rehab_cost_plumbing, class: 'form-control', placeholder: "Enter Rehab Cost for Plumbing" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:rehab_cost_appliances]) do %>
+        <%= f.label :rehab_cost_appliances %>
+        <%= f.text_field :rehab_cost_appliances, class: 'form-control', placeholder: "Enter Rehab Cost for Appliances" %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:rehab_cost_landscaping]) do %>
+        <%= f.label :rehab_cost_landscaping %>
+        <%= f.text_field :rehab_cost_landscaping, class: 'form-control', placeholder: "Enter Rehab Cost for Landscaping" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:rehab_cost_misc]) do %>
+        <%= f.label :rehab_cost_misc %>
+        <%= f.text_field :rehab_cost_misc, class: 'form-control', placeholder: "Enter Misc Rehab Cost" %>
+      <% end %>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+   <!-- <div class="form-group">
+     <%= f.submit "Next", class: 'btn btn-success' %>
+   </div> -->
+<% end %>

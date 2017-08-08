@@ -1,0 +1,49 @@
+<%= form_for @house do |f| %>
+  <% if house.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(house.errors.count, "error") %>.</h4>
+        <ul>
+          <% house.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+    </div>
+  <% end %>
+
+
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:purchase_cost_inspection]) do %>
+        <%= f.label :purchase_cost_inspection %>
+        <%= f.text_field :purchase_cost_inspection, class: 'form-control', placeholder: "Enter Inspection Cost" %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:purchase_cost_appraisal]) do %>
+        <%= f.label :purchase_cost_appraisal %>
+        <%= f.text_field :purchase_cost_appraisal, class: 'form-control', placeholder: "Enter Appraisal Cost" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:closing_costs]) do %>
+        <%= f.label :closing_costs %>
+        <%= f.text_field :closing_costs, class: 'form-control', placeholder: "Enter Closing Cost" %>
+      <% end %>
+    </div>
+  </div>
+    
+
+
+
+
+
+
+
+
+
+   <!-- <div class="form-group">
+     <%= f.submit "Next", class: 'btn btn-success' %>
+   </div> -->
+<% end %>

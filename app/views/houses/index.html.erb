@@ -1,0 +1,33 @@
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<div class="col-md-4">
+			<h1>All Houses</h1>
+		</div>
+		<div class="col-md-4 pull-right align-bottom">
+      <div data-no-turbolinks>
+        <%= link_to "New House", new_house_path, class: "btn btn-primary btn-lg" %>
+      </div>
+		</div>
+	</div>
+</div>
+<br />
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <table class="table">
+      <div class="media">
+        <div class="media-body">
+          <% @houses.each do |house| %>
+            <div class="media">
+              <div class="media-body">
+                <h4 class="media-heading">
+                  <%= link_to house.title, house %>
+                </h4>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </table>
+  </div>
+</div>

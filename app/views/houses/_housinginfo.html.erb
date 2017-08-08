@@ -1,0 +1,121 @@
+<%= form_for @house do |f| %>
+  <% if house.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(house.errors.count, "error") %>.</h4>
+        <ul>
+          <% house.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+    </div>
+  <% end %>
+  <%= form_group_tag(house.errors[:name]) do %>
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control', placeholder: "Enter House Nickname" %>
+  <% end %>
+  <%= form_group_tag(house.errors[:description]) do %>
+  <%= f.label :description %>
+     <%= f.text_area :description, rows: 8, class: 'form-control', placeholder: "Enter House Notes" %>
+  <% end %>
+  <%= form_group_tag(house.errors[:address]) do %>
+    <%= f.label :address %>
+    <%= f.text_field :address, class: 'form-control', placeholder: "Enter Address" %>
+  <% end %>
+  <div class="row">
+    <div class="col-md-4">
+      <%= form_group_tag(house.errors[:city]) do %>
+        <%= f.label :city %>
+        <%= f.text_field :city, class: 'form-control', placeholder: "Enter City" %>
+      <% end %>
+    </div>
+    <div class="col-md-4">
+      <%= form_group_tag(house.errors[:state]) do %>
+        <%= f.label :state %>
+        <%= f.text_field :state, class: 'form-control', placeholder: "Enter State" %>
+      <% end %>
+    </div>
+    <div class="col-md-4">
+      <%= form_group_tag(house.errors[:zip]) do %>
+        <%= f.label :zip %>
+        <%= f.text_field :zip, class: 'form-control', placeholder: "Enter Zip" %>
+      <% end %>
+    </div>
+  </div>
+  <%= form_group_tag(house.errors[:type]) do %>
+    <%= f.label :type %>
+    <%= f.text_field :type, class: 'form-control', placeholder: "Enter Property Type" %>
+  <% end %>
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:numBeds]) do %>
+        <%= f.label :numBeds  %>
+        <%= f.text_field :numBeds, class: 'form-control', placeholder: "Enter Number of Bedrooms" %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:numBaths]) do %>
+        <%= f.label :NumBaths %>
+        <%= f.text_field :numBaths, class: 'form-control', placeholder: "Enter Number of Bathrooms" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:footage]) do %>
+        <%= f.label :footage %>
+        <%= f.text_field :footage, class: 'form-control', placeholder: "Enter Square Footage" %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:year]) do %>
+        <%= f.label :year %>
+        <%= f.text_field :year, class: 'form-control', placeholder: "Enter Year Built" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:parking]) do %>
+        <%= f.label :parking %>
+        <%= f.text_field :parking, class: 'form-control', placeholder: "Enter Parking" %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:lot]) do %>
+        <%= f.label :lot %>
+        <%= f.text_field :lot, class: 'form-control', placeholder: "Enter Lot Size" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:zoning]) do %>
+        <%= f.label :zoning %>
+        <%= f.text_field :zoning, class: 'form-control', placeholder: "Enter Zoning Type" %>
+      <% end %>
+      </div>
+      <div class="col-md-6">
+      <%= form_group_tag(house.errors[:mls]) do %>
+        <%= f.label :MLS %>
+        <%= f.text_field :mls, class: 'form-control', placeholder: "Enter MLS Number" %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+  </div>
+   <!-- <div class="form-group">
+     <%= f.submit "Next", class: 'btn btn-success' %>
+   </div> -->
+<% end %>

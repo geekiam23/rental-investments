@@ -1,0 +1,251 @@
+<%= form_for @house do |f| %>
+  <% if house.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(house.errors.count, "error") %>.</h4>
+        <ul>
+          <% house.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+    </div>
+  <% end %>
+
+
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:purchase_price]) do %>
+        <%= f.label :purchase_price %>
+        <%= f.text_field :purchase_price, class: 'form-control', placeholder: "Enter Purchase Price" %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:after_value]) do %>
+        <%= f.label :after_value %>
+        <%= f.text_field :after_value, class: 'form-control', placeholder: "Enter After Value Price" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <%= form_group_tag(house.errors[:down_payment]) do %>
+        <%= f.label :down_payment %>
+        <%= f.text_field :down_payment, class: 'form-control', placeholder: "Enter Down Payment Amount" %>
+      <% end %>
+    </div>
+    <div class="col-md-4">
+      <%= form_group_tag(house.errors[:interest]) do %>
+        <%= f.label :interest %>
+        <%= f.text_field :interest, class: 'form-control', placeholder: "Enter Interest Amount" %>
+      <% end %>
+    </div>
+    <div class="col-md-4">
+      <%= form_group_tag(house.errors[:loan_term]) do %>
+        <%= f.label :loan_term %>
+        <%= f.text_field :loan_term, class: 'form-control', placeholder: "Enter Loan Term" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+    <%= form_group_tag(house.errors[:pmi_upfront]) do %>
+      <%= f.label :pmi_upfront %>
+      <%= f.text_field :pmi_upfront, class: 'form-control', placeholder: "Enter PMI Upfront Amount" %>
+    <% end %>
+    </div>
+    <div class="col-md-6">
+    <%= form_group_tag(house.errors[:pmi_recurring]) do %>
+      <%= f.label :pmi_recurring %>
+      <%= f.text_field :pmi_recurring, class: 'form-control', placeholder: "Enter PMI Recurring Amount" %>
+    <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:purchase_cost_inspection]) do %>
+        <%= f.label :purchase_cost_inspection %>
+        <%= f.text_field :purchase_cost_inspection, class: 'form-control', placeholder: "Enter Inspection Cost" %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:purchase_cost_appraisal]) do %>
+        <%= f.label :purchase_cost_appraisal %>
+        <%= f.text_field :purchase_cost_appraisal, class: 'form-control', placeholder: "Enter Appraisal Cost" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:closing_costs]) do %>
+        <%= f.label :closing_costs %>
+        <%= f.text_field :closing_costs, class: 'form-control', placeholder: "Enter Closing Cost" %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:rehab_cost_exterior]) do %>
+        <%= f.label :rehab_cost_exterior %>
+        <%= f.text_field :rehab_cost_exterior, class: 'form-control', placeholder: "Enter Rehab Cost for Exterior" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:rehab_cost_interior]) do %>
+        <%= f.label :rehab_cost_interior %>
+        <%= f.text_field :rehab_cost_interior, class: 'form-control', placeholder: "Enter Rehab Cost for Interior" %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:rehab_cost_electrical]) do %>
+        <%= f.label :rehab_cost_electrical %>
+        <%= f.text_field :rehab_cost_electrical, class: 'form-control', placeholder: "Enter Rehab Cost for Electrical" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:rehab_cost_plumbing]) do %>
+        <%= f.label :rehab_cost_plumbing %>
+        <%= f.text_field :rehab_cost_plumbing, class: 'form-control', placeholder: "Enter Rehab Cost for Plumbing" %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:rehab_cost_appliances]) do %>
+        <%= f.label :rehab_cost_appliances %>
+        <%= f.text_field :rehab_cost_appliances, class: 'form-control', placeholder: "Enter Rehab Cost for Appliances" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:rehab_cost_landscaping]) do %>
+        <%= f.label :rehab_cost_landscaping %>
+        <%= f.text_field :rehab_cost_landscaping, class: 'form-control', placeholder: "Enter Rehab Cost for Landscaping" %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:rehab_cost_misc]) do %>
+        <%= f.label :rehab_cost_misc %>
+        <%= f.text_field :rehab_cost_misc, class: 'form-control', placeholder: "Enter Misc Rehab Cost" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:income_gross_rent]) do %>
+        <%= f.label :income_gross_rent %>
+        <%= f.text_field :income_gross_rent, class: 'form-control', placeholder: "Enter Gross Rent Amount" %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:income_other_rent]) do %>
+        <%= f.label :income_other_rent %>
+        <%= f.text_field :income_other_rent, class: 'form-control', placeholder: "Enter Other Income Amount" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:expenses_total]) do %>
+        <%= f.label :expenses_total%>
+        <%= f.text_field :expenses_total, class: 'form-control', placeholder: "Enter Total Amount" %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:expenses_taxes]) do %>
+        <%= f.label :expenses_taxes %>
+        <%= f.text_field :expenses_taxes, class: 'form-control', placeholder: "Enter Taxes Amount" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:expenses_insurance]) do %>
+        <%= f.label :expenses_insurance %>
+        <%= f.text_field :expenses_insurance, class: 'form-control', placeholder: "Enter Insurance Amount" %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:expenses_management]) do %>
+        <%= f.label :expenses_management %>
+        <%= f.text_field :expenses_management, class: 'form-control', placeholder: "Enter Management Amount" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:expenses_maintanance]) do %>
+        <%= f.label :expenses_maintanance %>
+        <%= f.text_field :expenses_maintanance, class: 'form-control', placeholder: "Enter Maintance Amount" %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:expenses_expenditures]) do %>
+        <%= f.label :expenses_expenditures %>
+        <%= f.text_field :expenses_expenditures, class: 'form-control', placeholder: "Enter Capital Expenditures Amount" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:expenses_landscaping]) do %>
+        <%= f.label :expenses_landscaping %>
+        <%= f.text_field :expenses_landscaping, class: 'form-control', placeholder: "Enter Landscaping Amount" %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:assumptions_vacancy]) do %>
+        <%= f.label :assumptions_vacancy %>
+        <%= f.text_field :assumptions_vacancy, class: 'form-control', placeholder: "Enter Vacancy Projection" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:assumptions_appreciation]) do %>
+        <%= f.label :assumptions_appreciation %>
+        <%= f.text_field :assumptions_appreciation, class: 'form-control', placeholder: "Enter Appreciation Projection" %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:assumptions_income_increase]) do %>
+        <%= f.label :assumptions_income_increase %>
+        <%= f.text_field :assumptions_income_increase, class: 'form-control', placeholder: "Enter Income Increase Projection" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:assumptions_expense_increase]) do %>
+        <%= f.label :assumptions_expense_increase %>
+        <%= f.text_field :assumptions_expense_increase, class: 'form-control', placeholder: "Enter Expense Increase Projection" %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:assumptions_selling_cost]) do %>
+        <%= f.label :assumptions_selling_cost %>
+        <%= f.text_field :assumptions_selling_cost, class: 'form-control', placeholder: "Enter Selling Cost Projection" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_group_tag(house.errors[:assumptions_land_value]) do %>
+        <%= f.label :assumptions_land_value %>
+        <%= f.text_field :assumptions_land_value, class: 'form-control', placeholder: "Enter Land Value Projection" %>
+      <% end %>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+   <!-- <div class="form-group">
+     <%= f.submit "Next", class: 'btn btn-success' %>
+   </div> -->
+<% end %>
