@@ -4,9 +4,7 @@
 			<h1>All Houses</h1>
 		</div>
 		<div class="col-md-4 pull-right align-bottom">
-      <div data-no-turbolinks>
-        <%= link_to "New House", new_house_path, class: "btn btn-primary btn-lg" %>
-      </div>
+			<%= link_to "New House", new_house_path, class: "btn btn-primary btn-lg" %>
 		</div>
 	</div>
 </div>
@@ -21,7 +19,7 @@
             <div class="media">
               <div class="media-body">
                 <h4 class="media-heading">
-                  <%= link_to house.title, house %>
+                  <%= link_to house.name, house %>
                 </h4>
               </div>
             </div>

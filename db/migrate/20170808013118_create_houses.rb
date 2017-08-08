@@ -8,7 +8,7 @@ class CreateHouses < ActiveRecord::Migration
       t.text :city
       t.text :state
       t.integer :zip
-      t.text :type
+      t.text :house_type
       t.decimal :numBeds, precision: 3, scale: 1
       t.decimal :numBaths, precision: 3, scale: 1
       t.integer :footage

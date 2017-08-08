@@ -22,6 +22,7 @@ gem 'bootstrap-sass'
 gem 'figaro'
 gem 'devise'
 gem 'jquery-turbolinks'
+gem 'faker'
 
 
 group :development, :test do

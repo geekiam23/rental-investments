@@ -41,9 +41,9 @@
       <% end %>
     </div>
   </div>
-  <%= form_group_tag(house.errors[:type]) do %>
-    <%= f.label :type %>
-    <%= f.text_field :type, class: 'form-control', placeholder: "Enter Property Type" %>
+  <%= form_group_tag(house.errors[:house_type]) do %>
+    <%= f.label :house_type %>
+    <%= f.text_field :house_type, class: 'form-control', placeholder: "Enter Property Type" %>
   <% end %>
   <div class="row">
     <div class="col-md-6">
