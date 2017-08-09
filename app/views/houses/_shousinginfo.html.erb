@@ -1,0 +1,85 @@
+<%= form_for @house do |f| %>
+  <% if house.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(house.errors.count, "error") %>.</h4>
+        <ul>
+          <% house.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-md-8">
+      <%= f.label :name %>
+      <%= @house.name %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <%= f.label :description %>
+      <%= @house.description %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <%= f.label :address %>
+      <%= @house.address %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+        <%= f.label :city %>
+        <%= @house.city %>
+    </div>
+    <div class="col-md-4">
+        <%= f.label :state %>
+        <%= @house.state %>
+    </div>
+    <div class="col-md-4">
+        <%= f.label :zip %>
+        <%= @house.zip %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+        <%= f.label :numBeds  %>
+        <%= @house.numBeds %>
+    </div>
+    <div class="col-md-6">
+        <%= f.label :numBaths %>
+    <%= @house.numBaths %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+        <%= f.label :footage %>
+        <%= @house.footage %>
+    </div>
+    <div class="col-md-6">
+        <%= f.label :year %>
+        <%= @house.year %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+        <%= f.label :parking %>
+        <%= @house.parking %>
+    </div>
+    <div class="col-md-6">
+        <%= f.label :lot %>
+        <%= @house.lot %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+        <%= f.label :zoning %>
+        <%= @house.zoning %>
+      </div>
+      <div class="col-md-6">
+        <%= f.label :MLS %>
+        <%= @house.mls %>
+      </div>
+    </div>
+  </div>
+<% end %>

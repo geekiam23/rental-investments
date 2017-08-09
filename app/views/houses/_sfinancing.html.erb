@@ -1,0 +1,48 @@
+<%= form_for @house do |f| %>
+  <% if house.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(house.errors.count, "error") %>.</h4>
+        <ul>
+          <% house.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+    </div>
+  <% end %>
+
+
+  <div class="row">
+    <div class="col-md-6">
+        <%= f.label :purchase_price %>
+        <%= @house.purchase_price %>
+    </div>
+    <div class="col-md-6">
+        <%= f.label :after_value %>
+        <%= @house.after_value %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+        <%= f.label :down_payment %>
+        <%= @house.down_payment %>
+    </div>
+    <div class="col-md-4">
+        <%= f.label :interest %>
+        <%= @house.interest %>
+    </div>
+    <div class="col-md-4">
+        <%= f.label :loan_term %>
+        <%= @house.loan_term %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.label :pmi_upfront %>
+      <%= @house.pmi_upfront %>
+    </div>
+    <div class="col-md-6">
+      <%= f.label :pmi_recurring %>
+      <%= @house.pmi_recurring %>
+    </div>
+  </div>
+<% end %>

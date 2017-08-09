@@ -6,7 +6,7 @@
 // Activate Next Step
 
 
-var ready = function() {
+$(document).ready(function() {
     var navListItems = $('ul.setup-panel li a'),
         allWells = $('.setup-content');
 
@@ -64,7 +64,4 @@ var ready = function() {
         $('ul.setup-panel li a[href="#step-7"]').trigger('click');
         $(this).remove();
     })
-};
-
-$(document).ready(ready);
-$(document).on('page:change', ready);
+});
