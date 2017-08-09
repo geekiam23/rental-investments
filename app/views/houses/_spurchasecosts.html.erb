@@ -1,0 +1,30 @@
+<%= form_for @house do |f| %>
+  <% if house.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(house.errors.count, "error") %>.</h4>
+        <ul>
+          <% house.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+    </div>
+  <% end %>
+
+
+  <div class="row">
+    <div class="col-md-6">
+        <%= f.label :purchase_cost_inspection %>
+        <%= @house.purchase_cost_inspection %>
+    </div>
+    <div class="col-md-6">
+        <%= f.label :purchase_cost_appraisal %>
+        <%= @house.purchase_cost_appraisal %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+        <%= f.label :closing_costs %>
+        <%= @house.closing_costs %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,44 @@
+<%= form_for @house do |f| %>
+  <% if house.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(house.errors.count, "error") %>.</h4>
+        <ul>
+          <% house.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+    </div>
+  <% end %>
+
+
+  <div class="row">
+    <div class="col-md-6">
+        <%= f.label :assumptions_appreciation %>
+        <%= @house.assumptions_appreciation %>
+    </div>
+    <div class="col-md-6">
+        <%= f.label :assumptions_vacancy %>
+        <%= @house.assumptions_vacancy %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+        <%= f.label :assumptions_income_increase %>
+        <%= @house.assumptions_income_increase %>
+    </div>
+    <div class="col-md-6">
+        <%= f.label :assumptions_expense_increase %>
+        <%= @house.assumptions_expense_increase %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+        <%= f.label :assumptions_land_value %>
+        <%= @house.assumptions_land_value %>
+    </div>
+    <div class="col-md-6">
+        <%= f.label :assumptions_selling_cost %>
+        <%= @house.assumptions_selling_cost  %>
+    </div>
+  </div>
+<% end %>

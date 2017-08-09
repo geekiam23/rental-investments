@@ -12,14 +12,14 @@
 
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
-    <table class="table">
+    <table class="table table-stripped">
       <div class="media">
         <div class="media-body">
           <% @houses.each do |house| %>
             <div class="media">
               <div class="media-body">
                 <h4 class="media-heading">
-                  <%= link_to house.name, house %>
+									<%= link_to house.name, house %>
                 </h4>
               </div>
             </div>

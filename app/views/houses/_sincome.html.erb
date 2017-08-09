@@ -1,0 +1,24 @@
+<%= form_for @house do |f| %>
+  <% if house.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(house.errors.count, "error") %>.</h4>
+        <ul>
+          <% house.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+    </div>
+  <% end %>
+
+
+  <div class="row">
+    <div class="col-md-6">
+        <%= f.label :income_gross_rent %>
+        <%= @house.income_gross_rent %>
+    </div>
+    <div class="col-md-6">
+        <%= f.label :income_other_rent %>
+        <%= @house.income_other_rent %>
+    </div>
+  </div>
+<% end %>

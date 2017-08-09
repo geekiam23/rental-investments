@@ -1,0 +1,53 @@
+<%= form_for @house do |f| %>
+  <% if house.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(house.errors.count, "error") %>.</h4>
+        <ul>
+          <% house.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+    </div>
+  <% end %>
+
+
+  <div class="row">
+    <div class="col-md-6">
+        <%= f.label :expenses_Total%>
+        <%= @house.expenses_total %>
+    </div>
+    <div class="col-md-6">
+        <%= f.label :expenses_taxes %>
+        <%= @house.expenses_taxes %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+        <%= f.label :expenses_insurance %>
+        <%= @house.expenses_insurance %>
+    </div>
+    <div class="col-md-6">
+        <%= f.label :expenses_management %>
+        <%= @house.expenses_management %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+        <%= f.label :expenses_maintanance %>
+        <%= @house.expenses_maintanance %>
+    </div>
+    <div class="col-md-6">
+        <%= f.label :expenses_expenditures %>
+        <%= @house.expenses_expenditures %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+        <%= f.label :expenses_landscaping %>
+        <%= @house.expenses_landscaping %>
+    </div>
+    <div class="col-md-6">
+        <%= f.label :expenses_misc  %>
+        <%= @house.expenses_misc %>
+    </div>
+<% end %>
