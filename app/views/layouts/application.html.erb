@@ -7,10 +7,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
-  <body 
-    <% if content_for?(:body_attributes) %>
-      <%= yield(:body_attributes) %>
-    <% end %>>
+  <body>
     <nav class="navbar-test">
       <div class="container">
         <div id="navbar">
