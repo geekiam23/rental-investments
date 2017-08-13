@@ -1,4 +1,11 @@
 class HousesController < ApplicationController
+  before_action :variables, except: [:index, :new, :create]
+
+  def variables
+    @house = House.find(params[:id])
+    gon.house = @house
+  end
+
   def index
     @houses = House.all
   end
@@ -52,8 +59,13 @@ class HousesController < ApplicationController
     end
   end
 
+
   private
   def house_params
     params.require(:house).permit(:name, :description)
   end
 end
+
+# , :address, :city, :state, :zip, :house_type, :numBeds, :numBaths, :footage, :year, :parking, :lot, :zoning, :mls, :purchase_price, :after_value, :down_payment, :interest, :loan_term, :pmi_upfront, :pmi_recurring, :purchase_cost_total,
+# :purchase_cost_inspection,  :purchase_cost_appraisal, :closing_costs, :rehab_cost_exterior, :rehab_cost_interior, :rehab_cost_electrical, :rehab_cost_plumbing,  :rehab_cost_appliances, :rehab_cost_landscaping,  :rehab_cost_misc, :income_gross_rent, :income_other_rent, :expenses_total, :expenses_taxes, :expenses_insurance, :expenses_management, :expenses_maintanance, :expenses_expenditures, :expenses_landscaping, :expenses_misc,  :assumptions_vacancy, :assumptions_appreciation, :assumptions_income_increase, :assumptions_expense_increase, :assumptions_selling_cost,
+# :assumptions_land_value, :amount_financed, :total_cash_needed,  :valuation, :operation_income_year, :operation_income_month,  :operation_net_operating_income_year, :operation_net_operating_income_month, :loan_payments, :operation_cash_flow_year, :operation_cash_flow_month, :return_cap_rate, :return_cash_on_cash, :return_total_profit_sold, :return_return_on_investment, :return_annualized_total_return, :ratios_rent_to_value, :ratios_gross_rent_multiplier, :ratios_debt_coverage_ratio, :tax_loan_principle,  :tax_cumulative_loan_principle, :tax_loan_interest, :tax_cumulative_interest

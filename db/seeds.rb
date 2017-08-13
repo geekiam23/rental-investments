@@ -21,7 +21,7 @@ require 'faker'
     mls:                Faker::Number.between(100000, 900000),
     purchase_price:     Faker::Number.between(130000, 300000),
     after_value:        Faker::Number.between(130000, 300000),
-    down_payment:       Faker::Number.between(30000, 60000),
+    down_payment:       Faker::Number.between(10000, 30000),
     interest:           Faker::Number.decimal(1, 2),
     loan_term:          Faker::Number.between(15, 30),
     pmi_upfront:        Faker::Number.between(1, 19),

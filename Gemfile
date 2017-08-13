@@ -23,6 +23,7 @@ gem 'figaro'
 gem 'devise'
 gem 'jquery-turbolinks'
 gem 'faker'
+gem 'gon'
 
 
 group :development, :test do

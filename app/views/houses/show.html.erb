@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row form-group">
-    <div class="col-xs-12">
+    <div class="col-xl-12">
       <ul class="nav nav-pills nav-justified thumbnail setup-panel">
         <li class="active"><a href="#step-1">
           <p class="list-group-item-text">Housing Info</p>
@@ -25,127 +25,151 @@
         </a></li>
       </ul>
     </div>
-    <div class="row">
-      <div class="col-md-4 text-center pull-left">
-          <h1><%= @house.name %></h1>
-      </div>
-      <div class="col-md-2 pull-right">
-          <%= link_to "Edit", edit_house_path(@house), class: "btn btn-default btn-lg", :"data-no-turbolink" => true  %>
-          <%= link_to "Delete", @house, method: :delete, class: "btn btn-danger btn-lg", data: {confirm: "Are you sure you want to delete this house?"} %>
+  </div>
+  <div class="row form-group">
+    <div class="col-xl-12">
+      <ul class="nav nav-pills nav-justified thumbnail setup-panel">
+        <li class="active"><a href="#projections">
+          <p class="list-group-item-text">Projections</p>
+        </a></li>
+        <li class="active"><a href="#payment_schedule">
+          <p class="list-group-item-text">Loan Payment Schedule</p>
+        </a></li>
+        <li class="active"><a href="#summary">
+          <p class="list-group-item-text">Summary</p>
+        </a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+  <div class="row">
+    <div class="col-md-4 text-center pull-left">
+        <h1><%= @house.name %></h1>
+    </div>
+    <div class="col-md-2 pull-right">
+      <%= link_to "Edit", edit_house_path(@house), "data-turbolinks": "false", class: "btn btn-default btn-lg", :"data-no-turbolink" => true  %>
+      <%= link_to "Delete", @house, method: :delete, class: "btn btn-danger btn-lg", data: {confirm: "Are you sure you want to delete this house?"} %>
+    </div>
+  </div>
+  <div class="row setup-content" id="step-1">
+    <div class="col-xs-12">
+      <div class="col-md-12 well text-center">
+        <h1 class="list-group-item-heading">Housing Info</h1>
+        <div class="row">
+          <div class="col-md-8 center-block">
+            <%= render partial: 'shousinginfo', locals: { house: @house } %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-
-
-
-  <form class="container">
-    <div class="row setup-content" id="step-1">
-      <div class="col-xs-12">
-        <div class="col-md-12 well text-center">
-          <h1 class="list-group-item-heading">Housing Info</h1>
-          <div class="row">
-            <div class="col-md-8 center-block">
-              <%= render partial: 'shousinginfo', locals: { house: @house } %>
-              <button id="activate-step-2" class="btn btn-primary btn-md">Next</button>
-            </div>
+  <div class="row setup-content" id="step-2">
+    <div class="col-xs-12">
+      <div class="col-md-12 well text-center">
+        <h1 class="text-center">Financing</h1>
+        <div class="row">
+          <div class="col-md-8 center-block">
+            <%= render partial: 'sfinancing', locals: { house: @house } %>
           </div>
         </div>
       </div>
     </div>
-  </form>
-
-  <form class="container">
-    <div class="row setup-content" id="step-2">
-      <div class="col-xs-12">
-        <div class="col-md-12 well text-center">
-          <h1 class="text-center">Financing</h1>
-          <div class="row">
-            <div class="col-md-8 center-block">
-              <%= render partial: 'sfinancing', locals: { house: @house } %>
-              <button id="activate-step-3" class="btn btn-primary btn-md">Next</button>
-            </div>
+  </div>
+  <div class="row setup-content" id="step-3">
+    <div class="col-xs-12">
+      <div class="col-md-12 well text-center">
+        <h1 class="text-center">Purchase Costs</h1>
+        <div class="row">
+          <div class="col-md-8 center-block">
+            <%= render partial: 'spurchasecosts', locals: { house: @house } %>
           </div>
         </div>
       </div>
     </div>
-  </form>
-
-  <form class="container">
-    <div class="row setup-content" id="step-3">
-      <div class="col-xs-12">
-        <div class="col-md-12 well text-center">
-          <h1 class="text-center">Purchase Costs</h1>
-          <div class="row">
-            <div class="col-md-8 center-block">
-              <%= render partial: 'spurchasecosts', locals: { house: @house } %>
-              <button id="activate-step-4" class="btn btn-primary btn-md">Next</button>
-            </div>
+  </div>
+  <div class="row setup-content" id="step-4">
+    <div class="col-xs-12">
+      <div class="col-md-12 well text-center">
+        <h1 class="text-center">Rehab Costs</h1>
+        <div class="row">
+          <div class="col-md-8 center-block">
+            <%= render partial: 'srehabcosts', locals: { house: @house } %>
           </div>
         </div>
       </div>
     </div>
-  </form>
-
-  <form class="container">
-    <div class="row setup-content" id="step-4">
-      <div class="col-xs-12">
-        <div class="col-md-12 well text-center">
-          <h1 class="text-center">Rehab Costs</h1>
-          <div class="row">
-            <div class="col-md-8 center-block">
-              <%= render partial: 'srehabcosts', locals: { house: @house } %>
-              <button id="activate-step-5" class="btn btn-primary btn-md">Next</button>
-            </div>
+  </div>
+  <div class="row setup-content" id="step-5">
+    <div class="col-xs-12">
+      <div class="col-md-12 well text-center">
+        <h1 class="text-center">Income</h1>
+        <div class="row">
+          <div class="col-md-8 center-block">
+            <%= render partial: 'sincome', locals: { house: @house } %>
           </div>
         </div>
       </div>
     </div>
-  </form>
-
-  <form class="container">
-    <div class="row setup-content" id="step-5">
-      <div class="col-xs-12">
-        <div class="col-md-12 well text-center">
-          <h1 class="text-center">Income</h1>
-          <div class="row">
-            <div class="col-md-8 center-block">
-              <%= render partial: 'sincome', locals: { house: @house } %>
-              <button id="activate-step-6" class="btn btn-primary btn-md">Next</button>
-            </div>
+  </div>
+  <div class="row setup-content" id="step-7">
+    <div class="col-xs-12">
+      <div class="col-md-12 well text-center">
+        <h1 class="list-group-item-heading">Assumptions</h1>
+        <div class="row">
+          <div class="col-md-8 center-block">
+            <%= render partial: 'sassumptions', locals: { house: @house } %>
           </div>
         </div>
       </div>
     </div>
-  </form>
-
-  <form class="container">
-    <div class="row setup-content" id="step-7">
-      <div class="col-xs-12">
-        <div class="col-md-12 well text-center">
-          <h1 class="list-group-item-heading">Assumptions</h1>
-          <div class="row">
-            <div class="col-md-8 center-block">
-              <%= render partial: 'sassumptions', locals: { house: @house } %>
-            </div>
+  </div>
+  <div class="row setup-content" id="step-6">
+    <div class="col-xs-12">
+      <div class="col-md-12 well text-center">
+        <h1 class="text-center">Expenses</h1>
+        <div class="row">
+          <div class="col-md-8 center-block">
+            <%= render partial: 'sexpenses', locals: { house: @house } %>
           </div>
         </div>
       </div>
     </div>
-  </form>
-
-  <form class="container">
-    <div class="row setup-content" id="step-6">
-      <div class="col-xs-12">
-        <div class="col-md-12 well text-center">
-          <h1 class="text-center">Expenses</h1>
-          <div class="row">
-            <div class="col-md-8 center-block">
-              <%= render partial: 'sexpenses', locals: { house: @house } %>
-              <button id="activate-step-7" class="btn btn-primary btn-md">Next</button>
-            </div>
+  </div>
+  <div class="row setup-content" id="summary">
+    <div class="col-xs-12">
+      <div class="col-md-12 well text-center">
+        <h1 class="text-center">Purchase and Rehab</h1>
+        <div class="row">
+          <div class="col-md-8 center-block">
+            <%= render partial: 'summary', locals: { house: @house } %>
           </div>
         </div>
       </div>
     </div>
-  </form>
+  </div>
+  <div class="row setup-content" id="projections">
+    <div class="col-xs-12">
+      <div class="col-md-12 well text-center">
+        <h1 class="text-center">Projections</h1>
+        <div class="row">
+          <div class="col-md-8 center-block">
+            <%= render partial: 'projections', locals: { house: @house } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row setup-content" id="payment_schedule">
+    <div class="col-xs-12">
+      <div class="col-md-12 well text-center">
+        <h1 class="text-center">Loan Payment Schedule</h1>
+        <br>
+        <div class="row">
+          <div class="col-md-8 center-block">
+            <%= render partial: 'amort', locals: { house: @house } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

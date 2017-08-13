@@ -10,20 +10,22 @@
     </div>
   <% end %>
 
-  <div class="row">
-    <div class="col-md-6">
-        <%= f.label :purchase_cost_inspection %>
-        <%= @house.purchase_cost_inspection %>
+  <div class="body-text">
+    <div class="row">
+      <div class="col-md-6">
+          <%= f.label :purchase_cost_inspection %>
+          <p>$<%= @house.purchase_cost_inspection %></p>
+      </div>
+      <div class="col-md-6">
+          <%= f.label :purchase_cost_appraisal %>
+          <p>$<%= @house.purchase_cost_appraisal %></p>
+      </div>
     </div>
-    <div class="col-md-6">
-        <%= f.label :purchase_cost_appraisal %>
-        <%= @house.purchase_cost_appraisal %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-        <%= f.label :closing_costs %>
-        <%= @house.closing_costs %>
+    <div class="row">
+      <div class="col-md-6">
+          <%= f.label :closing_costs %>
+          <p><%= @house.closing_costs %>%</p>
+      </div>
     </div>
   </div>
 <% end %>

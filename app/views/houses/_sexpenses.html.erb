@@ -10,43 +10,46 @@
     </div>
   <% end %>
 
-  <div class="row">
-    <div class="col-md-6">
-        <%= f.label :expenses_Total%>
-        <%= @house.expenses_total %>
+  <div class="body-text">
+    <div class="row">
+      <div class="col-md-6">
+          <%= f.label :expenses_taxes %>
+          <p>$<%= @house.expenses_taxes %></p>
+      </div>
+      <div class="col-md-6">
+          <%= f.label :expenses_insurance %>
+          <p>$<%= @house.expenses_insurance %></p>
+      </div>
     </div>
-    <div class="col-md-6">
-        <%= f.label :expenses_taxes %>
-        <%= @house.expenses_taxes %>
+    <div class="row">
+      <div class="col-md-6">
+          <%= f.label :expenses_management %>
+          <p>$<%= @house.expenses_management %></p>
+      </div>
+      <div class="col-md-6">
+          <%= f.label :expenses_maintanance %>
+          <p>$<%= @house.expenses_maintanance %></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+          <%= f.label :expenses_expenditures %>
+          <p>$<%= @house.expenses_expenditures %></p>
+      </div>
+      <div class="col-md-6">
+          <%= f.label :expenses_landscaping %>
+          <p>$<%= @house.expenses_landscaping %></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+          <%= f.label :expenses_misc  %>
+          <p>$<%= @house.expenses_misc %></p>
+      </div>
+      <div class="col-md-6">
+          <%= f.label :expenses_Total%>
+          <p>$<%= @house.expenses_total %></p> 
+      </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-6">
-        <%= f.label :expenses_insurance %>
-        <%= @house.expenses_insurance %>
-    </div>
-    <div class="col-md-6">
-        <%= f.label :expenses_management %>
-        <%= @house.expenses_management %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-        <%= f.label :expenses_maintanance %>
-        <%= @house.expenses_maintanance %>
-    </div>
-    <div class="col-md-6">
-        <%= f.label :expenses_expenditures %>
-        <%= @house.expenses_expenditures %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-        <%= f.label :expenses_landscaping %>
-        <%= @house.expenses_landscaping %>
-    </div>
-    <div class="col-md-6">
-        <%= f.label :expenses_misc  %>
-        <%= @house.expenses_misc %>
-    </div>
 <% end %>

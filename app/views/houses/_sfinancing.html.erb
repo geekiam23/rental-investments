@@ -10,38 +10,50 @@
     </div>
   <% end %>
 
-  <div class="row">
-    <div class="col-md-6">
-        <%= f.label :purchase_price %>
-        <%= @house.purchase_price %>
+  <div class="body-text">
+    <div class="row">
+      <div class="col-md-4">
+          <%= f.label :purchase_price %>
+          <p>$ <%= @house.purchase_price %></p>
+      </div>
+      <div class="col-md-4" display="inline">
+          <%= f.label :after_value %>
+          <p>$ <%= @house.after_value %></p>
+      </div>
+      <div class="col-md-4">
+          <%= f.label :amount_financed %>
+          <p><script type="text/javascript">
+            document.write("$" + amount_financed.toFixed(2));
+          </script></p>
+      </div>
     </div>
-    <div class="col-md-6">
-        <%= f.label :after_value %>
-        <%= @house.after_value %>
+    <div class="row">
+      <div class="col-md-4">
+          <%= f.label :down_payment %>
+          <p>$<%= @house.down_payment %> or
+            <script type="text/javascript">
+              document.write(down_payment_percent.toFixed(2) + "%");
+            </script>
+          </p>
+      </div>
+      <div class="col-md-4">
+          <%= f.label :interest %>
+          <p><%= @house.interest %>%</p>
+      </div>
+      <div class="col-md-4">
+          <%= f.label :loan_term %>
+          <p><%= @house.loan_term %> years</p>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-        <%= f.label :down_payment %>
-        <%= @house.down_payment %>
-    </div>
-    <div class="col-md-4">
-        <%= f.label :interest %>
-        <%= @house.interest %>
-    </div>
-    <div class="col-md-4">
-        <%= f.label :loan_term %>
-        <%= @house.loan_term %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <%= f.label :pmi_upfront %>
-      <%= @house.pmi_upfront %>
-    </div>
-    <div class="col-md-6">
-      <%= f.label :pmi_recurring %>
-      <%= @house.pmi_recurring %>
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.label :pmi_upfront %>
+        <p><%= @house.pmi_upfront %>% of Loan</p>
+      </div>
+      <div class="col-md-6">
+        <%= f.label :pmi_recurring %>
+        <p><%= @house.pmi_recurring %>% of Loan</p>
+      </div>
     </div>
   </div>
 <% end %>

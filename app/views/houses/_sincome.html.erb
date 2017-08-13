@@ -10,14 +10,16 @@
     </div>
   <% end %>
 
-  <div class="row">
-    <div class="col-md-6">
-        <%= f.label :income_gross_rent %>
-        <%= @house.income_gross_rent %>
-    </div>
-    <div class="col-md-6">
-        <%= f.label :income_other_rent %>
-        <%= @house.income_other_rent %>
+  <div class="body-text">
+    <div class="row">
+      <div class="col-md-6">
+          <%= f.label :income_gross_rent %>
+          <p>$<%= @house.income_gross_rent %> per month</p>
+      </div>
+      <div class="col-md-6">
+          <%= f.label :income_other_rent %>
+          <p>$<%= @house.income_other_rent %> per month</p>
+      </div>
     </div>
   </div>
 <% end %>

@@ -1,6 +1,7 @@
 class CreateHouses < ActiveRecord::Migration
   def change
     create_table :houses do |t|
+      t.references :user, index: true, foreign_key: true
       # Housing Info
       t.string :name
       t.text :description
@@ -30,6 +31,7 @@ class CreateHouses < ActiveRecord::Migration
       t.decimal :purchase_cost_inspection, precision: 10, scale: 2
       t.decimal :purchase_cost_appraisal, precision: 10, scale: 2
       t.integer :closing_costs
+      t.decimal :rehab_cost_total, precision: 10, scale: 2
       t.decimal :rehab_cost_exterior, precision: 10, scale: 2
       t.decimal :rehab_cost_interior, precision: 10, scale: 2
       t.decimal :rehab_cost_electrical, precision: 10, scale: 2
@@ -53,9 +55,31 @@ class CreateHouses < ActiveRecord::Migration
       t.integer :assumptions_expense_increase
       t.integer :assumptions_selling_cost
       t.decimal :assumptions_land_value, precision: 10, scale: 2
-
+      t.decimal :amount_financed, precision: 10, scale: 2
+      t.decimal :total_cash_needed, precision: 10, scale: 2
+      t.decimal :valuation, precision: 10, scale: 2
+      t.decimal :operation_income_year, precision: 10, scale: 2
+      t.decimal :operation_income_month, precision: 10, scale: 2
+      t.decimal :operation_net_operating_income_year, precision: 10, scale: 2
+      t.decimal :operation_net_operating_income_month, precision: 10, scale: 2
+      t.decimal :loan_payments, precision: 10, scale: 2
+      t.decimal :operation_cash_flow_year, precision: 10, scale: 2
+      t.decimal :operation_cash_flow_month, precision: 10, scale: 2
+      t.decimal :return_cap_rate, precision: 10, scale: 2
+      t.decimal :return_cash_on_cash, precision: 10, scale: 2
+      t.decimal :return_total_profit_sold, precision: 10, scale: 2
+      t.decimal :return_return_on_investment, precision: 10, scale: 2
+      t.decimal :return_annualized_total_return, precision: 10, scale: 2
+      t.decimal :ratios_rent_to_value, precision: 10, scale: 2
+      t.decimal :ratios_gross_rent_multiplier, precision: 10, scale: 2
+      t.decimal :ratios_debt_coverage_ratio, precision: 10, scale: 2
+      t.decimal :tax_loan_principle, precision: 10, scale: 2
+      t.decimal :tax_cumulative_loan_principle, precision: 10, scale: 2
+      t.decimal :tax_loan_interest, precision: 10, scale: 2
+      t.decimal :tax_cumulative_interest, precision: 10, scale: 2
 
       t.timestamps null: false
+
     end
   end
 end

@@ -10,40 +10,42 @@
     </div>
   <% end %>
 
-  <div class="row">
-    <div class="col-md-6">
-        <%= f.label :rehab_cost_exterior %>
-        <%= @house.rehab_cost_exterior %>
+  <div class="body-text">
+    <div class="row">
+      <div class="col-md-6">
+          <%= f.label :rehab_cost_exterior %>
+          <p>$<%= @house.rehab_cost_exterior %></p>
+      </div>
+      <div class="col-md-6">
+          <%= f.label :rehab_cost_interior %>
+          <p>$<%= @house.rehab_cost_interior %></p>
+      </div>
     </div>
-    <div class="col-md-6">
-        <%= f.label :rehab_cost_interior %>
-        <%= @house.rehab_cost_interior %>
+    <div class="row">
+      <div class="col-md-6">
+          <%= f.label :rehab_cost_electrical %>
+          <p>$<%= @house.rehab_cost_electrical %></p>
+      </div>
+      <div class="col-md-6">
+          <%= f.label :rehab_cost_plumbing %>
+          <p>$<%= @house.rehab_cost_plumbing %></p>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-        <%= f.label :rehab_cost_electrical %>
-        <%= @house.rehab_cost_electrical %>
+    <div class="row">
+      <div class="col-md-6">
+          <%= f.label :rehab_cost_appliances %>
+          <p>$<%= @house.rehab_cost_appliances %></p>
+      </div>
+      <div class="col-md-6">
+          <%= f.label :rehab_cost_landscaping %>
+          <p>$<%= @house.rehab_cost_landscaping %></p>
+      </div>
     </div>
-    <div class="col-md-6">
-        <%= f.label :rehab_cost_plumbing %>
-        <%= @house.rehab_cost_plumbing %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-        <%= f.label :rehab_cost_appliances %>
-        <%= @house.rehab_cost_appliances %>
-    </div>
-    <div class="col-md-6">
-        <%= f.label :rehab_cost_landscaping %>
-        <%= @house.rehab_cost_landscaping %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-        <%= f.label :rehab_cost_misc %>
-        <%= @house.rehab_cost_misc %>
+    <div class="row">
+      <div class="col-md-6">
+          <%= f.label :rehab_cost_misc %>
+          <p>$<%= @house.rehab_cost_misc %></p>
+      </div>
     </div>
   </div>
 <% end %>

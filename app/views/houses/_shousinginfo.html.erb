@@ -9,72 +9,74 @@
         </ul>
     </div>
   <% end %>
-  <div class="row">
-    <div class="col-md-8">
-      <%= f.label :name %>
-      <%= @house.name %>
+
+  <div class="body-text">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <%= f.label :name %>
+        <%= @house.name %>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-8">
-      <%= f.label :description %>
-      <%= @house.description %>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <%= f.label :description %>
+        <%= @house.description %>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-8">
-      <%= f.label :address %>
-      <%= @house.address %>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <%= f.label :address %>
+        <%= @house.address %>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-        <%= f.label :city %>
-        <%= @house.city %>
+    <div class="row">
+      <div class="col-md-4">
+          <%= f.label :city %>
+          <%= @house.city %>
+      </div>
+      <div class="col-md-4">
+          <%= f.label :state %>
+          <%= @house.state %>
+      </div>
+      <div class="col-md-4">
+          <%= f.label :zip %>
+          <%= @house.zip %>
+      </div>
     </div>
-    <div class="col-md-4">
-        <%= f.label :state %>
-        <%= @house.state %>
+    <div class="row">
+      <div class="col-md-6">
+          <%= f.label :numBeds  %>
+          <%= @house.numBeds %>
+      </div>
+      <div class="col-md-6">
+          <%= f.label :numBaths %>
+      <%= @house.numBaths %>
+      </div>
     </div>
-    <div class="col-md-4">
-        <%= f.label :zip %>
-        <%= @house.zip %>
+    <div class="row">
+      <div class="col-md-6">
+          <%= f.label :footage %>
+          <p><%= @house.footage %> sq. ft.</p>
+      </div>
+      <div class="col-md-6">
+          <%= f.label :year %>
+          <%= @house.year %>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-        <%= f.label :numBeds  %>
-        <%= @house.numBeds %>
+    <div class="row">
+      <div class="col-md-6">
+          <%= f.label :parking %>
+          <%= @house.parking %>
+      </div>
+      <div class="col-md-6">
+          <%= f.label :lot %>
+          <p><%= @house.lot %> sq. ft.</p> 
+      </div>
     </div>
-    <div class="col-md-6">
-        <%= f.label :numBaths %>
-    <%= @house.numBaths %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-        <%= f.label :footage %>
-        <%= @house.footage %>
-    </div>
-    <div class="col-md-6">
-        <%= f.label :year %>
-        <%= @house.year %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-        <%= f.label :parking %>
-        <%= @house.parking %>
-    </div>
-    <div class="col-md-6">
-        <%= f.label :lot %>
-        <%= @house.lot %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-        <%= f.label :zoning %>
-        <%= @house.zoning %>
+    <div class="row">
+      <div class="col-md-6">
+          <%= f.label :zoning %>
+          <%= @house.zoning %>
       </div>
       <div class="col-md-6">
         <%= f.label :MLS %>
