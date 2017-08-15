@@ -37,16 +37,15 @@
           <h1><%= @house.name %></h1>
       </div>
       <div class="col-md-2 pull-right d-inline">
-        <%= form_for @house do |f| %>
-          <%= f.submit "Submit", class: 'btn btn-lg btn-success' %>
-        <% end %>
+          <%= button_tag "Submit", id: 'form-submit', class: 'btn btn-lg btn-success' %>
         <%= link_to "Delete", @house, method: :delete, class: "btn btn-danger btn-lg", data: {confirm: "Are you sure you want to delete this house?"} %>
       </div>
     </div>
   </div>
 
 
-  <form class="container">
+<%= form_for @house do |f| %>
+  <div class="container">
     <div class="row setup-content" id="step-1">
       <div class="col-xs-12">
         <div class="col-md-12 well text-center">
@@ -60,9 +59,9 @@
         </div>
       </div>
     </div>
-  </form>
+  </div>
 
-  <form class="container">
+  <div class="container">
     <div class="row setup-content" id="step-2">
       <div class="col-xs-12">
         <div class="col-md-12 well text-center">
@@ -75,9 +74,9 @@
         </div>
       </div>
     </div>
-  </form>
+  </div>
 
-  <form class="container">
+  <div class="container">
     <div class="row setup-content" id="step-3">
       <div class="col-xs-12">
         <div class="col-md-12 well text-center">
@@ -90,9 +89,9 @@
         </div>
       </div>
     </div>
-  </form>
+  </div>
 
-  <form class="container">
+  <div class="container">
     <div class="row setup-content" id="step-4">
       <div class="col-xs-12">
         <div class="col-md-12 well text-center">
@@ -105,9 +104,9 @@
         </div>
       </div>
     </div>
-  </form>
+  </div>
 
-  <form class="container">
+  <div class="container">
     <div class="row setup-content" id="step-5">
       <div class="col-xs-12">
         <div class="col-md-12 well text-center">
@@ -120,9 +119,9 @@
         </div>
       </div>
     </div>
-  </form>
+  </div>
 
-  <form class="container">
+  <div class="container">
     <div class="row setup-content" id="step-7">
       <div class="col-xs-12">
         <div class="col-md-12 well text-center">
@@ -136,9 +135,9 @@
         </div>
       </div>
     </div>
-  </form>
+  </div>
 
-  <form class="container">
+  <div class="container">
     <div class="row setup-content" id="step-6">
       <div class="col-xs-12">
         <div class="col-md-12 well text-center">
@@ -151,5 +150,6 @@
         </div>
       </div>
     </div>
-  </form>
+  </div>
+  <% end %>
 </div>

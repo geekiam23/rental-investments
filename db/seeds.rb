@@ -23,7 +23,7 @@ require 'faker'
     after_value:        Faker::Number.between(130000, 300000),
     down_payment:       Faker::Number.between(10000, 30000),
     interest:           Faker::Number.decimal(1, 2),
-    loan_term:          Faker::Number.between(15, 30),
+    loan_term:          Faker::Number.between(180, 360),
     pmi_upfront:        Faker::Number.between(1, 19),
     pmi_recurring:      Faker::Number.between(1, 19),
     purchase_cost_inspection:       Faker::Number.between(1, 1500),

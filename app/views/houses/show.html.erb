@@ -35,6 +35,12 @@
         <li class="active"><a href="#payment_schedule">
           <p class="list-group-item-text">Loan Payment Schedule</p>
         </a></li>
+        <li class="active"><a href="#projections_income">
+          <p class="list-group-item-text">Projections Income</p>
+        </a></li>
+        <li class="active"><a href="#projections_expense">
+          <p class="list-group-item-text">Projections Expense</p>
+        </a></li>
         <li class="active"><a href="#summary">
           <p class="list-group-item-text">Summary</p>
         </a></li>
@@ -147,12 +153,36 @@
       </div>
     </div>
   </div>
+  <div class="row setup-content" id="projections_income">
+    <div class="col-xs-12">
+      <div class="col-md-12 well text-center">
+        <h1 class="text-center">Projections Income</h1>
+        <div class="row">
+          <div class="col-md-12 center-block">
+            <%= render partial: 'projections_income', locals: { house: @house } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row setup-content" id="projections_expense">
+    <div class="col-xs-12">
+      <div class="col-md-12 well text-center">
+        <h1 class="text-center">Projections Expense</h1>
+        <div class="row">
+          <div class="col-md-12 center-block">
+            <%= render partial: 'projections_expense', locals: { house: @house } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="row setup-content" id="projections">
     <div class="col-xs-12">
       <div class="col-md-12 well text-center">
         <h1 class="text-center">Projections</h1>
         <div class="row">
-          <div class="col-md-8 center-block">
+          <div class="col-md-12 center-block">
             <%= render partial: 'projections', locals: { house: @house } %>
           </div>
         </div>
@@ -165,7 +195,7 @@
         <h1 class="text-center">Loan Payment Schedule</h1>
         <br>
         <div class="row">
-          <div class="col-md-8 center-block">
+          <div class="col-md-12 center-block">
             <%= render partial: 'amort', locals: { house: @house } %>
           </div>
         </div>

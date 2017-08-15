@@ -24,7 +24,14 @@
     <div class="row">
       <div class="col-md-6">
           <%= f.label :closing_costs %>
-          <p><%= @house.closing_costs %>%</p>
+          <p><%= @house.closing_costs %>% or </p>
+          <p id="closingCostAmount" class="closingCostAmount"></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <%= f.label :purchase_Total %>
+        <p id="purchaseTotal" class="purchaseTotal"></p>
       </div>
     </div>
   </div>

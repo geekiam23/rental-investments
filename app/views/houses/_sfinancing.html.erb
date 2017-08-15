@@ -22,19 +22,14 @@
       </div>
       <div class="col-md-4">
           <%= f.label :amount_financed %>
-          <p><script type="text/javascript">
-            document.write("$" + amount_financed.toFixed(2));
-          </script></p>
+          <p id="amountFin" class="amountFin"></p>
       </div>
     </div>
     <div class="row">
       <div class="col-md-4">
           <%= f.label :down_payment %>
-          <p>$<%= @house.down_payment %> or
-            <script type="text/javascript">
-              document.write(down_payment_percent.toFixed(2) + "%");
-            </script>
-          </p>
+          <p>$<%= @house.down_payment %> or </p>
+          <p id="downPaymentPercent" class="downPaymentPercent"></p>
       </div>
       <div class="col-md-4">
           <%= f.label :interest %>

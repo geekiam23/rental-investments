@@ -24,9 +24,7 @@
           <p><%= f.label :amount_financed %>:</p>
       </div>
       <div class="col-md-6 end">
-          <p>- <script type="text/javascript">
-            document.write("$" + amount_financed.toFixed(2));
-          </script></p>
+          <p class="amountFin"></p>
       </div>
     </div>
     <div class="row">
@@ -42,10 +40,7 @@
         <p><%= f.label :closing_Costs%>:</p>
       </div>
       <div class="col-md-6 end">
-        <p>+ $<script type="text/javascript">
-            document.write(closing_costs_amount.toFixed(2));
-          </script>
-        </p>
+        <p class="closingCostAmount">+ $</p>
       </div>
     </div>
     <div class="row">
@@ -53,10 +48,7 @@
           <p><%= f.label :rehab_Cost_Total %>:</p>
       </div>
       <div class="col-md-6 end">
-          <p>+ $<script type="text/javascript">
-              document.write(rehab_cost_total.toFixed(2));
-            </script>
-          </p>
+          <p class="rehabTotal"></p>
       </div>
     </div>
     <div class="row">
@@ -64,10 +56,7 @@
           <p><%= f.label :total_Cash_Needed %>:</p>
       </div>
       <div class="col-md-6 end">
-          <p>= $<script type="text/javascript">
-              document.write(total_cash_needed.toFixed(2));
-            </script>
-          </p>
+          <p id="TotalCashNeed" class="TotalCashNeed"></p>
       </div>
     </div>
     <hr>
@@ -79,10 +68,7 @@
         <p><%= f.label :valuation %>:</p>
       </div>
       <div class="col-md-6 end">
-        <p>$<script type="text/javascript">
-            document.write(valuation.toFixed(2));
-          </script>
-         per sq ft</p>
+        <p class="valuation">$  per sq ft</p>
       </div>
     </div>
     <hr>
@@ -96,10 +82,7 @@
         <p><%= f.label :Gross_Rent %>:</p>
       </div>
       <div class="col-md-6 end">
-        <p>$<script type="text/javascript">
-            document.write(yearly_rent.toFixed(2));
-          </script>
-        </p>
+        <p id="YearlyRent" class="YearlyRent"></p>
       </div>
     </div>
     <div class="row">
@@ -107,10 +90,7 @@
         <p><%= f.label :Vacancy_Per_Year %>:</p>
       </div>
       <div class="col-md-6 end">
-        <p>- $<script type="text/javascript">
-            document.write(vacancy_year.toFixed(2));
-          </script>
-        </p>
+        <p id="vacancyYear" class="vacancyYear">- $</p>
       </div>
     </div>
     <div class="row">
@@ -118,10 +98,7 @@
         <p><%= f.label :Operation_Income %>:</p>
       </div>
       <div class="col-md-6 end">
-        <p>= $<script type="text/javascript">
-            document.write(operation_income_year.toFixed(2));
-          </script>
-        </p>
+        <p id="operationIncomeYear" class="operationIncomeYear"></p>
       </div>
     </div>
     <div class="row">
@@ -129,10 +106,7 @@
         <p><%= f.label :Operation_Expenses %>:</p>
       </div>
       <div class="col-md-6 end">
-        <p>- $<script type="text/javascript">
-            document.write(expenses_total.toFixed(2));
-          </script>
-        </p>
+        <p id="ExpensesTotal1" class="ExpensesTotal1">- $</p>
       </div>
     </div>
     <div class="row">
@@ -140,10 +114,7 @@
         <p><%= f.label :Net_Operating_Income %>:</p>
       </div>
       <div class="col-md-6 end">
-        <p>= $<script type="text/javascript">
-            document.write(operation_net_operating_income_year.toFixed(2));
-          </script>
-        </p>
+        <p id="123" class="netOperatingIncome"></p>
       </div>
     </div>
     <div class="row">
@@ -151,10 +122,7 @@
         <p><%= f.label :Loan_Payments %>:</p>
       </div>
       <div class="col-md-6 end">
-        <p>- $<script type="text/javascript">
-            document.write(loan_payments.toFixed(2));
-          </script>
-        </p>
+        <p id="loanPayments" class="loanPayments"></p>
       </div>
     </div>
     <div class="row">
@@ -162,10 +130,7 @@
         <p><%= f.label :Cash_flow %>:</p>
       </div>
       <div class="col-md-6 end">
-        <p>= $<script type="text/javascript">
-            document.write(operation_cash_flow_year.toFixed(2));
-          </script>
-        </p>
+        <p id="cashFlowYear" class="cashFlowYear">= $</p>
       </div>
     </div>
     <hr>
@@ -179,10 +144,7 @@
         <p><%= f.label :Effective_Cap_Rate %>:</p>
       </div>
       <div class="col-md-6 end">
-        <p><script type="text/javascript">
-            document.write(return_cap_rate.toFixed(2));
-          </script>
-        %</p>
+        <p class="returnCapRate">%</p>
       </div>
     </div>
     <div class="row">
@@ -190,10 +152,7 @@
         <p><%= f.label :Cash_On_Cash %>:</p>
       </div>
       <div class="col-md-6 end">
-        <p><script type="text/javascript">
-            document.write(return_cash_on_cash.toFixed(2));
-          </script>
-        %</p>
+        <p id="cashOnCash" class="cashOnCash">%</p>
       </div>
     </div>
     <div class="row">
@@ -201,10 +160,7 @@
         <p><%= f.label :Return_On_Investment %>:</p>
       </div>
       <div class="col-md-6 end">
-        <p><script type="text/javascript">
-            document.write(return_on_investment.toFixed(2));
-          </script>
-        %</p>
+        <p class="ratiosReturnOnInvestment">%</p>
       </div>
     </div>
     <hr>
@@ -218,10 +174,7 @@
         <p><%= f.label :Rent_To_Value %>:</p>
       </div>
       <div class="col-md-6 end">
-        <p><script type="text/javascript">
-            document.write(ratios_rent_to_value.toFixed(2));
-          </script>
-        %</p>
+        <p class="ratiosRentToValue">%</p>
       </div>
     </div>
     <div class="row">
@@ -229,10 +182,7 @@
         <p><%= f.label :Gross_Rent_Multiplier %>:</p>
       </div>
       <div class="col-md-6 end">
-        <p><script type="text/javascript">
-            document.write(ratios_gross_rent_multiplier.toFixed(2));
-          </script>
-        </p>
+        <p class="ratiosGrossRentMultiplier" id="ratiosGrossRentMultiplier"></p>
       </div>
     </div>
     <div class="row">
@@ -240,10 +190,7 @@
         <p><%= f.label :debt_Coverage_Ratio %>:</p>
       </div>
       <div class="col-md-6 end">
-        <p><script type="text/javascript">
-            document.write(ratios_debt_coverage_ratio.toFixed(2));
-          </script>
-        </p>
+        <p class="ratiosDebtCoverageRatio"></p>
       </div>
     </div>
   </div>

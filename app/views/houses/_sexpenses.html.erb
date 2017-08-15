@@ -24,17 +24,20 @@
     <div class="row">
       <div class="col-md-6">
           <%= f.label :expenses_management %>
-          <p>$<%= @house.expenses_management %></p>
+          <p><%= @house.expenses_management %>% of loan or </p>
+          <p id="managementAmount" class="managementAmount"></p>
       </div>
       <div class="col-md-6">
           <%= f.label :expenses_maintanance %>
-          <p>$<%= @house.expenses_maintanance %></p>
+          <p><%= @house.expenses_maintanance %>% of loan or </p>
+          <p id="maintananceAmount" class="maintananceAmount"></p>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6">
           <%= f.label :expenses_expenditures %>
-          <p>$<%= @house.expenses_expenditures %></p>
+          <p><%= @house.expenses_expenditures %>% of loan or </p>
+          <p id="expendituresAmount" class="expendituresAmount"></p>
       </div>
       <div class="col-md-6">
           <%= f.label :expenses_landscaping %>
@@ -46,9 +49,11 @@
           <%= f.label :expenses_misc  %>
           <p>$<%= @house.expenses_misc %></p>
       </div>
-      <div class="col-md-6">
+    </div>
+    <div class="row">
+      <div class="col-md-12">
           <%= f.label :expenses_Total%>
-          <p>$<%= @house.expenses_total %></p> 
+          <p class="ExpensesTotal1"></p>
       </div>
     </div>
   </div>
