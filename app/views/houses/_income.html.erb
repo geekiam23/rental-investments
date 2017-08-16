@@ -1,28 +1,12 @@
-<%= form_for @house do |f| %>
-  <% if house.errors.any? %>
-    <div class="alert alert-danger">
-      <h4><%= pluralize(house.errors.count, "error") %>.</h4>
-        <ul>
-          <% house.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
-    </div>
-  <% end %>
+
 
   <div class="row">
     <div class="col-md-6">
-      <%= form_group_tag(house.errors[:income_gross_rent]) do %>
         <%= f.label :income_gross_rent %>
         <%= f.text_field :income_gross_rent, class: 'form-control', placeholder: "Enter Gross Rent Amount" %>
-      <% end %>
     </div>
     <div class="col-md-6">
-      <%= form_group_tag(house.errors[:income_other_rent]) do %>
         <%= f.label :income_other_rent %>
         <%= f.text_field :income_other_rent, class: 'form-control', placeholder: "Enter Other Income Amount" %>
-      <% end %>
     </div>
   </div>
-
-<% end %>

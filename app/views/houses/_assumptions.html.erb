@@ -1,55 +1,32 @@
-<%= form_for @house do |f| %>
-  <% if house.errors.any? %>
-    <div class="alert alert-danger">
-      <h4><%= pluralize(house.errors.count, "error") %>.</h4>
-        <ul>
-          <% house.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
-    </div>
-  <% end %>
+
 
   <div class="row">
     <div class="col-md-6">
-      <%= form_group_tag(house.errors[:assumptions_appreciation]) do %>
         <%= f.label :assumptions_appreciation %>
         <%= f.text_field :assumptions_appreciation, class: 'form-control', placeholder: "Enter Appreciation Projection" %>
-      <% end %>
     </div>
     <div class="col-md-6">
-      <%= form_group_tag(house.errors[:assumptions_vacancy]) do %>
         <%= f.label :assumptions_vacancy %>
         <%= f.text_field :assumptions_vacancy, class: 'form-control', placeholder: "Enter Vacancy Projection" %>
-      <% end %>
     </div>
   </div>
   <div class="row">
     <div class="col-md-6">
-      <%= form_group_tag(house.errors[:assumptions_income_increase]) do %>
         <%= f.label :assumptions_income_increase %>
         <%= f.text_field :assumptions_income_increase, class: 'form-control', placeholder: "Enter Income Increase Projection" %>
-      <% end %>
     </div>
     <div class="col-md-6">
-      <%= form_group_tag(house.errors[:assumptions_expense_increase]) do %>
         <%= f.label :assumptions_expense_increase %>
         <%= f.text_field :assumptions_expense_increase, class: 'form-control', placeholder: "Enter Expense Increase Projection" %>
-      <% end %>
     </div>
   </div>
   <div class="row">
     <div class="col-md-6">
-      <%= form_group_tag(house.errors[:assumptions_land_value]) do %>
         <%= f.label :assumptions_land_value %>
         <%= f.text_field :assumptions_land_value, class: 'form-control', placeholder: "Enter Land Value Projection" %>
-      <% end %>
     </div>
     <div class="col-md-6">
-      <%= form_group_tag(house.errors[:assumptions_selling_cost]) do %>
         <%= f.label :assumptions_selling_cost %>
         <%= f.text_field :assumptions_selling_cost, class: 'form-control', placeholder: "Enter Selling Cost Projection" %>
-      <% end %>
     </div>
   </div>
-<% end %>

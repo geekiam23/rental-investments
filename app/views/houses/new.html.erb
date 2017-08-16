@@ -1,152 +1,409 @@
-<div class="container">
-  <div class="row form-group">
-    <div class="col-xs-12">
-      <ul class="nav nav-pills nav-justified thumbnail setup-panel">
-        <li class="active"><a href="#step-1">
-          <h4 class="list-group-item-heading">Step 1</h4>
-          <p class="list-group-item-text">Housing Info</p>
-        </a></li>
-        <li class="disabled"><a href="#step-2">
-          <h4 class="list-group-item-heading">Step 2</h4>
-          <p class="list-group-item-text">Financing</p>
-        </a></li>
-        <li class="disabled"><a href="#step-3">
-          <h4 class="list-group-item-heading">Step 3</h4>
-          <p class="list-group-item-text">Purchse Costs</p>
-        </a></li>
-        <li class="disabled"><a href="#step-4">
-          <h4 class="list-group-item-heading">Step 4</h4>
-          <p class="list-group-item-text">Rehab Costs</p>
-        </a></li>
-        <li class="disabled"><a href="#step-5">
-          <h4 class="list-group-item-heading">Step 5</h4>
-          <p class="list-group-item-text">Income</p>
-        </a></li>
-        <li class="disabled"><a href="#step-6">
-          <h4 class="list-group-item-heading">Step 6</h4>
-          <p class="list-group-item-text">Expenses</p>
-        </a></li>
-        <li class="disabled"><a href="#step-7">
-          <h4 class="list-group-item-heading">Step 7</h4>
-          <p class="list-group-item-text">Assumptions</p>
-        </a></li>
-      </ul>
-    </div>
-  </div>
-
-
-  <form class="container">
-    <div class="row setup-content" id="step-1">
+<%= form_for @house do |f| %>
+  <div class="container">
+    <div class="row form-group">
       <div class="col-xs-12">
-        <div class="col-md-12 well text-center">
-          <h1 class="list-group-item-heading">Step 1</h1>
-          <h4 class="list-group-item-text">Housing Info</h4>
-          <div class="row">
-            <div class="col-md-8 center-block">
-              <%= render partial: 'housinginfo', locals: { house: @house } %>
+        <ul class="nav nav-pills nav-justified thumbnail setup-panel">
+          <li class="active">
+            <a href="#step-1">
+              <h4 class="list-group-item-heading">Step 1</h4>
+              <p class="list-group-item-text">Housing Info</p>
+            </a>
+          </li>
+          <li class="active">
+            <a href="#step-2">
+              <h4 class="list-group-item-heading">Step 2</h4>
+              <p class="list-group-item-text">Financing</p>
+            </a>
+          </li>
+          <li class="active">
+            <a href="#step-3">
+              <h4 class="list-group-item-heading">Step 3</h4>
+              <p class="list-group-item-text">Purchase Costs</p>
+            </a>
+          </li>
+          <li class="active">
+            <a href="#step-4">
+              <h4 class="list-group-item-heading">Step 4</h4>
+              <p class="list-group-item-text">Rehab Costs</p>
+            </a>
+          </li>
+          <li class="active">
+            <a href="#step-5">
+              <h4 class="list-group-item-heading">Step 5</h4>
+              <p class="list-group-item-text">Income</p>
+            </a>
+          </li>
+          <li class="active">
+            <a href="#step-6">
+              <h4 class="list-group-item-heading">Step 6</h4>
+              <p class="list-group-item-text">Expenses</p>
+            </a>
+          </li>
+          <li class="active">
+            <a href="#step-7">
+              <h4 class="list-group-item-heading">Step 7</h4>
+              <p class="list-group-item-text">Assumptions</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="row">
+        <div class="col-md-4 text-center pull-left">
+          <h1><%= @house.name %></h1>
+        </div>
+        <div class="col-md-12 text-center d-inline">
+          <%= f.submit "Submit", class: 'btn btn-success btn-lg' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="container body-text">
+      <div class="row setup-content" id="step-1">
+        <div class="col-xs-12">
+          <div class="col-md-12 well text-center">
+            <h1 class="list-group-item-heading">Step 1</h1>
+            <h4 class="list-group-item-text">Housing Info</h4>
+            <div class="row">
+              <div class="col-md-8 center-block">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <%= f.label :name %>
+                      <%= f.text_field :name, class: 'form-control', placeholder: "Enter House Nickname" %>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <%= f.label :description %>
+                      <%= f.text_area :description, rows: 8, class: 'form-control', placeholder: "Enter House Notes" %>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <%= f.label :address %>
+                      <%= f.text_field :address, class: 'form-control', placeholder: "Enter Address" %>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <%= f.label :city %>
+                      <%= f.text_field :city, class: 'form-control', placeholder: "Enter City" %>
+                    </div>
+                    <div class="col-md-4">
+                      <%= f.label :state %>
+                      <%= f.text_field :state, class: 'form-control', placeholder: "Enter State" %>
+                    </div>
+                    <div class="col-md-4">
+                      <%= f.label :zip %>
+                      <%= f.text_field :zip, class: 'form-control', placeholder: "Enter Zip" %>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <%= f.label :house_Type %>
+                      <%= f.text_field :house_type, class: 'form-control', placeholder: "Enter Property Type" %>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <%= f.label :number_of_Beds  %>
+                      <%= f.text_field :numBeds, class: 'form-control', placeholder: "Enter Number of Bedrooms" %>
+                    </div>
+                    <div class="col-md-6">
+                      <%= f.label :number_of_Baths %>
+                      <%= f.text_field :numBaths, class: 'form-control', placeholder: "Enter Number of Bathrooms" %>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <%= f.label :footage %>
+                      <%= f.text_field :footage, class: 'form-control', placeholder: "Enter Square Footage" %>
+                    </div>
+                    <div class="col-md-6">
+                      <%= f.label :year %>
+                      <%= f.text_field :year, class: 'form-control', placeholder: "Enter Year Built" %>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <%= f.label :parking %>
+                      <%= f.text_field :parking, class: 'form-control', placeholder: "Enter Parking" %>
+                    </div>
+                    <div class="col-md-6">
+                      <%= f.label :lot %>
+                      <%= f.text_field :lot, class: 'form-control', placeholder: "Enter Lot Size" %>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <%= f.label :zoning %>
+                      <%= f.text_field :zoning, class: 'form-control', placeholder: "Enter Zoning Type" %>
+                    </div>
+                    <div class="col-md-6">
+                      <%= f.label :MLS %>
+                      <%= f.text_field :mls, class: 'form-control', placeholder: "Enter MLS Number" %>
+                    </div>
+                  </div>
+                </div>
               <button id="activate-step-2" class="btn btn-primary btn-md">Next</button>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </form>
 
-  <form class="container">
-    <div class="row setup-content" id="step-2">
-      <div class="col-xs-12">
-        <div class="col-md-12 well text-center">
-          <h1 class="text-center"> STEP 2</h1>
-          <div class="row">
-            <div class="col-md-8 center-block">
-              <%= render partial: 'financing', locals: { house: @house } %>
+    <div class="container body-text">
+      <div class="row setup-content" id="step-2">
+        <div class="col-xs-12">
+          <div class="col-md-12 well text-center">
+            <h1 class="text-center">STEP 2</h1>
+            <div class="row">
+                <div class="col-md-8 center-block">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <%= f.label :purchase_Price %>
+                      <%= f.text_field :purchase_price, class: 'form-control', placeholder: "Enter Purchase Price" %>
+                    </div>
+                    <div class="col-md-6">
+                      <%= f.label :after_Value %>
+                      <%= f.text_field :after_value, class: 'form-control', placeholder: "Enter After Value Price" %>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <%= f.label :down_Payment %>
+                      <%= f.text_field :down_payment, class: 'form-control', placeholder: "Enter Down Payment Amount" %>
+                    </div>
+                    <div class="col-md-4">
+                      <%= f.label :interest %>
+                      <%= f.text_field :interest, class: 'form-control', placeholder: "Enter Interest Percentage" %>
+                    </div>
+                    <div class="col-md-4">
+                      <%= f.label :loan_Term %>
+                      <%= f.text_field :loan_term, class: 'form-control', placeholder: "Enter Loan Term in Years" %>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <%= f.label :pmi_Upfront %>
+                      <%= f.text_field :pmi_upfront, class: 'form-control', placeholder: "Enter PMI Upfront Percentage" %>
+                    </div>
+                    <div class="col-md-6">
+                      <%= f.label :pmi_Recurring %>
+                      <%= f.text_field :pmi_recurring, class: 'form-control', placeholder: "Enter PMI Recurring Percentage" %>
+                    </div>
+                  </div>
+                </div>
               <button id="activate-step-3" class="btn btn-primary btn-md">Next</button>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </form>
 
-  <form class="container">
-    <div class="row setup-content" id="step-3">
-      <div class="col-xs-12">
-        <div class="col-md-12 well text-center">
-          <h1 class="text-center"> STEP 3</h1>
-          <div class="row">
-            <div class="col-md-8 center-block">
-              <%= render partial: 'purchasecosts', locals: { house: @house } %>
+    <div class="container body-text">
+      <div class="row setup-content" id="step-3">
+        <div class="col-xs-12">
+          <div class="col-md-12 well text-center">
+            <h1 class="text-center">STEP 3</h1>
+            <div class="row">
+              <div class="col-md-8 center-block">
+                <div class="row">
+                  <div class="col-md-6">
+                    <%= f.label :purchase_Cost_Inspection %>
+                    <%= f.text_field :purchase_cost_inspection, class: 'form-control', placeholder: "Enter Inspection Cost" %>
+                  </div>
+                  <div class="col-md-6">
+                    <%= f.label :purchase_Cost_Appraisal %>
+                    <%= f.text_field :purchase_cost_appraisal, class: 'form-control', placeholder: "Enter Appraisal Cost" %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <%= f.label :closing_Costs %>
+                    <%= f.text_field :closing_costs, class: 'form-control', placeholder: "Enter Closing Cost" %>
+                  </div>
+                </div>
+              </div>
               <button id="activate-step-4" class="btn btn-primary btn-md">Next</button>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </form>
 
-  <form class="container">
-    <div class="row setup-content" id="step-4">
-      <div class="col-xs-12">
-        <div class="col-md-12 well text-center">
-          <h1 class="text-center"> STEP 4</h1>
-          <div class="row">
-            <div class="col-md-8 center-block">
-              <%= render partial: 'rehabcosts', locals: { house: @house } %>
+    <div class="container body-text">
+      <div class="row setup-content" id="step-4">
+        <div class="col-xs-12">
+          <div class="col-md-12 well text-center">
+            <h1 class="text-center">STEP 4</h1>
+            <div class="row">
+              <div class="col-md-8 center-block">
+                <div class="row">
+                  <div class="col-md-6">
+                    <%= f.label :rehab_cost_exterior %>
+                    <%= f.text_field :rehab_cost_exterior, class: 'form-control', placeholder: "Enter Rehab Cost for Exterior" %>
+                  </div>
+                  <div class="col-md-6">
+                    <%= f.label :rehab_cost_interior %>
+                    <%= f.text_field :rehab_cost_interior, class: 'form-control', placeholder: "Enter Rehab Cost for Interior" %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <%= f.label :rehab_cost_electrical %>
+                    <%= f.text_field :rehab_cost_electrical, class: 'form-control', placeholder: "Enter Rehab Cost for Electrical" %>
+                  </div>
+                  <div class="col-md-6">
+                    <%= f.label :rehab_cost_plumbing %>
+                    <%= f.text_field :rehab_cost_plumbing, class: 'form-control', placeholder: "Enter Rehab Cost for Plumbing" %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <%= f.label :rehab_cost_appliances %>
+                    <%= f.text_field :rehab_cost_appliances, class: 'form-control', placeholder: "Enter Rehab Cost for Appliances" %>
+                  </div>
+                  <div class="col-md-6">
+                    <%= f.label :rehab_cost_landscaping %>
+                    <%= f.text_field :rehab_cost_landscaping, class: 'form-control', placeholder: "Enter Rehab Cost for Landscaping" %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <%= f.label :rehab_cost_misc %>
+                    <%= f.text_field :rehab_cost_misc, class: 'form-control', placeholder: "Enter Misc Rehab Cost" %>
+                  </div>
+                </div>
+              </div>
               <button id="activate-step-5" class="btn btn-primary btn-md">Next</button>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </form>
 
-  <form class="container">
-    <div class="row setup-content" id="step-5">
-      <div class="col-xs-12">
-        <div class="col-md-12 well text-center">
-          <h1 class="text-center"> STEP 5</h1>
-          <div class="row">
-            <div class="col-md-8 center-block">
-              <%= render partial: 'income', locals: { house: @house } %>
+    <div class="container body-text">
+      <div class="row setup-content" id="step-5">
+        <div class="col-xs-12">
+          <div class="col-md-12 well text-center">
+            <h1 class="text-center">STEP 5</h1>
+            <div class="row">
+              <div class="col-md-8 center-block">
+                <div class="row">
+                  <div class="col-md-6">
+                    <%= f.label :income_gross_rent %>
+                    <%= f.text_field :income_gross_rent, class: 'form-control', placeholder: "Enter Gross Rent Amount" %>
+                  </div>
+                  <div class="col-md-6">
+                    <%= f.label :income_other_rent %>
+                    <%= f.text_field :income_other_rent, class: 'form-control', placeholder: "Enter Other Income Amount" %>
+                  </div>
+                </div>
+              </div>
               <button id="activate-step-6" class="btn btn-primary btn-md">Next</button>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </form>
 
-  <form class="container">
-    <div class="row setup-content" id="step-7">
-      <div class="col-xs-12">
-        <div class="col-md-12 well text-center">
-          <h1 class="text-center"> STEP 7</h1>
-          <div class="row">
-            <div class="col-md-8 center-block">
-              <%= render partial: 'assumptions', locals: { house: @house } %>
-              <div class="form-group">
-                <%= f.submit "Submit", class: 'btn btn-success' %>
+    <div class="container body-text">
+      <div class="row setup-content" id="step-7">
+        <div class="col-xs-12">
+          <div class="col-md-12 well text-center">
+            <h1 class="list-group-item-heading">Step 7</h1>
+            <h4 class="list-group-item-text">Assumptions</h4>
+            <div class="row">
+              <div class="col-md-8 center-block">
+                <div class="row">
+                  <div class="col-md-6">
+                    <%= f.label :assumptions_appreciation %>
+                    <%= f.text_field :assumptions_appreciation, class: 'form-control', placeholder: "Enter Appreciation Projection Percentage" %>
+                  </div>
+                  <div class="col-md-6">
+                    <%= f.label :assumptions_vacancy %>
+                    <%= f.text_field :assumptions_vacancy, class: 'form-control', placeholder: "Enter Vacancy Projection Percentage" %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <%= f.label :assumptions_income_increase %>
+                    <%= f.text_field :assumptions_income_increase, class: 'form-control', placeholder: "Enter Income Increase Projection Percentage" %>
+                  </div>
+                  <div class="col-md-6">
+                    <%= f.label :assumptions_expense_increase %>
+                    <%= f.text_field :assumptions_expense_increase, class: 'form-control', placeholder: "Enter Expense Increase Projection Percentage" %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <%= f.label :assumptions_land_value %>
+                    <%= f.text_field :assumptions_land_value, class: 'form-control', placeholder: "Enter Land Value Projection Amount" %>
+                  </div>
+                  <div class="col-md-6">
+                    <%= f.label :assumptions_selling_cost %>
+                    <%= f.text_field :assumptions_selling_cost, class: 'form-control', placeholder: "Enter Selling Cost Projection Percentage" %>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </form>
 
-  <form class="container">
-    <div class="row setup-content" id="step-6">
-      <div class="col-xs-12">
-        <div class="col-md-12 well text-center">
-          <h1 class="text-center"> STEP 6</h1>
-          <div class="row">
-            <div class="col-md-8 center-block">
-              <%= render partial: 'expenses', locals: { house: @house } %>
+    <div class="container body-text">
+      <div class="row setup-content" id="step-6">
+        <div class="col-xs-12">
+          <div class="col-md-12 well text-center">
+            <h1 class="text-center">STEP 6</h1>
+            <div class="row">
+              <div class="col-md-8 center-block">
+                <div class="row">
+                  <div class="col-md-6">
+                    <%= f.label :expenses_taxes %>
+                    <%= f.text_field :expenses_taxes, class: 'form-control', placeholder: "Enter Taxes Amount" %>
+                  </div>
+                  <div class="col-md-6">
+                    <%= f.label :expenses_insurance %>
+                    <%= f.text_field :expenses_insurance, class: 'form-control', placeholder: "Enter Insurance Amount" %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <%= f.label :expenses_management %>
+                    <%= f.text_field :expenses_management, class: 'form-control', placeholder: "Enter Management Amount" %>
+                  </div>
+                  <div class="col-md-6">
+                    <%= f.label :expenses_maintanance %>
+                    <%= f.text_field :expenses_maintanance, class: 'form-control', placeholder: "Enter Maintance Amount" %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <%= f.label :expenses_expenditures %>
+                    <%= f.text_field :expenses_expenditures, class: 'form-control', placeholder: "Enter Capital Expenditures Amount" %>
+                  </div>
+                  <div class="col-md-6">
+                    <%= f.label :expenses_landscaping %>
+                    <%= f.text_field :expenses_landscaping, class: 'form-control', placeholder: "Enter Landscaping Amount" %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <%= f.label :expenses_misc  %>
+                    <%= f.text_field :expenses_misc, class: 'form-control', placeholder: "Enter Misc Landscaping Amount" %>
+                  </div>
+                  <!-- <div class="col-md-6">
+                    <%= f.label :expenses_total%>
+                  </div> -->
+                </div>
+              </div>
               <button id="activate-step-7" class="btn btn-primary btn-md">Next</button>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </form>
-</div>
+  </div>
+<% end %>
