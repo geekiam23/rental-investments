@@ -117,13 +117,13 @@ var down_payment = parseFloat(gon.house.down_payment);
 var amount_financed = parseFloat(gon.house.amount_financed);
 
 var calcVariables = {
-  rehabCostTotal() {
+  rehabCostTotal: function() {
     var rehab_cost_total = rehab_cost_exterior + rehab_cost_interior + rehab_cost_electrical + rehab_cost_plumbing + rehab_cost_appliances + rehab_cost_landscaping + rehab_cost_misc;
     $('.rehabTotal').html("$" + numberWithCommas(rehab_cost_total));
     return rehab_cost_total;
   },
 
-  purchaseCostTotal() {
+  purchaseCostTotal: function() {
     var closing_costs_decimal = closing_cost / 100;
     var closing_costs_amount = purchase_price * closing_costs_decimal;
     var purchase_cost_total = purchase_cost_inspection + purchase_cost_appraisal + closing_costs_amount;
@@ -132,7 +132,7 @@ var calcVariables = {
     return purchase_cost_total;
   },
 
-  amountFinanced() {
+  amountFinanced: function() {
     var amount_financed = purchase_price - down_payment;
     // var pmi_amount_upfront = balance * pmi_upfront;
     var down_payment_percent = purchase_price / down_payment;
@@ -144,7 +144,7 @@ var calcVariables = {
     return amount_financed;
   },
 
-  cashNeeded() {
+  cashNeeded: function() {
     var closing_costs_decimal = closing_cost / 100;
     var closing_costs_amount = purchase_price * closing_costs_decimal;
 
@@ -154,7 +154,7 @@ var calcVariables = {
     return total_cash_needed;
   },
 
-  grossRentYear() {
+  grossRentYear: function() {
     var vacancy_decimal = assumptions_vacancy / 100
     var yearly_rent = income_gross_rent * 12;
     var vacancy_year = yearly_rent * vacancy_decimal;
@@ -186,7 +186,7 @@ var calcVariables = {
     return yearly_rent;
   },
 
-  operationIncomeYear(){
+  operationIncomeYear: function(){
     var yearly_rent = income_gross_rent * 12;
     var vacancy_decimal = assumptions_vacancy / 100;
     var vacancy_year = yearly_rent * vacancy_decimal;
@@ -196,7 +196,7 @@ var calcVariables = {
   },
 
 
-  expensesTotal() {
+  expensesTotal: function() {
     var year_rent = calcVariables.grossRentYear();
     var operation_income = calcVariables.operationIncomeYear();
     var vacancy_decimal = assumptions_vacancy / 100;
@@ -215,13 +215,13 @@ var calcVariables = {
     return expenses_total;
   },
 
-  valuation1() {
+  valuation1: function() {
     var valuation = purchase_price / footage;
     $('.valuation').html("$" + valuation.toFixed(2));
     return valuation;
   },
 
-  operationNetOperatingIncomeYear1() {
+  operationNetOperatingIncomeYear1: function() {
     var income_year = calcVariables.operationIncomeYear();
     var expense_total = calcVariables.expensesTotal();
     var operation_net_operating_income_year = income_year - expense_total;
@@ -229,7 +229,7 @@ var calcVariables = {
     return operation_net_operating_income_year;
   },
 
-  loanPayment() {
+  loanPayment: function() {
     var monthlyRate =  interest / 100 / 12;
     var balance = calcVariables.amountFinanced();
     // var pmi_amount_recurrring = balance * pmi_recurring / 12 ;
@@ -243,7 +243,7 @@ var calcVariables = {
     return loan_payment_year;
   },
 
-  cashFlowYear() {
+  cashFlowYear: function() {
     var net_operating_income = calcVariables.operationNetOperatingIncomeYear1();
     var loan_payment = calcVariables.loanPayment();
     var operation_cash_flow_year = net_operating_income - loan_payment;
@@ -259,7 +259,7 @@ var calcVariables = {
     return operation_cash_flow_year;
   },
 
-  capRate() {
+  capRate: function() {
     var net_operating_income = calcVariables.operationNetOperatingIncomeYear1();
     var return_cap_rate = net_operating_income / purchase_price * 100;
 
@@ -275,13 +275,13 @@ var calcVariables = {
     return return_cap_rate;
   },
 
-  sellingCosts() {
+  sellingCosts: function() {
     var selling_costs = (after_value * assumptions_selling_cost) / 100;
     $('.assumptionsSellingCosts').html("$" + numberWithCommas(selling_costs.toFixed(2)));
     return selling_costs;
   },
 
-  returnOnInvestment() {
+  returnOnInvestment: function() {
     var cash_flow = calcVariables.cashFlowYear();
     var balance = calcVariables.amountFinanced();
     var selling_cost = calcVariables.sellingCosts();
@@ -300,7 +300,7 @@ var calcVariables = {
     return return_on_investment;
   },
 
-  returnCashOnCash() {
+  returnCashOnCash: function() {
     var cash_needed = calcVariables.cashNeeded();
     var cash_flow = calcVariables.cashFlowYear();
     var return_cash_on_cash = cash_flow / cash_needed*100;
@@ -317,7 +317,7 @@ var calcVariables = {
     return return_cash_on_cash;
   },
 
-  appreciationTotal() {
+  appreciationTotal: function() {
     var appreciation_total = (after_value * assumptions_appreciation) / 100;
     var property_value = appreciation_total + after_value;
     $('.assumptionsAppreciationTotal').html("$" + numberWithCommas(appreciation_total.toFixed(2)));
@@ -325,7 +325,7 @@ var calcVariables = {
     return appreciation_total;
   },
 
-  rentToValue() {
+  rentToValue: function() {
     var ratios_rent_to_value = income_gross_rent / purchase_price * 100;
 
       if (ratios_rent_to_value > 2) {
@@ -340,13 +340,13 @@ var calcVariables = {
     return ratios_rent_to_value;
   },
 
-  propertyValue() {
+  propertyValue: function() {
     var appreciation_total = (after_value * assumptions_appreciation) / 100;
     var property_value = appreciation_total + after_value;
     return property_value;
   },
 
-  totalEquity() {
+  totalEquity: function() {
     var balance = calcVariables.amountFinanced();
     var property_value = calcVariables.propertyValue();
     var total_equity = property_value - balance;
@@ -354,7 +354,7 @@ var calcVariables = {
     return total_equity;
   },
 
-  debtCoverageRatio() {
+  debtCoverageRatio: function() {
     var net_operating_income = calcVariables.operationNetOperatingIncomeYear1();
     var loan_payment = calcVariables.loanPayment();
     var ratios_debt_coverage_ratio = net_operating_income / loan_payment;
