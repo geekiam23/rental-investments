@@ -628,6 +628,7 @@ $(document).ready(function () {
   $('[data-toggle="tooltip"]').tooltip({
       placement : 'top'
   });
+  // $('.dropdown-toggle').dropdown();
   // $('#cash').hide();
   //
   // $('#financing').on('change', function() {

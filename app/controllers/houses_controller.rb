@@ -1,6 +1,7 @@
 class HousesController < ApplicationController
   before_action :variables, except: [:index, :new, :create]
 
+
   def variables
     @house = House.find(params[:id])
     gon.house = @house
