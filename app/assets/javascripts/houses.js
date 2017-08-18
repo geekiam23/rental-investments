@@ -371,10 +371,10 @@ var calcVariables = {
 
 function getValues() {
 
-  var div = document.getElementsByClassName("Result");
-  var projections = document.getElementsByClassName("Projections");
-  var incomes = document.getElementsByClassName("Income");
-  var expenses = document.getElementsByClassName("Expense");
+  var div = document.getElementById("Result");
+  var projections = document.getElementById("Projections");
+  var incomes = document.getElementById("Income");
+  var expenses = document.getElementById("Expense");
   var balance = calcVariables.amountFinanced();
 
 
