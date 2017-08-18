@@ -14,11 +14,11 @@
     <div class="row">
       <div class="col-md-6">
           <%= f.label :expenses_taxes %>
-          <p>$<%= @house.expenses_taxes %></p>
+          <p>$<%= number_with_precision(@house.expenses_taxes, :precision => 2, :delimiter => ',') %></p>
       </div>
       <div class="col-md-6">
           <%= f.label :expenses_insurance %>
-          <p>$<%= @house.expenses_insurance %></p>
+          <p>$<%= number_with_precision(@house.expenses_insurance, :precision => 2, :delimiter => ',') %></p>
       </div>
     </div>
     <div class="row">
@@ -41,15 +41,16 @@
       </div>
       <div class="col-md-6">
           <%= f.label :expenses_landscaping %>
-          <p>$<%= @house.expenses_landscaping %></p>
+          <p>$<%= number_with_precision(@house.expenses_landscaping, :precision => 2, :delimiter => ',') %></p>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6">
           <%= f.label :expenses_misc  %>
-          <p>$<%= @house.expenses_misc %></p>
+          <p>$<%= number_with_precision(@house.expenses_misc, :precision => 2, :delimiter => ',') %></p>
       </div>
     </div>
+    <p class="break"></p>
     <div class="row">
       <div class="col-md-12">
           <%= f.label :expenses_Total%>

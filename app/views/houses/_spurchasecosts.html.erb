@@ -14,11 +14,11 @@
     <div class="row">
       <div class="col-md-6">
           <%= f.label :purchase_cost_inspection %>
-          <p>$<%= @house.purchase_cost_inspection %></p>
+          <p>$<%= number_with_precision(@house.purchase_cost_inspection, :precision => 2, :delimiter => ',') %></p>
       </div>
       <div class="col-md-6">
           <%= f.label :purchase_cost_appraisal %>
-          <p>$<%= @house.purchase_cost_appraisal %></p>
+          <p>$<%= number_with_precision(@house.purchase_cost_appraisal, :precision => 2, :delimiter => ',') %></p>
       </div>
     </div>
     <div class="row">
@@ -28,6 +28,7 @@
           <p id="closingCostAmount" class="closingCostAmount"></p>
       </div>
     </div>
+    <p class="break"></p>
     <div class="row">
       <div class="col-md-12">
         <%= f.label :purchase_Total %>

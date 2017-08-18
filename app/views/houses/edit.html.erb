@@ -18,7 +18,7 @@
           <li class="active">
             <a href="#step-3">
               <h4 class="list-group-item-heading">Step 3</h4>
-              <p class="list-group-item-text">Purchse Costs</p>
+              <p class="list-group-item-text">Purchase Costs</p>
             </a>
           </li>
           <li class="active">
@@ -170,7 +170,7 @@
                     <%= f.number_field :after_value, class: 'form-control', value: number_to_currency(f.object.after_value.to_f, delimiter: '', unit: '')%>
                   </div>
                 </div>
-                <div class="row">
+                <div class="row cash">
                   <div class="col-md-4">
                     <%= f.label :down_Payment %>
                     <%= f.number_field :down_payment, class: 'form-control', value: number_to_currency(f.object.down_payment.to_f, delimiter: '', unit: '')%>
@@ -184,7 +184,7 @@
                     <%= f.number_field :loan_term, class: "form-control" %>
                   </div>
                 </div>
-                <div class="row">
+                <div class="row cash">
                   <div class="col-md-6">
                     <%= f.label :pmi_Upfront %>
                     <%= f.number_field :pmi_upfront, class: 'form-control', in: 0...11 %>

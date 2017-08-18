@@ -119,7 +119,7 @@ var amount_financed = parseFloat(gon.house.amount_financed);
 var calcVariables = {
   rehabCostTotal() {
     var rehab_cost_total = rehab_cost_exterior + rehab_cost_interior + rehab_cost_electrical + rehab_cost_plumbing + rehab_cost_appliances + rehab_cost_landscaping + rehab_cost_misc;
-    $('.rehabTotal').html("$" + rehab_cost_total);
+    $('.rehabTotal').html("$" + numberWithCommas(rehab_cost_total));
     return rehab_cost_total;
   },
 
@@ -127,16 +127,20 @@ var calcVariables = {
     var closing_costs_decimal = closing_cost / 100;
     var closing_costs_amount = purchase_price * closing_costs_decimal;
     var purchase_cost_total = purchase_cost_inspection + purchase_cost_appraisal + closing_costs_amount;
-    $('.purchaseTotal').html("$" + purchase_cost_total);
-    $('.closingCostAmount').html("$" + closing_costs_amount);
+    $('.purchaseTotal').html("$" + numberWithCommas(purchase_cost_total));
+    $('.closingCostAmount').html("$" + numberWithCommas(closing_costs_amount.toFixed(2)));
     return purchase_cost_total;
   },
 
   amountFinanced() {
     var amount_financed = purchase_price - down_payment;
+    // var pmi_amount_upfront = balance * pmi_upfront;
     var down_payment_percent = purchase_price / down_payment;
-    $('.amountFin').html("$" + amount_financed);
-    $('.downPaymentPercent').html(down_payment_percent.toFixed(2) + "%");
+    // if (pmi_upfront > 0) {
+    //   var amount_financed = pmi_amount_upfront + amount_financed;
+    // }
+    $('.amountFin').html("$" + numberWithCommas(amount_financed.toFixed(2)));
+    $('.downPaymentPercent').html(numberWithCommas(down_payment_percent.toFixed(2)) + "%");
     return amount_financed;
   },
 
@@ -146,7 +150,7 @@ var calcVariables = {
 
     var rehab_cost = calcVariables.rehabCostTotal();
     var total_cash_needed = down_payment + closing_costs_amount + rehab_cost;
-    $('.TotalCashNeed').html("$" + total_cash_needed);
+    $('.TotalCashNeed').html("$" + numberWithCommas(total_cash_needed.toFixed(2)));
     return total_cash_needed;
   },
 
@@ -157,26 +161,45 @@ var calcVariables = {
     var operation_income_year = yearly_rent - vacancy_year;
     var monthly_rent_vacancy = operation_income_year / 12;
     var ratios_gross_rent_multiplier = purchase_price / yearly_rent;
-    $('.ratiosGrossRentMultiplier').html(ratios_gross_rent_multiplier.toFixed(2));
-    $('.YearlyRent').html("$" + yearly_rent);
-    $('.vacancyYear').html("$" + vacancy_year);
+    var one_percent_rule = yearly_rent / purchase_price
+
+      if (one_percent_rule > .2) {
+        $('.YearlyRent').css("color", "green");
+      }else if (one_percent_rule > .1) {
+        $('.YearlyRent').css("color", "yellow").css("text-shadow", "0.5px 0.3px #000000");
+      }else {
+        $('.YearlyRent').css("color", "red");
+      };
+
+      if (ratios_gross_rent_multiplier > 15) {
+        $('.ratiosGrossRentMultiplier').css("color", "green");
+      }else if (ratios_gross_rent_multiplier < 15 && ratios_gross_rent_multiplier > 10) {
+        $('.ratiosGrossRentMultiplier').css("color", "yellow").css("text-shadow", "0.5px 0.3px #000000");
+      }else {
+        $('.ratiosGrossRentMultiplier').css("color", "red");
+      }
+      console.log(ratios_gross_rent_multiplier);
+
+    $('.ratiosGrossRentMultiplier').html(numberWithCommas(ratios_gross_rent_multiplier.toFixed(2)));
+    $('.YearlyRent').html("$" + numberWithCommas(yearly_rent.toFixed(2)));
+    $('.vacancyYear').html("$" + numberWithCommas(vacancy_year.toFixed(2)));
     return yearly_rent;
   },
 
   operationIncomeYear(){
     var yearly_rent = income_gross_rent * 12;
-    var vacancy_decimal = assumptions_vacancy / 100
+    var vacancy_decimal = assumptions_vacancy / 100;
     var vacancy_year = yearly_rent * vacancy_decimal;
     var operation_income_year = yearly_rent - vacancy_year;
-    $('.operationIncomeYear').html("$" + operation_income_year);
-    return  operation_income_year
+    $('.operationIncomeYear').html("$" + numberWithCommas(operation_income_year.toFixed(2)));
+    return  operation_income_year;
   },
 
 
   expensesTotal() {
     var year_rent = calcVariables.grossRentYear();
     var operation_income = calcVariables.operationIncomeYear();
-    var vacancy_decimal = assumptions_vacancy / 100
+    var vacancy_decimal = assumptions_vacancy / 100;
     var vacancy_year = year_rent * vacancy_decimal;
     var maintanance_decimal = expenses_maintanance / 100;
     var maintanance_amount = year_rent * maintanance_decimal;
@@ -185,33 +208,38 @@ var calcVariables = {
     var management_decimal = expenses_management / 100;
     var management_amount = operation_income * management_decimal;
     var expenses_total = expenses_taxes + expenses_insurance + maintanance_amount + expenditures_amount + management_amount + expenses_landscaping;
-    $('.maintananceAmount').html(maintanance_amount);
-    $('.expendituresAmount').html(expenditures_amount);
-    $('.managementAmount').html(management_amount);
-    $('.ExpensesTotal1').html("$" + expenses_total.toFixed(2));
-    return expenses_total
+    $('.maintananceAmount').html("$" + numberWithCommas(maintanance_amount.toFixed(2)));
+    $('.expendituresAmount').html("$" + numberWithCommas(expenditures_amount.toFixed(2)));
+    $('.managementAmount').html("$" + numberWithCommas(management_amount.toFixed(2)));
+    $('.ExpensesTotal1').html("$" + numberWithCommas(expenses_total.toFixed(2)));
+    return expenses_total;
   },
 
   valuation1() {
     var valuation = purchase_price / footage;
     $('.valuation').html("$" + valuation.toFixed(2));
-    return valuation
+    return valuation;
   },
 
   operationNetOperatingIncomeYear1() {
     var income_year = calcVariables.operationIncomeYear();
     var expense_total = calcVariables.expensesTotal();
     var operation_net_operating_income_year = income_year - expense_total;
-    $('.netOperatingIncome').html("$" + operation_net_operating_income_year.toFixed(2));
+    $('.netOperatingIncome').html("$" + numberWithCommas(operation_net_operating_income_year.toFixed(2)));
     return operation_net_operating_income_year;
   },
 
   loanPayment() {
     var monthlyRate =  interest / 100 / 12;
     var balance = calcVariables.amountFinanced();
+    // var pmi_amount_recurrring = balance * pmi_recurring / 12 ;
 
     var loan_payment_year = (balance * monthlyRate * (Math.pow(1 + monthlyRate, loan_term)) / (Math.pow(1 + monthlyRate, loan_term) - 1)) * 12;
-    $('.loanPayments').html("$" + loan_payment_year.toFixed(2));
+
+    // if (pmi_recurring > 0) {
+    //   var loan_payment_year = balance + pmi_amount_recurrring;
+    // }
+    $('.loanPayments').html("$" + numberWithCommas(loan_payment_year.toFixed(2)));
     return loan_payment_year;
   },
 
@@ -219,20 +247,37 @@ var calcVariables = {
     var net_operating_income = calcVariables.operationNetOperatingIncomeYear1();
     var loan_payment = calcVariables.loanPayment();
     var operation_cash_flow_year = net_operating_income - loan_payment;
-    $('.cashFlowYear').html("$" + operation_cash_flow_year.toFixed(2));
+
+      if (operation_cash_flow_year > 0) {
+        $('.cashFlowYear').css("color", "green");
+      }else {
+        $('.cashFlowYear').css("color", "red");
+      }
+      console.log(operation_cash_flow_year);
+
+    $('.cashFlowYear').html("$" + numberWithCommas(operation_cash_flow_year.toFixed(2)));
     return operation_cash_flow_year;
   },
 
   capRate() {
     var net_operating_income = calcVariables.operationNetOperatingIncomeYear1();
     var return_cap_rate = net_operating_income / purchase_price * 100;
+
+      if (return_cap_rate > 9) {
+        $('.returnCapRate').css("color", "green");
+      }else if (return_cap_rate > 6) {
+        $('.returnCapRate').css("color", "yellow").css("text-shadow", "0.5px 0.3px #000000");
+      }else {
+        $('.returnCapRate').css("color", "red");
+      }
+
     $('.returnCapRate').html(return_cap_rate.toFixed(2) + "%");
     return return_cap_rate;
   },
 
   sellingCosts() {
     var selling_costs = (after_value * assumptions_selling_cost) / 100;
-    $('.assumptionsSellingCosts').html(selling_costs);
+    $('.assumptionsSellingCosts').html("$" + numberWithCommas(selling_costs.toFixed(2)));
     return selling_costs;
   },
 
@@ -242,6 +287,15 @@ var calcVariables = {
     var selling_cost = calcVariables.sellingCosts();
     var cash_needed = calcVariables.cashNeeded();
     var return_on_investment = (cash_flow + after_value - balance - selling_cost - cash_needed) / cash_needed * 100;
+
+      if (return_on_investment > 25) {
+        $('.ratiosReturnOnInvestment').css("color", "green");
+      }else if (return_on_investment > 15) {
+        $('.ratiosReturnOnInvestment').css("color", "yellow").css("text-shadow", "0.5px 0.3px #000000");
+      }else {
+        $('.ratiosReturnOnInvestment').css("color", "red");
+      }
+
     $('.ratiosReturnOnInvestment').html(return_on_investment.toFixed(2) + "%");
     return return_on_investment;
   },
@@ -250,6 +304,15 @@ var calcVariables = {
     var cash_needed = calcVariables.cashNeeded();
     var cash_flow = calcVariables.cashFlowYear();
     var return_cash_on_cash = cash_flow / cash_needed*100;
+
+      if (return_cash_on_cash > 25) {
+        $('.cashOnCash').css("color", "green");
+      }else if (return_cash_on_cash > 15) {
+        $('.cashOnCash').css("color", "yellow").css("text-shadow", "0.5px 0.3px #000000");
+      }else {
+        $('.cashOnCash').css("color", "red");
+      }
+
     $('.cashOnCash').html(return_cash_on_cash.toFixed(2) + "%");
     return return_cash_on_cash;
   },
@@ -257,13 +320,22 @@ var calcVariables = {
   appreciationTotal() {
     var appreciation_total = (after_value * assumptions_appreciation) / 100;
     var property_value = appreciation_total + after_value;
-    $('.assumptionsAppreciationTotal').html(appreciation_total);
-    $('.propertyValue').html(property_value);
+    $('.assumptionsAppreciationTotal').html("$" + numberWithCommas(appreciation_total.toFixed(2)));
+    $('.propertyValue').html("$" + numberWithCommas(property_value.toFixed(2)));
     return appreciation_total;
   },
 
   rentToValue() {
     var ratios_rent_to_value = income_gross_rent / purchase_price * 100;
+
+      if (ratios_rent_to_value > 2) {
+        $('.ratiosRentToValue').css("color", "green");
+      }else if (ratios_rent_to_value > 1.5) {
+        $('.ratiosRentToValue').css("color", "yellow").css("text-shadow", "0.5px 0.3px #000000");
+      }else {
+        $('.ratiosRentToValue').css("color", "red");
+      };
+
     $('.ratiosRentToValue').html(ratios_rent_to_value.toFixed(2) + "%");
     return ratios_rent_to_value;
   },
@@ -278,7 +350,7 @@ var calcVariables = {
     var balance = calcVariables.amountFinanced();
     var property_value = calcVariables.propertyValue();
     var total_equity = property_value - balance;
-    $('.TotalEquity').html("$" + total_equity);
+    $('.TotalEquity').html("$" + numberWithCommas(total_equity.toFixed(2)));
     return total_equity;
   },
 
@@ -286,6 +358,15 @@ var calcVariables = {
     var net_operating_income = calcVariables.operationNetOperatingIncomeYear1();
     var loan_payment = calcVariables.loanPayment();
     var ratios_debt_coverage_ratio = net_operating_income / loan_payment;
+
+      if (ratios_debt_coverage_ratio > 1.5) {
+        $('.ratiosDebtCoverageRatio').css("color", "green");
+      }else if (ratios_debt_coverage_ratio > 1.25) {
+        $('.rratiosDebtCoverageRatio').css("color", "yellow").css("text-shadow", "0.5px 0.3px #000000");
+      }else {
+        $('.ratiosDebtCoverageRatio').css("color", "red");
+      }
+
     $('.ratiosDebtCoverageRatio').html(ratios_debt_coverage_ratio.toFixed(2));
     return ratios_debt_coverage_ratio;
   }
@@ -298,13 +379,15 @@ function getValues() {
   var projections = document.getElementById("Projections");
   var incomes = document.getElementById("Income");
   var expenses = document.getElementById("Expense");
+  var balance = calcVariables.amountFinanced();
+
 
   div.innerHTML = "";
   projections.innerHTML = "";
   incomes.innerHTML = "";
   expenses.innerHTML = "";
 
-  var balVal = validateInputs(amount_financed);
+  var balVal = validateInputs(balance);
   var intrVal = validateInputs(interest);
 
   if (balVal && intrVal) {
@@ -329,14 +412,12 @@ function projection(interest, assumptions_vacancy, income_gross_rent) {
   var property_value = calcVariables.propertyValue();
   var cash_flow = calcVariables.cashFlowYear();
   var cash_needed = calcVariables.cashNeeded();
-  // var loan_term = loan_term * 12;
-
 
   var annualRate_loan =  interest / 100;
   var monthlyRate =  interest / 100/12;
 
-  var loan_payment_year = (balance * annualRate_loan * (Math.pow(1 + annualRate_loan, loan_term)) / (Math.pow(1 + annualRate_loan, loan_term) - 1)) * 12;
-  $('.loanPayments').html("$" + loan_payment_year.toFixed(2));
+  // var loan_payment_year = (balance * annualRate_loan * (Math.pow(1 + annualRate_loan, loan_term)) / (Math.pow(1 + annualRate_loan, loan_term) - 1)) * 12;
+  // $('.loanPayments').html("$" + loan_payment_year.toFixed(2));
   var increase_yearly_rent = income_gross_rent * 12;
 
   var projections = ""
@@ -360,17 +441,17 @@ function projection(interest, assumptions_vacancy, income_gross_rent) {
     projections += "<td>" + (count + 1) + "</td>";
 
     var net_operating_income = income_year - expense_total;
-    projections += "<td> $" + net_operating_income.toFixed(2) + "</td>";
+    projections += "<td> $" + numberWithCommas(net_operating_income.toFixed(2)) + "</td>";
 
     var operation_cash_flow_year = net_operating_income - loan_payment;
-    projections += "<td> $" + operation_cash_flow_year.toFixed(2) + "</td>";
+    projections += "<td> $" + numberWithCommas(operation_cash_flow_year.toFixed(2)) + "</td>";
 
-    projections += "<td> $" + property_value.toFixed(2) + "</td>";
+    projections += "<td> $" + numberWithCommas(property_value.toFixed(2)) + "</td>";
 
-    projections += "<td> $" + balance.toFixed(2) + "</td>";
+    projections += "<td> $" + numberWithCommas(balance.toFixed(2)) + "</td>";
 
     var total_equity = property_value - balance;
-    projections += "<td> $" + total_equity.toFixed(2) + "</td>";
+    projections += "<td> $" + numberWithCommas(total_equity.toFixed(2)) + "</td>";
 
     var return_cash_on_cash = operation_cash_flow_year / cash_needed*100;
     projections += "<td>" + return_cash_on_cash.toFixed(2) + "%" + "</td>";
@@ -420,19 +501,19 @@ function expense(expenses_taxes, expenses_insurance) {
 
     expenses += "<td>" + (count + 1) + "</td>";
 
-    expenses += "<td> $" + expenses_taxes.toFixed(2) + "</td>";
+    expenses += "<td> $" + numberWithCommas(expenses_taxes.toFixed(2)) + "</td>";
 
-    expenses += "<td> $" + expenses_insurance.toFixed(2) + "</td>";
+    expenses += "<td> $" + numberWithCommas(expenses_insurance.toFixed(2)) + "</td>";
 
 
-    expenses += "<td> $" + management_amount.toFixed(2) + "</td>";
+    expenses += "<td> $" + numberWithCommas(management_amount.toFixed(2)) + "</td>";
 
-    expenses += "<td> $" + maintanance_amount.toFixed(2) + "</td>";
+    expenses += "<td> $" + numberWithCommas(maintanance_amount.toFixed(2)) + "</td>";
 
-    expenses += "<td> $" + expenditures_amount.toFixed(2) + "</td>";
+    expenses += "<td> $" + numberWithCommas(expenditures_amount.toFixed(2)) + "</td>";
 
     var expenses_total = expenses_taxes + expenses_insurance + management_amount + maintanance_amount + expenditures_amount
-    expenses += "<td> $" + expenses_total.toFixed(2) + "</td>";
+    expenses += "<td> $" + numberWithCommas(expenses_total.toFixed(2)) + "</td>";
 
     expenses += "</tr>";
 
@@ -462,17 +543,17 @@ function income(expenses_taxes, expenses_insurance) {
   incomes += "<table style=background-color:#ffffff class=table ><thead><tr style=background-color:#337ab7><th>Year #</th><th>Gross_Rent</th><th>Vacancy</th><th>Operating_Income</th></tr></thead><tbody>";
 
 
-  for (var count = 0; count < 31; ++count) {
+  for (var count = 0; count < 30; ++count) {
 
     incomes += "<tr>";
 
     incomes += "<td>" + (count + 1) + "</td>";
 
-    incomes += "<td> $" + yearly_rent.toFixed(2) + "</td>";
-    incomes += "<td> $" + vacancy_year.toFixed(2) + "</td>";
+    incomes += "<td> $" + numberWithCommas(yearly_rent.toFixed(2)) + "</td>";
+    incomes += "<td> $" + numberWithCommas(vacancy_year.toFixed(2)) + "</td>";
 
     var operating_income = yearly_rent - vacancy_year;
-    incomes += "<td> $" + operating_income.toFixed(2) + "</td>";
+    incomes += "<td> $" + numberWithCommas(operating_income.toFixed(2)) + "</td>";
 
     incomes += "</tr>";
 
@@ -518,11 +599,11 @@ function amort(interest, loan_term) {
 
     result += "<td>" + (count + 1) + "</td>";
 
-    result += "<td> $" + balance.toFixed(2) + "</td>";
+    result += "<td> $" + numberWithCommas(balance.toFixed(2)) + "</td>";
 
-    result += "<td> $" + interest_year.toFixed(2) + "</td>";
+    result += "<td> $" + numberWithCommas(interest_year.toFixed(2)) + "</td>";
 
-    result += "<td> $" + yearlyPrincipal.toFixed(2) + "</td>";
+    result += "<td> $" + numberWithCommas(yearlyPrincipal.toFixed(2)) + "</td>";
 
     result += "</tr>";
   }
@@ -538,11 +619,25 @@ function validateInputs(value) {
   } else {
     return true;
   }
-}
+};
 
+function numberWithCommas(x) {
+    var parts = x.toString().split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return parts.join(".");
+};
 
 
 $(document).ready(function () {
+  $('[data-toggle="tooltip"]').tooltip({
+      placement : 'top'
+  });
+  // $('#cash').hide();
+  //
+  // $('#financing').on('change', function() {
+  //   $('#cash').show();
+  // });
+
   window.onload = function() {
     calcVariables.rehabCostTotal();
     calcVariables.valuation1();

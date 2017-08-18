@@ -13,31 +13,39 @@
   <div class="body-text">
     <div class="row">
       <div class="col-md-6">
-          <%= f.label :assumptions_appreciation %>
-          <p><%= @house.assumptions_appreciation %>% or </p>
-          <p class="assumptionsAppreciationTotal"></p>
+        <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="An annual increase of the market value of a property." data-placement="top"></div>
+        <%= f.label :assumptions_appreciation %>
+        <p><%= @house.assumptions_appreciation %>% or </p>
+        <p class="assumptionsAppreciationTotal"></p>
       </div>
       <div class="col-md-6">
+          <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="A percentage of time that you assume that your property will be vacant. For example, if you expect the property to be vacant for one month, the vacancy  will be 8.3%.
+
+          Vacancy = Vacant Time / Total Time (Year)" data-placement="bottom"></div>
           <%= f.label :assumptions_vacancy %>
           <p><%= @house.assumptions_vacancy %>%</p>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6">
+          <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="An annual increase of the operating income created by the rental property." data-placement="top"></div>
           <%= f.label :assumptions_income_increase %>
           <p><%= @house.assumptions_income_increase %>%</p>
       </div>
       <div class="col-md-6">
+          <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="An annual increase of the operating expenses incurred while renting out a property." data-placement="top"></div>
           <%= f.label :assumptions_expense_increase %>
           <p><%= @house.assumptions_expense_increase %>%</p>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6">
+          <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="The value of land, excluding any structures or improvements, of a rental property. The land value is used when calculating the depreciation deduction." data-placement="top"></div>
           <%= f.label :assumptions_land_value %>
-          <p>$<%= @house.assumptions_land_value %></p>
+          <p>$<%= number_with_precision(@house.assumptions_land_value, :precision => 2, :delimiter => ',') %></p>
       </div>
       <div class="col-md-6">
+          <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="All fees that are associated with a selling the rental property. Examples include: real estate broker commissions, escrow fees, transfer taxes, and home warranty." data-placement="top"></div>
           <%= f.label :assumptions_selling_cost %>
           <p><%= @house.assumptions_selling_cost  %>% or </p>
           <p id="assumptionsSellingCosts" class="assumptionsSellingCosts"></p>

@@ -15,13 +15,13 @@
           <p class="list-group-item-text">Rehab Costs</p>
         </a></li>
         <li class="active"><a href="#step-5">
-          <p class="list-group-item-text">Income</p>
+          <p class="list-group-item-text">Monthly Income</p>
         </a></li>
         <li class="active"><a href="#step-6">
-          <p class="list-group-item-text">Expenses</p>
+          <p class="list-group-item-text">Monthly Expenses</p>
         </a></li>
         <li class="active"><a href="#step-7">
-          <p class="list-group-item-text">Assumptions</p>
+          <p class="list-group-item-text">Annual Assumptions</p>
         </a></li>
       </ul>
     </div>
@@ -84,7 +84,8 @@
   <div class="row setup-content" id="step-3">
     <div class="col-xs-12">
       <div class="col-md-12 well text-center">
-        <h1 class="text-center">Purchase Costs</h1>
+        <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="All costs and fees associated with purchasing a property, sometimes also called closing costs. Example include: appraisal fees, property inspection, finder's fee, and loan points." data-placement="top" style="margin-right: 20px;"></div>
+        <h1 style="display: inline-block" class="text-center">Purchase Costs</h1>
         <div class="row">
           <div class="col-md-8 center-block">
             <%= render partial: 'spurchasecosts', locals: { house: @house } %>
@@ -96,7 +97,8 @@
   <div class="row setup-content" id="step-4">
     <div class="col-xs-12">
       <div class="col-md-12 well text-center">
-        <h1 class="text-center">Rehab Costs</h1>
+        <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Expenses that you expect to incur after purchasing a property to improve its condition. Examples include: new paint, new appliances, new carpet, electrical repairs, landscaping, and cleaning." data-placement="top" style="margin-right: 20px;"></div>
+        <h1 style="display: inline-block" class="text-center">Rehab Costs</h1>
         <div class="row">
           <div class="col-md-8 center-block">
             <%= render partial: 'srehabcosts', locals: { house: @house } %>

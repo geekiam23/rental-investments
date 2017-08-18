@@ -45,18 +45,19 @@
     </div>
     <div class="row">
       <div class="col-md-6">
-          <%= f.label :numBeds  %>
+          <%= f.label :number_of_Beds  %>
           <%= @house.numBeds %>
       </div>
       <div class="col-md-6">
-          <%= f.label :numBaths %>
+          <%= f.label :number_of_Baths %>
       <%= @house.numBaths %>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6">
+          <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="" data-placement="top"></div>
           <%= f.label :footage %>
-          <p><%= @house.footage %> sq. ft.</p>
+          <p><%= number_with_precision(@house.footage, :precision => 0, :delimiter => ',') %> sq. ft.</p>
       </div>
       <div class="col-md-6">
           <%= f.label :year %>
@@ -65,21 +66,25 @@
     </div>
     <div class="row">
       <div class="col-md-6">
+          <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="" data-placement="top"></div>
           <%= f.label :parking %>
           <%= @house.parking %>
       </div>
       <div class="col-md-6">
+          <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="" data-placement="top"></div>
           <%= f.label :lot %>
-          <p><%= @house.lot %> sq. ft.</p> 
+          <p><%= number_with_precision(@house.lot, :precision => 0, :delimiter => ',') %> sq. ft.</p>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6">
+          <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="" data-placement="top"></div>
           <%= f.label :zoning %>
           <%= @house.zoning %>
       </div>
       <div class="col-md-6">
-        <%= f.label :MLS %>
+        <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="" data-placement="top"></div>
+        <%= f.label :mls %>
         <%= @house.mls %>
       </div>
     </div>

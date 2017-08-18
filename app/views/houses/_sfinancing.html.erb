@@ -13,39 +13,47 @@
   <div class="body-text">
     <div class="row">
       <div class="col-md-4">
+          <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="The price of the property you are purchasing. The purchase price does not include purchase or rehab costs." data-placement="top"></div>
           <%= f.label :purchase_price %>
-          <p>$ <%= @house.purchase_price %></p>
+          <p>$ <%= number_with_precision(@house.purchase_price, :precision => 2, :delimiter => ',') %></p>
       </div>
       <div class="col-md-4" display="inline">
+          <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="" data-placement="top"></div>
           <%= f.label :after_value %>
-          <p>$ <%= @house.after_value %></p>
+          <p>$ <%= number_with_precision(@house.after_value , :precision => 2, :delimiter => ',')%></p>
       </div>
       <div class="col-md-4">
+          <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="The estimated market value of a property after its rehab is complete." data-placement="top"></div>
           <%= f.label :amount_financed %>
           <p id="amountFin" class="amountFin"></p>
       </div>
     </div>
     <div class="row">
       <div class="col-md-4">
+          <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="The dollar amount of the loan that was paid upfront." data-placement="top"></div>
           <%= f.label :down_payment %>
-          <p>$<%= @house.down_payment %> or </p>
+          <p>$<%= number_with_precision(@house.down_payment, :precision => 2, :delimiter => ',') %> or </p>
           <p id="downPaymentPercent" class="downPaymentPercent"></p>
       </div>
       <div class="col-md-4">
+          <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="" data-placement="top"></div>
           <%= f.label :interest %>
           <p><%= @house.interest %>%</p>
       </div>
       <div class="col-md-4">
+          <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="" data-placement="top"></div>
           <%= f.label :loan_term %>
           <p><%= @house.loan_term %> years</p>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6">
+        <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="If you do not put a down payment of 20% of the loan, most lenders require you to pay a calculated percentage of the loan. Upfront is defined as a one-time payment that gets rolled into the original loan amount." data-placement="top"></div>
         <%= f.label :pmi_upfront %>
         <p><%= @house.pmi_upfront %>% of Loan</p>
       </div>
       <div class="col-md-6">
+        <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="If you do not put a down payment of 20% of the loan, most lenders require you to pay a calculated percentage of the loan. Recurring is defined as a recurring payment that is added to the loan payment." data-placement="top"></div>
         <%= f.label :pmi_recurring %>
         <p><%= @house.pmi_recurring %>% of Loan</p>
       </div>

@@ -14,11 +14,13 @@
     <div class="row">
       <div class="col-md-6">
           <%= f.label :income_gross_rent %>
-          <p>$<%= @house.income_gross_rent %> per month</p>
+          <p>$<%= number_with_precision(@house.income_gross_rent, :precision => 2, :delimiter => ',') %> per month</p>
       </div>
       <div class="col-md-6">
+          <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Other income - Examples include, parking, laundry, and storage rental.
+" data-placement="top"></div>
           <%= f.label :income_other_rent %>
-          <p>$<%= @house.income_other_rent %> per month</p>
+          <p>$<%= number_with_precision(@house.income_other_rent, :precision => 2, :delimiter => ',') %> per month</p>
       </div>
     </div>
   </div>

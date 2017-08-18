@@ -14,39 +14,40 @@
     <div class="row">
       <div class="col-md-6">
           <%= f.label :rehab_cost_exterior %>
-          <p>$<%= @house.rehab_cost_exterior %></p>
+          <p>$<%= number_with_precision(@house.rehab_cost_exterior, :precision => 2, :delimiter => ',') %></p>
       </div>
       <div class="col-md-6">
           <%= f.label :rehab_cost_interior %>
-          <p>$<%= @house.rehab_cost_interior %></p>
+          <p>$<%= number_with_precision(@house.rehab_cost_interior, :precision => 2, :delimiter => ',') %></p>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6">
           <%= f.label :rehab_cost_electrical %>
-          <p>$<%= @house.rehab_cost_electrical %></p>
+          <p>$<%= number_with_precision(@house.rehab_cost_electrical, :precision => 2, :delimiter => ',') %></p>
       </div>
       <div class="col-md-6">
           <%= f.label :rehab_cost_plumbing %>
-          <p>$<%= @house.rehab_cost_plumbing %></p>
+          <p>$<%= number_with_precision(@house.rehab_cost_plumbing, :precision => 2, :delimiter => ',') %></p>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6">
           <%= f.label :rehab_cost_appliances %>
-          <p>$<%= @house.rehab_cost_appliances %></p>
+          <p>$<%= number_with_precision(@house.rehab_cost_appliances, :precision => 2, :delimiter => ',') %></p>
       </div>
       <div class="col-md-6">
           <%= f.label :rehab_cost_landscaping %>
-          <p>$<%= @house.rehab_cost_landscaping %></p>
+          <p>$<%= number_with_precision(@house.rehab_cost_landscaping, :precision => 2, :delimiter => ',') %></p>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6">
           <%= f.label :rehab_cost_misc %>
-          <p>$<%= @house.rehab_cost_misc %></p>
+          <p>$<%= number_with_precision(@house.rehab_cost_misc, :precision => 2, :delimiter => ',') %></p>
       </div>
     </div>
+    <p class="break"></p>
     <div class="row">
       <div class="col-md-12">
         <%= f.label :rehab_Total %>
