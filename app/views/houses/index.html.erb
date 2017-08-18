@@ -10,22 +10,29 @@
 </div>
 <br />
 
-<div class="row">
-  <div class="col-md-8 col-md-offset-2">
-    <table class="table table-stripped">
-      <div class="media">
-        <div class="media-body">
-          <% @houses.each do |house| %>
-            <div class="media">
-              <div class="media-body">
-                <h4 class="media-heading">
-									<%= link_to house.name, house, "data-turbolinks": "false" %>
-                </h4>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </table>
-  </div>
-</div>
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+			<th>Cash Flow</th>
+			<th>Cap Rate</th>
+			<th>Cash On Cash</th>
+      <th>ROI</th>
+      <th>Rent To Value</th>
+      <th>GRM</th>
+    </tr>
+  </thead>
+  <tbody>
+		<% @houses.each do |house| %>
+    	<tr>
+				<td><%= link_to house.name, house, "data-turbolinks": "false" %></td>
+				<td>$<%= number_with_precision(house.cashFlow, :precision => 2, :delimiter => ',') %></td>
+				<td><%= number_with_precision(house.effectiveCapRate, :precision => 2) %>%</td>
+				<td><%= number_with_precision(house.ratioCashOnCash, :precision => 2) %>%</td>
+				<td><%= number_with_precision(house.totalReturnOnInvestment, :precision => 2) %>%</td>
+				<td><%= number_with_precision(house.rentToValue, :precision => 2) %>%</td>
+				<td><%= number_with_precision(house.grossRentMultiplier, :precision => 2) %></td>
+    	</tr>
+		<% end %>
+  </tbody>
+</table>

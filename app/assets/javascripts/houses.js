@@ -56,8 +56,6 @@ $(document).ready(function() {
   })
 });
 
-console.log(gon.house);
-
 var footage = parseFloat(gon.house.footage);
 var closing_cost = parseFloat(gon.house.closing_costs);
 var after_value = parseFloat(gon.house.after_value);
@@ -178,7 +176,6 @@ var calcVariables = {
       }else {
         $('.ratiosGrossRentMultiplier').css("color", "red");
       }
-      console.log(ratios_gross_rent_multiplier);
 
     $('.ratiosGrossRentMultiplier').html(numberWithCommas(ratios_gross_rent_multiplier.toFixed(2)));
     $('.YearlyRent').html("$" + numberWithCommas(yearly_rent.toFixed(2)));
@@ -217,7 +214,7 @@ var calcVariables = {
 
   valuation1: function() {
     var valuation = purchase_price / footage;
-    $('.valuation').html("$" + valuation.toFixed(2));
+    $('.valuation').html("$" + valuation.toFixed(2) + " per sq ft");
     return valuation;
   },
 
@@ -253,7 +250,6 @@ var calcVariables = {
       }else {
         $('.cashFlowYear').css("color", "red");
       }
-      console.log(operation_cash_flow_year);
 
     $('.cashFlowYear').html("$" + numberWithCommas(operation_cash_flow_year.toFixed(2)));
     return operation_cash_flow_year;
@@ -375,10 +371,10 @@ var calcVariables = {
 
 function getValues() {
 
-  var div = document.getElementById("Result");
-  var projections = document.getElementById("Projections");
-  var incomes = document.getElementById("Income");
-  var expenses = document.getElementById("Expense");
+  var div = document.getElementsByClassName("Result");
+  var projections = document.getElementsByClassName("Projections");
+  var incomes = document.getElementsByClassName("Income");
+  var expenses = document.getElementsByClassName("Expense");
   var balance = calcVariables.amountFinanced();
 
 
@@ -637,6 +633,9 @@ $(document).ready(function () {
   // $('#financing').on('change', function() {
   //   $('#cash').show();
   // });
+  $("tr[data-link]").click(function() {
+    window.location = $(this).data("link")
+  });
 
   window.onload = function() {
     calcVariables.rehabCostTotal();

@@ -135,5 +135,5 @@ class HousesController < ApplicationController
     )
   end
 
-  
+
 end

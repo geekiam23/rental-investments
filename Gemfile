@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.5'
 
 group :production do
-  gem 'pg'
+  gem 'pg', '0.21.0'
   gem 'rails_12factor'
 end
 
@@ -24,6 +24,7 @@ gem 'devise'
 gem 'jquery-turbolinks'
 gem 'faker'
 gem 'gon'
+gem 'exonio'
 
 
 group :development, :test do

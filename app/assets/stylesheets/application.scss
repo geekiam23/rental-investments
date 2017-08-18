@@ -18,6 +18,16 @@
  @import "bootstrap";
  @import 'bootstrap/theme';
 
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #067BBC;
+  text-decoration-color: white;
+  color: white;
+  a{
+    color: white;
+  }
+}
+
  .alert-alert {
    @extend .alert-warning;
  }
