@@ -56,63 +56,65 @@ $(document).ready(function() {
   })
 });
 
-var footage = parseFloat(gon.house.footage);
-var closing_cost = parseFloat(gon.house.closing_costs);
-var after_value = parseFloat(gon.house.after_value);
-var interest = parseFloat(gon.house.interest);
-var loan_term = parseFloat(gon.house.loan_term) * 12;
-var pmi_upfront = parseFloat(gon.house.pmi_upfront);
-var pmi_recurring = parseFloat(gon.house.pmi_recurring);
-var purchase_cost_total = 0;
-var purchase_cost_inspection = parseFloat(gon.house.purchase_cost_inspection);
-var purchase_cost_appraisal = parseFloat(gon.house.purchase_cost_appraisal);
-var rehab_cost_exterior = parseFloat(gon.house.rehab_cost_exterior);
-var rehab_cost_interior = parseFloat(gon.house.rehab_cost_interior);
-var rehab_cost_electrical = parseFloat(gon.house.rehab_cost_electrical);
-var rehab_cost_plumbing = parseFloat(gon.house.rehab_cost_plumbing);
-var rehab_cost_appliances = parseFloat(gon.house.rehab_cost_appliances);
-var rehab_cost_landscaping = parseFloat(gon.house.rehab_cost_landscaping);
-var rehab_cost_misc = parseFloat(gon.house.rehab_cost_misc);
-var income_gross_rent = parseFloat(gon.house.income_gross_rent);
-var income_other_rent = parseFloat(gon.house.income_other_rent);
-var expenses_total = 0;
-var expenses_taxes = parseFloat(gon.house.expenses_taxes);
-var expenses_insurance = parseFloat(gon.house.expenses_insurance);
-var expenses_management = parseFloat(gon.house.expenses_management);
-var expenses_maintanance = parseFloat(gon.house.expenses_maintanance);
-var expenses_expenditures = parseFloat(gon.house.expenses_expenditures);
-var expenses_landscaping = parseFloat(gon.house.expenses_landscaping);
-var expenses_misc = parseFloat(gon.house.expenses_misc);
-var assumptions_vacancy = parseFloat(gon.house.assumptions_vacancy);
-var assumptions_appreciation = parseFloat(gon.house.assumptions_appreciation);
-var assumptions_income_increase = parseFloat(gon.house.assumptions_income_increase);
-var assumptions_expense_increase = parseFloat(gon.house.assumptions_expense_increase);
-var assumptions_selling_cost = parseFloat(gon.house.assumptions_selling_cost);
-var assumptions_land_value = parseFloat(gon.house.assumptions_land_value);
-var total_cash_needed = 0;
-var valuation = 0;
-var operation_income_year = 0;
-var operation_income_month = 0;
-var operation_net_operating_income_year = 0;
-var operation_net_operating_income_month = 0;
-var operation_cash_flow_year = 0;
-var operation_cash_flow_month = 0;
-var return_cap_rate = 0;
-var return_cash_on_cash = 0;
-var return_total_profit_sold = 0;
-var return_return_on_investment = 0;
-var return_annualized_total_return = 0;
-var ratios_rent_to_value = 0;
-var ratios_gross_rent_multiplier = 0;
-var ratios_debt_coverage_ratio = 0;
-var tax_loan_principle = parseFloat(gon.house.tax_loan_principle);
-var tax_cumulative_loan_principle = parseFloat(gon.house.tax_cumulative_loan_principle);
-var tax_loan_interest = parseFloat(gon.house.tax_loan_interest);
-var tax_cumulative_interest = parseFloat(gon.house.tax_cumulative_interest);
-var purchase_price = parseFloat(gon.house.purchase_price);
-var after_value = parseFloat(gon.house.after_value);
-var down_payment = parseFloat(gon.house.down_payment);
-var amount_financed = parseFloat(gon.house.amount_financed);
+if (document.URL.indexOf("new") <= -1){
+  var footage = parseFloat(gon.house.footage);
+  var closing_cost = parseFloat(gon.house.closing_costs);
+  var after_value = parseFloat(gon.house.after_value);
+  var interest = parseFloat(gon.house.interest);
+  var loan_term = parseFloat(gon.house.loan_term) * 12;
+  var pmi_upfront = parseFloat(gon.house.pmi_upfront);
+  var pmi_recurring = parseFloat(gon.house.pmi_recurring);
+  var purchase_cost_total = 0;
+  var purchase_cost_inspection = parseFloat(gon.house.purchase_cost_inspection);
+  var purchase_cost_appraisal = parseFloat(gon.house.purchase_cost_appraisal);
+  var rehab_cost_exterior = parseFloat(gon.house.rehab_cost_exterior);
+  var rehab_cost_interior = parseFloat(gon.house.rehab_cost_interior);
+  var rehab_cost_electrical = parseFloat(gon.house.rehab_cost_electrical);
+  var rehab_cost_plumbing = parseFloat(gon.house.rehab_cost_plumbing);
+  var rehab_cost_appliances = parseFloat(gon.house.rehab_cost_appliances);
+  var rehab_cost_landscaping = parseFloat(gon.house.rehab_cost_landscaping);
+  var rehab_cost_misc = parseFloat(gon.house.rehab_cost_misc);
+  var income_gross_rent = parseFloat(gon.house.income_gross_rent);
+  var income_other_rent = parseFloat(gon.house.income_other_rent);
+  var expenses_total = 0;
+  var expenses_taxes = parseFloat(gon.house.expenses_taxes);
+  var expenses_insurance = parseFloat(gon.house.expenses_insurance);
+  var expenses_management = parseFloat(gon.house.expenses_management);
+  var expenses_maintanance = parseFloat(gon.house.expenses_maintanance);
+  var expenses_expenditures = parseFloat(gon.house.expenses_expenditures);
+  var expenses_landscaping = parseFloat(gon.house.expenses_landscaping);
+  var expenses_misc = parseFloat(gon.house.expenses_misc);
+  var assumptions_vacancy = parseFloat(gon.house.assumptions_vacancy);
+  var assumptions_appreciation = parseFloat(gon.house.assumptions_appreciation);
+  var assumptions_income_increase = parseFloat(gon.house.assumptions_income_increase);
+  var assumptions_expense_increase = parseFloat(gon.house.assumptions_expense_increase);
+  var assumptions_selling_cost = parseFloat(gon.house.assumptions_selling_cost);
+  var assumptions_land_value = parseFloat(gon.house.assumptions_land_value);
+  var total_cash_needed = 0;
+  var valuation = 0;
+  var operation_income_year = 0;
+  var operation_income_month = 0;
+  var operation_net_operating_income_year = 0;
+  var operation_net_operating_income_month = 0;
+  var operation_cash_flow_year = 0;
+  var operation_cash_flow_month = 0;
+  var return_cap_rate = 0;
+  var return_cash_on_cash = 0;
+  var return_total_profit_sold = 0;
+  var return_return_on_investment = 0;
+  var return_annualized_total_return = 0;
+  var ratios_rent_to_value = 0;
+  var ratios_gross_rent_multiplier = 0;
+  var ratios_debt_coverage_ratio = 0;
+  var tax_loan_principle = parseFloat(gon.house.tax_loan_principle);
+  var tax_cumulative_loan_principle = parseFloat(gon.house.tax_cumulative_loan_principle);
+  var tax_loan_interest = parseFloat(gon.house.tax_loan_interest);
+  var tax_cumulative_interest = parseFloat(gon.house.tax_cumulative_interest);
+  var purchase_price = parseFloat(gon.house.purchase_price);
+  var after_value = parseFloat(gon.house.after_value);
+  var down_payment = parseFloat(gon.house.down_payment);
+  var amount_financed = parseFloat(gon.house.amount_financed);
+};
 
 var calcVariables = {
   rehabCostTotal: function() {
@@ -368,35 +370,35 @@ var calcVariables = {
   }
 };
 
-
-function getValues() {
-
-  var div = document.getElementById("Result");
+function triggerProjectionsTable(){
   var projections = document.getElementById("Projections");
-  var incomes = document.getElementById("Income");
-  var expenses = document.getElementById("Expense");
-  var balance = calcVariables.amountFinanced();
-
-
-  div.innerHTML = "";
   projections.innerHTML = "";
-  incomes.innerHTML = "";
-  expenses.innerHTML = "";
-
-  var balVal = validateInputs(balance);
-  var intrVal = validateInputs(interest);
-
-  if (balVal && intrVal) {
-    div.innerHTML += amort(interest, loan_term);
-  } else {
-    div.innerHTML += "Please Check your inputs and retry - invalid values.";
-  }
-
   projections.innerHTML += projection(interest, assumptions_vacancy, income_gross_rent);
+};
+
+function triggerIncomeTable() {
+  var incomes = document.getElementById("Income");
+  incomes.innerHTML = "";
   incomes.innerHTML += income(expenses_taxes, expenses_insurance);
+};
+
+function triggerExpenseTable() {
+  var expenses = document.getElementById("Expense");
+  expenses.innerHTML = "";
   expenses.innerHTML += expense(expenses_taxes, expenses_insurance);
+};
 
+function triggerLoanPaymentTable() {
+  var loan_table = document.getElementById("Result");
+  // var balance = calcVariables.amountFinanced();
+  loan_table.innerHTML = "";
+  loan_table.innerHTML += amort(interest, loan_term);
+};
 
+function triggerLoanPaymentTableNewView() {
+  var loan_table_new = document.getElementById("ResultNew");
+  loan_table_new.innerHTML = "";
+  loan_table_new.innerHTML += amort(interest, loan_term);
 }
 
 function projection(interest, assumptions_vacancy, income_gross_rent) {
@@ -412,13 +414,11 @@ function projection(interest, assumptions_vacancy, income_gross_rent) {
   var annualRate_loan =  interest / 100;
   var monthlyRate =  interest / 100/12;
 
-  // var loan_payment_year = (balance * annualRate_loan * (Math.pow(1 + annualRate_loan, loan_term)) / (Math.pow(1 + annualRate_loan, loan_term) - 1)) * 12;
-  // $('.loanPayments').html("$" + loan_payment_year.toFixed(2));
   var increase_yearly_rent = income_gross_rent * 12;
 
   var projections = ""
 
-  projections += "<table style=background-color:#ffffff class=table ><thead><tr style=background-color:#337ab7><th>Year #</th><th>Net_Operating_Income</th><th>Cash_Flow</th><th>Property_Value</th><th>Loan_Balance</th><th>Total_Equity</th><th>Cash_On_Cash</th></tr></thead><tbody>";
+  projections += "<table style=background-color:#ffffff class=table><thead><tr style=background-color:#337ab7><th>Year #</th><th>Net_Operating_Income</th><th>Cash_Flow</th><th>Property_Value</th><th>Loan_Balance</th><th>Total_Equity</th><th>Cash_On_Cash</th></tr></thead><tbody>";
 
 
 
@@ -576,7 +576,7 @@ function amort(interest, loan_term) {
 
   var result = ""
 
-  result += "<table style=background-color:#ffffff class=table ><thead><tr style=background-color:#337ab7><th>Month #</th><th>Balance</th>" +
+  result += "<table style=background-color:#ffffff class=table ><thead><tr style=background-color:#337ab7><th>Year #</th><th>Balance</th>" +
     "<th>Interest</th><th>Principal</th></tr></thead><tbody>";
 
 
@@ -607,14 +607,6 @@ function amort(interest, loan_term) {
   result += "</tbody></table>";
 
   return result;
-}
-
-function validateInputs(value) {
-  if ((value == null) || (value == "")) {
-    return false;
-  } else {
-    return true;
-  }
 };
 
 function numberWithCommas(x) {
@@ -659,6 +651,19 @@ $(document).ready(function () {
     calcVariables.purchaseCostTotal();
     calcVariables.cashNeeded();
     calcVariables.loanPayment();
-    getValues();
+
+    // if (document.URL.indexOf("new") > -1){
+    //   $('.amortNew').on('click', function() {
+    //     triggerLoanPaymentTableNewView();
+    //   });
+    // }
+
+    if (document.URL.indexOf("new") <= -1){
+      triggerLoanPaymentTable();
+      triggerProjectionsTable();
+      triggerIncomeTable();
+      triggerExpenseTable();
+
+    }
   };
 });
