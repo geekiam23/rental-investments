@@ -15,8 +15,7 @@
       <div class="col-md-6">
         <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="An annual increase of the market value of a property." data-placement="top"></div>
         <%= f.label :assumptions_appreciation %>
-        <p><%= @house.assumptions_appreciation %>% or </p>
-        <p class="assumptionsAppreciationTotal"></p>
+        <p><%= @house.assumptions_appreciation %>%</p>
       </div>
       <div class="col-md-6">
           <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="A percentage of time that you assume that your property will be vacant. For example, if you expect the property to be vacant for one month, the vacancy  will be 8.3%.
@@ -47,8 +46,7 @@
       <div class="col-md-6">
           <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="All fees that are associated with a selling the rental property. Examples include: real estate broker commissions, escrow fees, transfer taxes, and home warranty." data-placement="top"></div>
           <%= f.label :assumptions_selling_cost %>
-          <p><%= @house.assumptions_selling_cost  %>% or </p>
-          <p id="assumptionsSellingCosts" class="assumptionsSellingCosts"></p>
+          <p><%= @house.assumptions_selling_cost  %>%</p>
       </div>
     </div>
   </div>

@@ -117,3 +117,7 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+.input-group-addon {
+  line-height: .5 !important;
+}

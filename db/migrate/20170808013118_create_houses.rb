@@ -12,7 +12,7 @@ class CreateHouses < ActiveRecord::Migration
       t.text :house_type
       t.decimal :numBeds, precision: 3, scale: 1
       t.decimal :numBaths, precision: 3, scale: 1
-      t.integer :footage
+      t.integer :footage, :default => 0
       t.integer :year
       t.string :parking
       t.integer :lot

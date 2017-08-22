@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RentalInvestments</title>
+    <title>Rental Investments</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= include_gon(:init => true) %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -16,7 +16,7 @@
             <li><%= link_to 'Home', root_path %></li>
             <!-- <li><%= link_to "About", about_path %></li>
             <li><%= link_to "Contact", contact_path %></li> -->
-            <li><%= link_to "Houses", houses_path %></li>
+            <li><%= link_to "Properties", houses_path %></li>
           </ul>
           <ul class="nav navbar-nav pull-right">
             <% if user_signed_in? %>

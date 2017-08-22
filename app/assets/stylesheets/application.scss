@@ -36,6 +36,7 @@
    @extend .alert-info;
  }
 
+// NavBar CSS
  /* Blue */
 $bgDefault      : #337ab7;
 $bgHighlight    : #202D37;
@@ -62,7 +63,7 @@ $bgHighlight    : #d35400;
 $colDefault     : #ecf0f1;
 $colHover       : #ffe6d1; /*/
 
-
+// NavBar CSS
 /* --- Style --- */
 .navbar-test {
     background-color: $bgDefault;
@@ -109,4 +110,26 @@ $colHover       : #ffe6d1; /*/
         &:hover, &:focus {
             color: $colHover;
             background-color: $bgHighlight; }}
+}
+
+// PDF Print
+@media print {
+  body {
+    background-color: #FFF;
+  }
+
+  #container {
+    width: auto;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+
+  #line_items {
+    page-break-before: always;
+  }
+
+  #pdf_link {
+    display: none;
+  }
 }

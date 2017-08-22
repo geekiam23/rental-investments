@@ -6,43 +6,43 @@
           <li class="active">
             <a href="#step-1">
               <h4 class="list-group-item-heading">Step 1</h4>
-              <p class="list-group-item-text">Housing Info</p>
+              <p class="list-group-item-text">Property Info</p>
             </a>
           </li>
-          <li class="active">
+          <li class="disabled">
             <a href="#step-2">
               <h4 class="list-group-item-heading">Step 2</h4>
               <p class="list-group-item-text">Financing</p>
             </a>
           </li>
-          <li class="active">
+          <li class="disabled">
             <a href="#step-3">
               <h4 class="list-group-item-heading">Step 3</h4>
               <p class="list-group-item-text">Purchase Costs</p>
             </a>
           </li>
-          <li class="active">
+          <li class="disabled">
             <a href="#step-4">
               <h4 class="list-group-item-heading">Step 4</h4>
               <p class="list-group-item-text">Rehab Costs</p>
             </a>
           </li>
-          <li class="active">
+          <li class="disabled">
             <a href="#step-5">
               <h4 class="list-group-item-heading">Step 5</h4>
-              <p class="list-group-item-text">Income</p>
+              <p class="list-group-item-text">Monthly Income</p>
             </a>
           </li>
-          <li class="active">
+          <li class="disabled">
             <a href="#step-6">
               <h4 class="list-group-item-heading">Step 6</h4>
-              <p class="list-group-item-text">Expenses</p>
+              <p class="list-group-item-text">Annual Expenses</p>
             </a>
           </li>
-          <li class="active">
+          <li class="disabled">
             <a href="#step-7">
               <h4 class="list-group-item-heading">Step 7</h4>
-              <p class="list-group-item-text">Assumptions</p>
+              <p class="list-group-item-text">Annual Assumptions</p>
             </a>
           </li>
         </ul>
@@ -62,19 +62,19 @@
         <div class="col-xs-12">
           <div class="col-md-12 well text-center">
             <h1 class="list-group-item-heading">Step 1</h1>
-            <h4 class="list-group-item-text">Housing Info</h4>
+            <h4 class="list-group-item-text">Property Info</h4>
             <div class="row">
               <div class="col-md-8 center-block">
                   <div class="row">
                     <div class="col-md-12">
                       <%= f.label :name %>
-                      <%= f.text_field :name, class: 'form-control', placeholder: "Enter House Nickname" %>
+                      <%= f.text_field :name, class: 'form-control', placeholder: "Enter Property Nickname" %>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-md-12">
                       <%= f.label :description %>
-                      <%= f.text_area :description, rows: 8, class: 'form-control', placeholder: "Enter House Notes" %>
+                      <%= f.text_area :description, rows: 8, class: 'form-control', placeholder: "Enter Property Notes" %>
                     </div>
                   </div>
                   <div class="row">
@@ -99,7 +99,7 @@
                   </div>
                   <div class="row">
                     <div class="col-md-12">
-                      <%= f.label :house_Type %>
+                      <%= f.label :property_Type %>
                       <%= f.text_field :house_type, class: 'form-control', placeholder: "Enter Property Type" %>
                     </div>
                   </div>
@@ -116,7 +116,10 @@
                   <div class="row">
                     <div class="col-md-6">
                       <%= f.label :footage %>
-                      <%= f.text_field :footage, class: 'form-control', placeholder: "Enter Square Footage" %>
+                      <div class="input-group">
+                        <%= f.text_field :footage, class: 'form-control', placeholder: "Enter Square Footage" %>
+                        <div class="input-group-addon">sq ft.</div>
+                      </div>
                     </div>
                     <div class="col-md-6">
                       <%= f.label :year %>
@@ -130,7 +133,10 @@
                     </div>
                     <div class="col-md-6">
                       <%= f.label :lot %>
-                      <%= f.text_field :lot, class: 'form-control', placeholder: "Enter Lot Size" %>
+                      <div class="input-group">
+                        <%= f.text_field :lot, class: 'form-control', placeholder: "Enter Lot Size" %>
+                        <div class="input-group-addon">acres</div>
+                      </div>
                     </div>
                   </div>
                   <div class="row">
@@ -161,11 +167,17 @@
                   <div class="row">
                     <div class="col-md-6">
                       <%= f.label :purchase_Price %>
-                      <%= f.text_field :purchase_price, class: 'form-control', placeholder: "Enter Purchase Price" %>
+                      <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <%= f.text_field :purchase_price, class: 'form-control', placeholder: "Enter Purchase Price" %>
+                      </div>
                     </div>
                     <div class="col-md-6">
                       <%= f.label :after_Value %>
-                      <%= f.text_field :after_value, class: 'form-control', placeholder: "Enter After Value Price" %>
+                      <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <%= f.text_field :after_value, class: 'form-control', placeholder: "Enter After Value Price" %>
+                      </div>
                     </div>
                   </div>
                   <div class="row">
@@ -181,15 +193,24 @@
                   <div class="row cash">
                     <div class="col-md-4">
                       <%= f.label :down_Payment %>
-                      <%= f.text_field :down_payment, class: 'form-control', placeholder: "Enter Down Payment Amount" %>
+                      <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <%= f.text_field :down_payment, class: 'form-control', placeholder: "Enter Down Payment Amount" %>
+                      </div>
                     </div>
                     <div class="col-md-4">
                       <%= f.label :interest %>
-                      <%= f.text_field :interest, class: 'form-control', placeholder: "Enter Interest Percentage" %>
+                      <div class="input-group">
+                        <%= f.text_field :interest, class: 'form-control', placeholder: "Enter Interest Percentage" %>
+                        <div class="input-group-addon">%</div>
+                      </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 amortNew">
                       <%= f.label :loan_Term %>
-                      <%= f.text_field :loan_term, class: 'form-control', placeholder: "Enter Loan Term in Years" %>
+                      <div class="input-group">
+                        <%= f.text_field :loan_term, class: 'form-control', placeholder: "Enter Loan Term in Years" %>
+                        <div class="input-group-addon">years</div>
+                      </div>
                     </div>
                   </div>
                   <!-- <div class="row cash">
@@ -204,6 +225,11 @@
                   </div> -->
                 </div>
               <button id="activate-step-3" class="btn btn-primary btn-md">Next</button>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div id="ResultNew"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -220,17 +246,26 @@
                 <div class="row">
                   <div class="col-md-6">
                     <%= f.label :purchase_Cost_Inspection %>
-                    <%= f.text_field :purchase_cost_inspection, class: 'form-control', placeholder: "Enter Inspection Cost" %>
+                    <div class="input-group">
+                      <div class="input-group-addon">$</div>
+                      <%= f.text_field :purchase_cost_inspection, class: 'form-control', placeholder: "Enter Inspection Cost" %>
+                    </div>
                   </div>
                   <div class="col-md-6">
                     <%= f.label :purchase_Cost_Appraisal %>
-                    <%= f.text_field :purchase_cost_appraisal, class: 'form-control', placeholder: "Enter Appraisal Cost" %>
+                    <div class="input-group">
+                      <div class="input-group-addon">$</div>
+                      <%= f.text_field :purchase_cost_appraisal, class: 'form-control', placeholder: "Enter Appraisal Cost" %>
+                    </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-6">
                     <%= f.label :closing_Costs %>
-                    <%= f.text_field :closing_costs, class: 'form-control', placeholder: "Enter Closing Cost" %>
+                    <div class="input-group">
+                      <%= f.text_field :closing_costs, class: 'form-control', placeholder: "Enter Closing Cost" %>
+                      <div class="input-group-addon">%</div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -251,37 +286,57 @@
                 <div class="row">
                   <div class="col-md-6">
                     <%= f.label :rehab_cost_exterior %>
-                    <%= f.text_field :rehab_cost_exterior, class: 'form-control', placeholder: "Enter Rehab Cost for Exterior" %>
+                    <div class="input-group">
+                      <div class="input-group-addon">$</div>
+                      <%= f.text_field :rehab_cost_exterior, class: 'form-control', placeholder: "Enter Rehab Cost for Exterior" %>
+                    </div>
                   </div>
                   <div class="col-md-6">
                     <%= f.label :rehab_cost_interior %>
-                    <%= f.text_field :rehab_cost_interior, class: 'form-control', placeholder: "Enter Rehab Cost for Interior" %>
-                  </div>
+                    <div class="input-group">
+                      <div class="input-group-addon">$</div>
+                      <%= f.text_field :rehab_cost_interior, class: 'form-control', placeholder: "Enter Rehab Cost for Interior" %>
+                    </div>
                 </div>
                 <div class="row">
                   <div class="col-md-6">
                     <%= f.label :rehab_cost_electrical %>
-                    <%= f.text_field :rehab_cost_electrical, class: 'form-control', placeholder: "Enter Rehab Cost for Electrical" %>
+                    <div class="input-group">
+                      <div class="input-group-addon">$</div>
+                      <%= f.text_field :rehab_cost_electrical, class: 'form-control', placeholder: "Enter Rehab Cost for Electrical" %>
+                    </div>
                   </div>
                   <div class="col-md-6">
                     <%= f.label :rehab_cost_plumbing %>
-                    <%= f.text_field :rehab_cost_plumbing, class: 'form-control', placeholder: "Enter Rehab Cost for Plumbing" %>
+                    <div class="input-group">
+                      <div class="input-group-addon">$</div>
+                      <%= f.text_field :rehab_cost_plumbing, class: 'form-control', placeholder: "Enter Rehab Cost for Plumbing" %>
+                    </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-6">
                     <%= f.label :rehab_cost_appliances %>
-                    <%= f.text_field :rehab_cost_appliances, class: 'form-control', placeholder: "Enter Rehab Cost for Appliances" %>
+                    <div class="input-group">
+                      <div class="input-group-addon">$</div>
+                      <%= f.text_field :rehab_cost_appliances, class: 'form-control', placeholder: "Enter Rehab Cost for Appliances" %>
+                    </div>
                   </div>
                   <div class="col-md-6">
                     <%= f.label :rehab_cost_landscaping %>
-                    <%= f.text_field :rehab_cost_landscaping, class: 'form-control', placeholder: "Enter Rehab Cost for Landscaping" %>
+                    <div class="input-group">
+                      <div class="input-group-addon">$</div>
+                      <%= f.text_field :rehab_cost_landscaping, class: 'form-control', placeholder: "Enter Rehab Cost for Landscaping" %>
+                    </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-6">
                     <%= f.label :rehab_cost_misc %>
-                    <%= f.text_field :rehab_cost_misc, class: 'form-control', placeholder: "Enter Misc Rehab Cost" %>
+                    <div class="input-group">
+                      <div class="input-group-addon">$</div>
+                      <%= f.text_field :rehab_cost_misc, class: 'form-control', placeholder: "Enter Misc Rehab Cost" %>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -302,11 +357,19 @@
                 <div class="row">
                   <div class="col-md-6">
                     <%= f.label :income_gross_rent %>
-                    <%= f.text_field :income_gross_rent, class: 'form-control', placeholder: "Enter Gross Rent Amount" %>
+                    <div class="input-group">
+                      <div class="input-group-addon">$</div>
+                      <%= f.text_field :income_gross_rent, class: 'form-control', placeholder: "Enter Gross Rent Amount" %>
+                      <div class="input-group-addon">per month</div>
+                    </div>
                   </div>
                   <div class="col-md-6">
                     <%= f.label :income_other_rent %>
-                    <%= f.text_field :income_other_rent, class: 'form-control', placeholder: "Enter Other Income Amount" %>
+                    <div class="input-group">
+                      <div class="input-group-addon">$</div>
+                      <%= f.text_field :income_other_rent, class: 'form-control', placeholder: "Enter Other Income Amount" %>
+                      <div class="input-group-addon">per month</div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -328,31 +391,49 @@
                 <div class="row">
                   <div class="col-md-6">
                     <%= f.label :assumptions_appreciation %>
-                    <%= f.text_field :assumptions_appreciation, class: 'form-control', placeholder: "Enter Appreciation Projection Percentage" %>
+                    <div class="input-group">
+                      <%= f.text_field :assumptions_appreciation, class: 'form-control', placeholder: "Enter Appreciation Projection Percentage" %>
+                      <div class="input-group-addon">% per year</div>
+                    </div>
                   </div>
                   <div class="col-md-6">
                     <%= f.label :assumptions_vacancy %>
-                    <%= f.text_field :assumptions_vacancy, class: 'form-control', placeholder: "Enter Vacancy Projection Percentage" %>
+                    <div class="input-group">
+                      <%= f.text_field :assumptions_vacancy, class: 'form-control', placeholder: "Enter Vacancy Projection Percentage" %>
+                      <div class="input-group-addon">% per year</div>
+                    </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-6">
-                    <%= f.label :assumptions_income_increase %>
-                    <%= f.text_field :assumptions_income_increase, class: 'form-control', placeholder: "Enter Income Increase Projection Percentage" %>
+                    <%= f.label :assumptions_Income_Increase %>
+                    <div class="input-group">
+                      <%= f.text_field :assumptions_income_increase, class: 'form-control', placeholder: "Enter Income Increase Projection Percentage" %>
+                      <div class="input-group-addon">% per year</div>
+                    </div>
                   </div>
                   <div class="col-md-6">
-                    <%= f.label :assumptions_expense_increase %>
-                    <%= f.text_field :assumptions_expense_increase, class: 'form-control', placeholder: "Enter Expense Increase Projection Percentage" %>
+                    <%= f.label :assumptions_Expense_Increase %>
+                    <div class="input-group">
+                      <%= f.text_field :assumptions_expense_increase, class: 'form-control', placeholder: "Enter Expense Increase Projection Percentage" %>
+                      <div class="input-group-addon">% per year</div>
+                    </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-6">
                     <%= f.label :assumptions_land_value %>
-                    <%= f.text_field :assumptions_land_value, class: 'form-control', placeholder: "Enter Land Value Projection Amount" %>
+                    <div class="input-group">
+                      <div class="input-group-addon">$</div>
+                      <%= f.text_field :assumptions_land_value, class: 'form-control', placeholder: "Enter Land Value Projection Amount" %>
+                    </div>
                   </div>
                   <div class="col-md-6">
                     <%= f.label :assumptions_selling_cost %>
-                    <%= f.text_field :assumptions_selling_cost, class: 'form-control', placeholder: "Enter Selling Cost Projection Percentage" %>
+                    <div class="input-group">
+                      <%= f.text_field :assumptions_selling_cost, class: 'form-control', placeholder: "Enter Selling Cost Projection Percentage" %>
+                      <div class="input-group-addon">%</div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -372,37 +453,62 @@
                 <div class="row">
                   <div class="col-md-6">
                     <%= f.label :expenses_taxes %>
-                    <%= f.text_field :expenses_taxes, class: 'form-control', placeholder: "Enter Taxes Amount" %>
+                    <div class="input-group">
+                      <div class="input-group-addon">$</div>
+                      <%= f.text_field :expenses_taxes, class: 'form-control', placeholder: "Enter Taxes Amount" %>
+                      <div class="input-group-addon">per year</div>
+                    </div>
                   </div>
                   <div class="col-md-6">
                     <%= f.label :expenses_insurance %>
-                    <%= f.text_field :expenses_insurance, class: 'form-control', placeholder: "Enter Insurance Amount" %>
+                    <div class="input-group">
+                      <div class="input-group-addon">$</div>
+                      <%= f.text_field :expenses_insurance, class: 'form-control', placeholder: "Enter Insurance Amount" %>
+                      <div class="input-group-addon">per year</div>
+                    </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-6">
                     <%= f.label :expenses_management %>
-                    <%= f.text_field :expenses_management, class: 'form-control', placeholder: "Enter Management Amount" %>
+                    <div class="input-group">
+                      <%= f.text_field :expenses_management, class: 'form-control', placeholder: "Enter Management Amount" %>
+                      <div class="input-group-addon">% per year</div>
+                    </div>
                   </div>
                   <div class="col-md-6">
                     <%= f.label :expenses_maintanance %>
-                    <%= f.text_field :expenses_maintanance, class: 'form-control', placeholder: "Enter Maintance Amount" %>
+                    <div class="input-group">
+                      <%= f.text_field :expenses_maintanance, class: 'form-control', placeholder: "Enter Maintance Amount" %>
+                      <div class="input-group-addon">% per year</div>
+                    </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-6">
                     <%= f.label :expenses_expenditures %>
-                    <%= f.text_field :expenses_expenditures, class: 'form-control', placeholder: "Enter Capital Expenditures Amount" %>
+                    <div class="input-group">
+                      <%= f.text_field :expenses_expenditures, class: 'form-control', placeholder: "Enter Capital Expenditures Amount" %>
+                      <div class="input-group-addon">% per year</div>
+                    </div>
                   </div>
                   <div class="col-md-6">
                     <%= f.label :expenses_landscaping %>
-                    <%= f.text_field :expenses_landscaping, class: 'form-control', placeholder: "Enter Landscaping Amount" %>
+                    <div class="input-group">
+                      <div class="input-group-addon">$</div>
+                      <%= f.text_field :expenses_landscaping, class: 'form-control', placeholder: "Enter Landscaping Amount" %>
+                      <div class="input-group-addon">per year</div>
+                    </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-6">
                     <%= f.label :expenses_misc  %>
-                    <%= f.text_field :expenses_misc, class: 'form-control', placeholder: "Enter Misc Landscaping Amount" %>
+                    <div class="input-group">
+                      <div class="input-group-addon">$</div>
+                      <%= f.text_field :expenses_misc, class: 'form-control', placeholder: "Enter Misc Landscaping Amount" %>
+                      <div class="input-group-addon">per year</div>
+                    </div>
                   </div>
                   <!-- <div class="col-md-6">
                     <%= f.label :expenses_total%>
