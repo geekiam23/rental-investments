@@ -1,0 +1,324 @@
+<%= form_for @house do |f| %>
+
+  <div class="row setup-content" id="summaryPrint">
+    <div class="col-xs-12">
+      <div class="col-md-12 well text-center">
+        <h1 class="text-center">Purchase and Rehab</h1>
+        <div class="row">
+          <div class="col-md-8 center-block">
+            <div class="body-text1">
+              <div class="row">
+                <div class="col-md-6 start">
+                  <div  class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="The price of the property you are purchasing. The purchase price does not include purchase or rehab costs." data-placement="left"></div>
+                  <p style="display: inline-block"><%= f.label :purchase_price %>:</p>
+                </div>
+                <div class="col-md-6 end">
+                    <p>$<%= number_with_precision(@house.purchase_price, :precision => 2, :delimiter => ',') %></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 start">
+                  <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="The estimated market value of a property after its rehab is complete." data-placement="top"></div>
+                  <p style="display: inline-block"><%= f.label :amount_financed %>:</p>
+                </div>
+                <p class="col-md-3 end">+</p>
+                <div class="col-md-3 end">
+                    <p class="amountFin"></p>
+                </div>
+              </div>
+              <p class="break"></p>
+              <div class="row">
+                <div class="col-md-6 start">
+                  <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="The dollar amount of the loan that was paid upfront." data-placement="top"></div>
+                  <p style="display: inline-block"><%= f.label :down_payment %>:</p>
+                </div>
+                <p class="col-md-3 end">=</p>
+                <div class="col-md-3 end">
+                  <p>$<%= number_with_precision(@house.down_payment, :precision => 2, :delimiter => ',') %></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 start">
+                  <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="All costs and fees associated with purchasing a property, sometimes also called closing costs. Example include: appraisal fees, property inspection, finder's fee, and loan points." data-placement="top"></div>
+                  <p style="display: inline-block"><%= f.label :purchase_Costs%>:</p>
+                </div>
+                <p class="col-md-3 end">+</p>
+                <div class="col-md-3 end">
+                  <p class="purchaseTotal"></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 start">
+                  <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Expenses that you expect to incur after purchasing a property to improve its condition." data-placement="top"></div>
+                  <p style="display: inline-block"><%= f.label :rehab_Cost_Total %>:</p>
+                </div>
+                <p class="col-md-3 end">+</p>
+                <div class="col-md-3 end">
+                  <p class="rehabTotal"></p>
+                </div>
+              </div>
+              <p class="break"></p>
+              <div class="row">
+                <div class="col-md-6 start">
+                  <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="The total amount of money you will need to purchase and rehab a property.
+
+                  With Financing: TotalCash Needed = down Payment + Purchase Costs + Rehab Costs
+
+                  Without Financing: TotalCash Needed = Purchase Price + Purchase Costs + Rehab Costs" data-placement="top"></div>
+                  <p style="display: inline-block"><%= f.label :total_Cash_Needed %>:</p>
+                </div>
+                <p class="col-md-3 end">=</p>
+                <div class="col-md-3 end">
+                  <p class="TotalCashNeed"></p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <h1 class="text-center">Valuation</h1>
+                </div>
+                <div class="col-md-6 start">
+                  <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="The amount that is paid per square foot." data-placement="top"></div>
+                  <p style="display: inline-block"><%= f.label :valuation %>:</p>
+                </div>
+                <div class="col-md-6 end">
+                  <p class="valuation"></p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <h1 class="text-center">Operations Cost</h1>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 start">
+                  <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="The total rent collected from your tenants, before substracting any operating expenses or accounting for vacancy." data-placement="top"></div>
+                  <p style="display: inline-block"><%= f.label :Gross_Rent %>:</p>
+                </div>
+                <div class="col-md-6 end">
+                  <p class="YearlyRent"></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 start">
+                  <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="The amount you will lose in a given year due to vacancies.
+
+                  Vacancy Expense = Gross Rent + Vacancy Allowance" data-placement="top"></div>
+                  <p style="display: inline-block"><%= f.label :Vacancy_Per_Year %>:</p>
+                </div>
+                <p class="col-md-3 end">-</p>
+                <div class="col-md-3 end">
+                  <p class="vacancyYear"></p>
+                </div>
+              </div>
+              <p class="break"></p>
+              <div class="row">
+                <div class="col-md-6 start">
+                  <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Total income generated by a rental property, minus the vacancy expense.
+
+                  Operating Income = Gross Rent - Vacancy Expense + Other Income" data-placement="top"></div>
+                  <p style="display: inline-block"><%= f.label :Operation_Income %>:</p>
+                </div>
+                <p class="col-md-3 end">=</p>
+                <div class="col-md-3 end">
+                  <p class="operationIncomeYear"></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 start">
+                  <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Total expenses you will incur while renting out a property. Examples include: property taxes, insurance, property management fees, maintanance, capital expenditures, and utilities" data-placement="top"></div>
+                  <p style="display: inline-block"><%= f.label :Operation_Expenses %>:</p>
+                </div>
+                <p class="col-md-3 end">-</p>
+                <div class="col-md-3 end">
+                  <p class="ExpensesTotal1"></p>
+                </div>
+              </div>
+              <p class="break"></p>
+              <div class="row">
+                <div class="col-md-6 start">
+                  <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Net income generated by a rental property.
+
+                  While NOI takes into account all operating expenses, it does not account for loan payments.
+
+                  It can therefore be used to compare rental properties irrespective of financing terms.
+
+                  NOI = Operating Income + Operating Expenses" data-placement="top"></div>
+                  <p style="display: inline-block"><%= f.label :Net_Operating_Income %>:</p>
+                </div>
+                <p class="col-md-3 end">=</p>
+                <div class="col-md-3 end">
+                  <p class="netOperatingIncome"></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 start">
+                  <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="The amount of loan payments that you paid in a year." data-placement="top"></div>
+                  <p style="display: inline-block" ><%= f.label :Loan_Payments %>:</p>
+                </div>
+                <p class="col-md-3 end">-</p>
+                <div class="col-md-3 end">
+                  <p class="loanPayments"></p>
+                </div>
+              </div>
+              <p class="break"></p>
+              <div class="row">
+                <div class="col-md-6 start">
+                  <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="The amount of money you will receive from a rental property as income. Cash flow accounts for all sources of income and all expenses, including loan payments if you are using financing.
+
+                  Cash Flow = NOI - Loan Payment" data-placement="top"></div>
+                  <p style="display: inline-block"><%= f.label :Cash_flow %>:</p>
+                </div>
+                <p class="col-md-3 end">=</p>
+                <div class="col-md-3 end">
+                  <p class="cashFlowYear">= $</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <h1 class="text-center">Returns</h1>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 start">
+                  <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="A rate of return of a rental property based on comparing the yearly NOI to the purchase price. Since the cap rate does not take into account loan payments, it can be used to compare rental properties irrespective of financing terms.
+
+                  Cap Rate = Yearly NOI / Purchase Price" data-placement="top"></div>
+                  <p style="display: inline-block"><%= f.label :Effective_Cap_Rate %>:</p>
+                </div>
+                <div class="col-md-6 end">
+                  <p class="returnCapRate">%</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 start">
+                  <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="A rate of return of a rental property based on comparing the yearly csh flow to the total invested cash. COC represents the yearly return you will receive on your invested capital.
+
+                  COC = Yearly Cash Flow / Total Invested Cash" data-placement="top"></div>
+                  <p style="display: inline-block"><%= f.label :Cash_On_Cash %>:</p>
+                </div>
+                <div class="col-md-6 end">
+                  <p class="cashOnCash">%</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 start">
+                  <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="A rate of return of a real estate transaction based on comparing the total profit from your investment to the total invested cash.
+
+                  ROI = (All Cash Flows + Total Equity - Selling Costs - Total Cash Needed) / Total Cash Needed" data-placement="top"></div>
+                  <p style="display: inline-block"><%= f.label :Return_On_Investment %>:</p>
+                </div>
+                <div class="col-md-6 end">
+                  <p class="ratiosReturnOnInvestment">%</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <h1 class="text-center">Ratios</h1>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 start">
+                  <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="A rate of return of a rental property based on comparing the monthly gross rent to the property's market value. The rent to value ratio is used by the common 2% Rule.
+
+                          Rent to Value = Monthly Gross Rent / Purchse Price" data-placement="top"></div>
+                    <p class="info" style="display: inline-block"><%= f.label :Rent_To_Value %>:</p>
+                </div>
+                <div class="col-md-6 end">
+                  <p class="ratiosRentToValue">%</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 start">
+                  <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="" data-placement="top" ></div>
+                  <p class="info" style="display: inline-block" ><%= f.label :Gross_Rent_Multiplier %>:</p>
+                  </div>
+                <div class="col-md-6 end">
+                  <p class="ratiosGrossRentMultiplier"></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 start ">
+                  <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="The price of the property you are purchasing. The purchase price does not include purchase or rehab costs." data-placement="top"></div>
+                    <p class="info" style="display: inline-block"><%= f.label :debt_Coverage_Ratio %>:</p>
+                </div>
+                <div class="col-md-6 end">
+                  <p class="ratiosDebtCoverageRatio"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row setup-content" id="projections_income_print">
+    <div class="col-xs-12">
+      <div class="col-md-12 well text-center">
+        <h1 class="text-center">Projections Income</h1>
+        <div class="row">
+          <div class="col-md-12 center-block">
+            <div class="row">
+              <div class="col-md-12">
+                <div id="IncomePrint" style="width: 100%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row setup-content" id="projections_expense_print">
+    <div class="col-xs-12">
+      <div class="col-md-12 well text-center">
+        <h1 class="text-center">Projections Expense</h1>
+        <div class="row">
+          <div class="col-md-12 center-block">
+            <div class="row">
+              <div class="col-md-12">
+                <div id="ExpensePrint" style="width: 100%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row setup-content" id="projections_print">
+    <div class="col-xs-12">
+      <div class="col-md-12 well text-center">
+        <h1 class="text-center">Projections</h1>
+        <div class="row">
+          <div class="col-md-12 center-block">
+            <div class="row">
+              <div class="col-md-12">
+                <div id="ProjectionsPrint" style="width: 100%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row setup-content" id="payment_schedule_print">
+    <div class="col-xs-12">
+      <div class="col-md-12 well text-center">
+        <h1 class="text-center">Loan Payment Schedule</h1>
+        <br>
+        <div class="row">
+          <div class="col-md-12 center-block">
+            <div class="row">
+              <div class="col-md-12">
+                <div id="ResultPrint"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <% end %>

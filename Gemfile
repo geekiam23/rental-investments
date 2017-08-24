@@ -25,6 +25,11 @@ gem 'jquery-turbolinks'
 gem 'faker'
 gem 'gon'
 gem 'exonio'
+gem 'prawnto', '~> 0.1.1'
+gem "prawnto_2", :require => "prawnto"
+gem 'responders'
+gem 'wkhtmltopdf-binary'
+gem 'wicked_pdf'
 
 
 group :development, :test do
