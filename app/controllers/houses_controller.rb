@@ -1,5 +1,6 @@
 class HousesController < ApplicationController
-  before_action :variables, except: [:index, :new, :create]
+
+  before_action :variables, except: [:index, :new, :create, :compare]
 
 
   def variables
@@ -13,6 +14,24 @@ class HousesController < ApplicationController
 
   def show
     @house = House.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "#{@house.name} - Property",
+        template: "houses/show.pdf.erb",
+        locals: {:house => @house}
+        # pdf = HousePdf.new(@house)
+        # send_data pdf.render,
+        #   filename: "house_#{@house.name}",
+        #   type: 'application/pdf',
+        #   disposition: 'inline'
+      end
+    end
+  end
+
+  def compare
+    @houses = House.find(params[:house_ids])
   end
 
   def new
