@@ -1,9 +1,9 @@
 <div class="row">
-	<div class="col-md-8 col-md-offset-2">
-		<div class="col-md-4">
+	<div class="col-md-12">
+		<div class="col-md-8">
 			<h1>All Properties</h1>
 		</div>
-		<div class="col-md-4 pull-right align-bottom">
+		<div class="col-md-2 end pull-right align-bottom">
 			<%= link_to "New Property", new_house_path, "data-turbolinks": "false", class: "btn btn-primary btn-lg" %>
 		</div>
 	</div>
@@ -39,5 +39,5 @@
 		<% end %>
   </tbody>
 </table>
-<p><%= link_to 'Compare Properties', compare_houses_path %></p>
+<p><%= submit_tag 'Compare Properties', class: "btn btn-primary btn-lg" %></p>
 <% end %>

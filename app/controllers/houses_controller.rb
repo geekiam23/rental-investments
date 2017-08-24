@@ -20,7 +20,9 @@ class HousesController < ApplicationController
       format.pdf do
         render pdf: "#{@house.name} - Property",
         template: "houses/show.pdf.erb",
-        locals: {:house => @house}
+        locals: {:house => @house},
+
+        debug: true
         # pdf = HousePdf.new(@house)
         # send_data pdf.render,
         #   filename: "house_#{@house.name}",

@@ -374,34 +374,40 @@ function triggerProjectionsTable(){
   var projections = document.getElementById("Projections");
   projections.innerHTML = "";
   projections.innerHTML += projection(interest, assumptions_vacancy, income_gross_rent);
+};
+
+function printTables() {
   var projections_print = document.getElementById("ProjectionsPrint");
   projections_print.innerHTML = "";
   projections_print.innerHTML += projection(interest, assumptions_vacancy, income_gross_rent);
-};
+
+  var incomes_print = document.getElementById("IncomePrint");
+  incomes_print.innerHTML = "";
+  incomes_print.innerHTML += income(expenses_taxes, expenses_insurance);
+
+  var expenses_print = document.getElementById("ExpensePrint");
+  expenses_print.innerHTML = "";
+  expenses_print.innerHTML += expense(expenses_taxes, expenses_insurance);
+
+  var loan_table_print = document.getElementById("ResultPrint");
+  // var balance = calcVariables.amountFinanced();
+  loan_table_print.innerHTML = "";
+  loan_table_print.innerHTML += amort(interest, loan_term);
+}
 
 function triggerIncomeTable() {
   var incomes = document.getElementById("Income");
   incomes.innerHTML = "";
   incomes.innerHTML += income(expenses_taxes, expenses_insurance);
-  var incomes_print = document.getElementById("IncomePrint");
-  incomes_print.innerHTML = "";
-  incomes_print.innerHTML += income(expenses_taxes, expenses_insurance);
 };
 
 function triggerExpenseTable() {
   var expenses = document.getElementById("Expense");
   expenses.innerHTML = "";
   expenses.innerHTML += expense(expenses_taxes, expenses_insurance);
-  var expenses_print = document.getElementById("ExpensePrint");
-  expenses_print.innerHTML = "";
-  expenses_print.innerHTML += expense(expenses_taxes, expenses_insurance);
 };
 
 function triggerLoanPaymentTable() {
-  var loan_table_print = document.getElementById("ResultPrint");
-  // var balance = calcVariables.amountFinanced();
-  loan_table_print.innerHTML = "";
-  loan_table_print.innerHTML += amort(interest, loan_term);
   var loan_table = document.getElementById("Result");
   // var balance = calcVariables.amountFinanced();
   loan_table.innerHTML = "";
@@ -643,6 +649,10 @@ $(document).ready(function () {
     window.location = $(this).data("link")
   });
 
+  if (document.URL.indexOf("pdf") > -1){
+    printTables();
+  }
+
   window.onload = function() {
     calcVariables.rehabCostTotal();
     calcVariables.valuation1();
@@ -670,6 +680,7 @@ $(document).ready(function () {
     //     triggerLoanPaymentTableNewView();
     //   });
     // }
+
 
     if (document.URL.indexOf("new") <= -1){
       triggerLoanPaymentTable();
