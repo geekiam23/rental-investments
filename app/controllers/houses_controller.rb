@@ -101,6 +101,7 @@ class HousesController < ApplicationController
     :mls,
     :purchase_price,
     :after_value,
+    :financing,
     :down_payment,
     :interest,
     :loan_term,

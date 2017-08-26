@@ -56,7 +56,7 @@ $(document).ready(function() {
   })
 });
 
-if (document.URL.indexOf("new") <= -1){
+if (document.URL.indexOf("new") <= -1 && document.URL.indexOf("compare") <= -1){
   var footage = parseFloat(gon.house.footage);
   var closing_cost = parseFloat(gon.house.closing_costs);
   var after_value = parseFloat(gon.house.after_value);
@@ -133,30 +133,39 @@ var calcVariables = {
   },
 
   amountFinanced: function() {
-    var amount_financed = purchase_price - down_payment;
+    if ($('#cashMoney').is(':checked')) {
+      var amount_financed = 0;
+      var down_payment_percent = 0;
+    }else {
+      var amount_financed = purchase_price - down_payment;
+      var down_payment_percent = purchase_price / down_payment;
+    }
     // var pmi_amount_upfront = balance * pmi_upfront;
-    var down_payment_percent = purchase_price / down_payment;
     // if (pmi_upfront > 0) {
     //   var amount_financed = pmi_amount_upfront + amount_financed;
     // }
     $('.amountFin').html("$" + numberWithCommas(amount_financed.toFixed(2)));
-    $('.downPaymentPercent').html(numberWithCommas(down_payment_percent.toFixed(2)) + "%");
+    $('.downPaymentPercent').html(numberWithCommas(down_payment_percent.toFixed(1)) + "%");
     return amount_financed;
   },
 
   cashNeeded: function() {
-    var closing_costs_decimal = closing_cost / 100;
-    var closing_costs_amount = purchase_price * closing_costs_decimal;
-
     var rehab_cost = calcVariables.rehabCostTotal();
-    var total_cash_needed = down_payment + closing_costs_amount + rehab_cost;
+    var purchase_cost_total = calcVariables.purchaseCostTotal();
+
+      if ($('#cashMoney').is(':checked')) {
+        var total_cash_needed = purchase_price + rehab_cost + purchase_cost_total;
+      }else{
+        var total_cash_needed = down_payment + rehab_cost + purchase_cost_total;
+      };
+
     $('.TotalCashNeed').html("$" + numberWithCommas(total_cash_needed.toFixed(2)));
     return total_cash_needed;
   },
 
   grossRentYear: function() {
     var vacancy_decimal = assumptions_vacancy / 100
-    var yearly_rent = income_gross_rent * 12;
+    var yearly_rent = (income_gross_rent + income_other_rent) * 12;
     var vacancy_year = yearly_rent * vacancy_decimal;
     var operation_income_year = yearly_rent - vacancy_year;
     var monthly_rent_vacancy = operation_income_year / 12;
@@ -186,7 +195,7 @@ var calcVariables = {
   },
 
   operationIncomeYear: function(){
-    var yearly_rent = income_gross_rent * 12;
+    var yearly_rent = calcVariables.grossRentYear();
     var vacancy_decimal = assumptions_vacancy / 100;
     var vacancy_year = yearly_rent * vacancy_decimal;
     var operation_income_year = yearly_rent - vacancy_year;
@@ -235,6 +244,10 @@ var calcVariables = {
 
     var loan_payment_year = (balance * monthlyRate * (Math.pow(1 + monthlyRate, loan_term)) / (Math.pow(1 + monthlyRate, loan_term) - 1)) * 12;
 
+    if (isNaN(loan_payment_year)) {
+      loan_payment_year = 0.;
+    }
+
     // if (pmi_recurring > 0) {
     //   var loan_payment_year = balance + pmi_amount_recurrring;
     // }
@@ -245,6 +258,7 @@ var calcVariables = {
   cashFlowYear: function() {
     var net_operating_income = calcVariables.operationNetOperatingIncomeYear1();
     var loan_payment = calcVariables.loanPayment();
+
     var operation_cash_flow_year = net_operating_income - loan_payment;
 
       if (operation_cash_flow_year > 0) {
@@ -324,7 +338,7 @@ var calcVariables = {
   },
 
   rentToValue: function() {
-    var ratios_rent_to_value = income_gross_rent / purchase_price * 100;
+    var ratios_rent_to_value = (income_gross_rent + income_other_rent) / purchase_price * 100;
 
       if (ratios_rent_to_value > 2) {
         $('.ratiosRentToValue').css("color", "green");
@@ -437,7 +451,7 @@ function projection(interest, assumptions_vacancy, income_gross_rent) {
 
   var projections = ""
 
-  projections += "<table style=background-color:#ffffff class=table><thead><tr style=background-color:#337ab7><th>Year #</th><th>Net_Operating_Income</th><th>Cash_Flow</th><th>Property_Value</th><th>Loan_Balance</th><th>Total_Equity</th><th>Cash_On_Cash</th></tr></thead><tbody>";
+  projections += "<table style=background-color:#ffffff class=table><thead><tr style=background-color:#337ab7><th class=text-center>Year #</th><th class=cash text-center>Net Operating Income</th><th class=text-center>Cash Flow</th><th class=text-center>Property Value</th><th class=cash text-center>Loan Balance</th><th class=text-center>Total Equity</th><th class=text-center>Cash On Cash</th></tr></thead><tbody>";
 
 
 
@@ -456,14 +470,14 @@ function projection(interest, assumptions_vacancy, income_gross_rent) {
     projections += "<td>" + (count + 1) + "</td>";
 
     var net_operating_income = income_year - expense_total;
-    projections += "<td> $" + numberWithCommas(net_operating_income.toFixed(2)) + "</td>";
+    projections += "<td class=cash> $" + numberWithCommas(net_operating_income.toFixed(2)) + "</td>";
 
     var operation_cash_flow_year = net_operating_income - loan_payment;
     projections += "<td> $" + numberWithCommas(operation_cash_flow_year.toFixed(2)) + "</td>";
 
     projections += "<td> $" + numberWithCommas(property_value.toFixed(2)) + "</td>";
 
-    projections += "<td> $" + numberWithCommas(balance.toFixed(2)) + "</td>";
+    projections += "<td class=cash> $" + numberWithCommas(balance.toFixed(2)) + "</td>";
 
     var total_equity = property_value - balance;
     projections += "<td> $" + numberWithCommas(total_equity.toFixed(2)) + "</td>";
@@ -506,8 +520,8 @@ function expense(expenses_taxes, expenses_insurance) {
 
   var expenses = ""
 
-  expenses += "<table style=background-color:#ffffff class=table ><thead><tr style=background-color:#337ab7><th>Year #</th><th>Property_Taxes</th><th>Insurance</th><th>Property_Management</th>" +
-    "<th>Maintanance</th><th>Capital_Expenditures</th><th>Operating_Expenses</th></tr></thead><tbody>";
+  expenses += "<table style=background-color:#ffffff class=table ><thead><tr style=background-color:#337ab7><th class=text-center>Year #</th><th class=text-center>Property Taxes</th><th class=text-center>Insurance</th><th class=text-center>Property Management</th>" +
+    "<th class=text-center>Maintanance</th><th class=text-center>Capital Expenditures</th><th class=text-center>Operating Expenses</th></tr></thead><tbody>";
 
 
   for (var count = 0; count < 30; ++count) {
@@ -555,7 +569,7 @@ function income(expenses_taxes, expenses_insurance) {
 
   var incomes = ""
 
-  incomes += "<table style=background-color:#ffffff class=table ><thead><tr style=background-color:#337ab7><th>Year #</th><th>Gross_Rent</th><th>Vacancy</th><th>Operating_Income</th></tr></thead><tbody>";
+  incomes += "<table style=background-color:#ffffff class=table ><thead><tr style=background-color:#337ab7><th class=text-center>Year #</th><th class=text-center>Gross Rent</th><th class=text-center>Vacancy</th><th class=text-center>Operating Income</th></tr></thead><tbody>";
 
 
   for (var count = 0; count < 30; ++count) {
@@ -634,8 +648,24 @@ function numberWithCommas(x) {
     return parts.join(".");
 };
 
+function payingCash() {
+  if ($('#cashMoney').is(':checked')) {
+    $('.cash').hide();
+  } else {
+    $('.cash').show();
+  };
+}
+
+function triggerPayingCash() {
+  $(document).click(function() {
+    payingCash();
+  });
+  payingCash();
+}
 
 $(document).ready(function () {
+  triggerPayingCash();
+
   $('[data-toggle="tooltip"]').tooltip({
       placement : 'top'
   });
@@ -651,7 +681,8 @@ $(document).ready(function () {
 
   if (document.URL.indexOf("pdf") > -1){
     printTables();
-  }
+  };
+
 
   window.onload = function() {
     calcVariables.rehabCostTotal();
@@ -682,12 +713,11 @@ $(document).ready(function () {
     // }
 
 
-    if (document.URL.indexOf("new") <= -1){
+    if (document.URL.indexOf("new") <= -1 && document.URL.indexOf("edit") <= -1 && document.URL.indexOf("compare") <= -1){
       triggerLoanPaymentTable();
       triggerProjectionsTable();
       triggerIncomeTable();
       triggerExpenseTable();
-
     }
   };
 });

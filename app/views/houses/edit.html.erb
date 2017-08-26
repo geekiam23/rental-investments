@@ -36,7 +36,7 @@
           <li class="active">
             <a href="#step-6">
               <h4 class="list-group-item-heading">Step 6</h4>
-              <p class="list-group-item-text">Expenses</p>
+              <p class="list-group-item-text">Annual Expenses</p>
             </a>
           </li>
           <li class="active">
@@ -119,6 +119,7 @@
                     <div class="col-md-6">
                       <%= f.label :footage %>
                       <%= f.number_field :footage, class: 'form-control', placeholder: "Enter Square Footage" %>
+                      <div class="input-group-addon">sq ft.</div>
                     </div>
                     <div class="col-md-6">
                       <%= f.label :year %>
@@ -133,6 +134,7 @@
                     <div class="col-md-6">
                       <%= f.label :lot %>
                       <%= f.number_field :lot, class: 'form-control', placeholder: "Enter Lot Size" %>
+                      <div class="input-group-addon">acres</div>
                     </div>
                   </div>
                   <div class="row">
@@ -176,6 +178,15 @@
                       <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <%= f.number_field :after_value, class: 'form-control', value: number_to_currency(f.object.after_value.to_f, delimiter: '', unit: '')%>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <p><%= f.check_box :financing, id: "cashMoney" %> Financing?</p>
+                        </label>
                       </div>
                     </div>
                   </div>
@@ -353,6 +364,7 @@
                       <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <%= f.number_field :income_gross_rent, class: 'form-control', value: number_to_currency(f.object.income_gross_rent.to_f, delimiter: '', unit: '') %>
+                        <div class="input-group-addon">per month</div>
                       </div>
                     </div>
                     <div class="col-md-6">
@@ -360,6 +372,7 @@
                       <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <%= f.number_field :income_other_rent, class: 'form-control', value: number_to_currency(f.object.income_other_rent.to_f, delimiter: '', unit: '') %>
+                        <div class="input-group-addon">per month</div>
                       </div>
                     </div>
                   </div>
@@ -386,14 +399,14 @@
                       <%= f.label :assumptions_appreciation %>
                       <div class="input-group">
                         <%= f.number_field :assumptions_appreciation, class: 'form-control', in: 0...11 %>
-                        <div class="input-group-addon">%</div>
+                        <div class="input-group-addon">% per year</div>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <%= f.label :assumptions_vacancy %>
                       <div class="input-group">
                         <%= f.number_field :assumptions_vacancy, class: 'form-control', in: 0...11 %>
-                        <div class="input-group-addon">%</div>
+                        <div class="input-group-addon">% per year</div>
                       </div>
                     </div>
                   </div>
@@ -402,14 +415,14 @@
                       <%= f.label :assumptions_income_increase %>
                       <div class="input-group">
                         <%= f.number_field :assumptions_income_increase, class: 'form-control', in: 0...11 %>
-                        <div class="input-group-addon">%</div>
+                        <div class="input-group-addon">% per year</div>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <%= f.label :assumptions_expense_increase %>
                       <div class="input-group">
                         <%= f.number_field :assumptions_expense_increase, class: 'form-control', in: 0...11 %>
-                        <div class="input-group-addon">%</div>
+                        <div class="input-group-addon">% per year</div>
                       </div>
                     </div>
                   </div>
@@ -451,6 +464,7 @@
                       <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <%= f.number_field :expenses_taxes, class: 'form-control', value: number_to_currency(f.object.expenses_taxes.to_f, delimiter: '', unit: '') %>
+                        <div class="input-group-addon">per year</div>
                       </div>
                     </div>
                     <div class="col-md-6">
@@ -458,6 +472,7 @@
                       <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <%= f.number_field :expenses_insurance, class: 'form-control', value: number_to_currency(f.object.expenses_insurance.to_f, delimiter: '', unit: '') %>
+                        <div class="input-group-addon">per year</div>
                       </div>
                     </div>
                   </div>
@@ -467,6 +482,7 @@
                       <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <%= f.number_field :expenses_management, class: 'form-control', value: number_to_currency(f.object.expenses_management.to_f, delimiter: '', unit: '') %>
+                        <div class="input-group-addon">% per year</div>
                       </div>
                     </div>
                     <div class="col-md-6">
@@ -474,6 +490,7 @@
                       <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <%= f.number_field :expenses_maintanance, class: 'form-control', value: number_to_currency(f.object.expenses_maintanance.to_f, delimiter: '', unit: '') %>
+                        <div class="input-group-addon">% per year</div>
                       </div>
                     </div>
                   </div>
@@ -483,6 +500,7 @@
                       <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <%= f.number_field :expenses_expenditures, class: 'form-control', value: number_to_currency(f.object.expenses_expenditures.to_f, delimiter: '', unit: '') %>
+                        <div class="input-group-addon">% per year</div>
                       </div>
                     </div>
                     <div class="col-md-6">
@@ -490,6 +508,7 @@
                       <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <%= f.number_field :expenses_landscaping, class: 'form-control', value: number_to_currency(f.object.expenses_landscaping.to_f, delimiter: '', unit: '') %>
+                        <div class="input-group-addon">per year</div>
                       </div>
                     </div>
                   </div>
@@ -499,6 +518,7 @@
                       <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <%= f.number_field :expenses_misc, class: 'form-control', value: number_to_currency(f.object.expenses_misc.to_f, delimiter: '', unit: '') %>
+                        <div class="input-group-addon">per year</div>
                       </div>
                     </div>
                     <div class="col-md-6">

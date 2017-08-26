@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20170808013118) do
     t.text     "house_type"
     t.decimal  "numBeds",                              precision: 3,  scale: 1
     t.decimal  "numBaths",                             precision: 3,  scale: 1
-    t.integer  "footage"
+    t.integer  "footage",                                                       default: 0
     t.integer  "year"
     t.string   "parking"
     t.integer  "lot"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20170808013118) do
     t.integer  "mls"
     t.decimal  "purchase_price",                       precision: 10, scale: 2, default: 0.0
     t.decimal  "after_value",                          precision: 10, scale: 2, default: 0.0
+    t.boolean  "financing"
     t.integer  "down_payment",                                                  default: 0
     t.decimal  "interest",                             precision: 5,  scale: 2, default: 0.0
     t.integer  "loan_term",                                                     default: 0

@@ -29,6 +29,15 @@
       </div>
     </div>
     <div class="row">
+      <div class="col-md-12">
+        <div class="form-check">
+          <label class="form-check-label">
+            <p><%= f.check_box :financing, disabled: true, id: "cashMoney" %> Paying Cash?</p>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="row cash">
       <div class="col-md-4">
           <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="The dollar amount of the loan that was paid upfront." data-placement="top"></div>
           <%= f.label :down_payment %>

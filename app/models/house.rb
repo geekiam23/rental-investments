@@ -2,7 +2,7 @@ class House < ActiveRecord::Base
   belongs_to :user
 
   def amount_financed
-    purchase_price - down_payment
+    purchase_price - down_payment;
   end
 
   def payment
@@ -37,7 +37,11 @@ class House < ActiveRecord::Base
   end
 
   def cashFlow
-    netOperatingIncome - payment
+    if interest == 0
+      cashFlow = netOperatingIncome
+    else
+      netOperatingIncome - payment
+    end
   end
 
   def effectiveCapRate
@@ -58,7 +62,11 @@ class House < ActiveRecord::Base
   end
 
   def totalCashNeeded
-    down_payment + totalPurchaseCost + totalRehabCost
+    if interest == 0
+      purchase_price + totalPurchaseCost + totalRehabCost
+    else
+      down_payment + totalPurchaseCost + totalRehabCost
+    end
   end
 
   def ratioCashOnCash
@@ -78,6 +86,10 @@ class House < ActiveRecord::Base
   end
 
   def totalReturnOnInvestment
-    ((cashFlow + totalEquity - totalSellingCosts - totalCashNeeded) / totalCashNeeded * 100)
+    if interest == 0
+      "Cash"
+    else
+      ((cashFlow + totalEquity - totalSellingCosts - totalCashNeeded) / totalCashNeeded * 100)
+    end
   end
 end

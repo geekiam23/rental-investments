@@ -30,6 +30,7 @@ gem "prawnto_2", :require => "prawnto"
 gem 'responders'
 gem 'wkhtmltopdf-binary'
 gem 'wicked_pdf'
+gem 'rubillow'
 
 
 group :development, :test do

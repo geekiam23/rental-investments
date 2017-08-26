@@ -100,7 +100,7 @@
                   <div class="row">
                     <div class="col-md-12">
                       <%= f.label :property_Type %>
-                      <%= f.text_field :house_type, class: 'form-control', placeholder: "Enter Property Type" %>
+                      <%= f.select(:house_type, options_for_select([['Single Family','Single Family'], ['Beach House','Beach House'], ['Small Multifamily (2-4 units)','Small Multifamily (2-4 units)'], ['Large Multifamily (5+ units)','Large Multifamily (5+ units)'], ['Commerical','Commerical'], ['Industrial', 'Industrial'], ['Land', 'Land'], ['Other', 'Other']])) %>
                     </div>
                   </div>
                   <div class="row">
@@ -145,7 +145,7 @@
                       <%= f.text_field :zoning, class: 'form-control', placeholder: "Enter Zoning Type" %>
                     </div>
                     <div class="col-md-6">
-                      <%= f.label :MLS %>
+                      <%= f.label :MLs %>
                       <%= f.text_field :mls, class: 'form-control', placeholder: "Enter MLS Number" %>
                     </div>
                   </div>
@@ -167,16 +167,18 @@
                   <div class="row">
                     <div class="col-md-6">
                       <%= f.label :purchase_Price %>
+                      <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="The price of the property you are purchasing. The purchase price does not include purchase or rehab costs." data-placement="bottom"></div>
                       <div class="input-group">
                         <div class="input-group-addon">$</div>
-                        <%= f.text_field :purchase_price, class: 'form-control', placeholder: "Enter Purchase Price" %>
+                        <%= f.number_field :purchase_price, class: 'form-control', value: number_to_currency(f.object.purchase_price.to_f, delimiter: '', unit: '') %>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <%= f.label :after_Value %>
+                      <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="" data-placement="top"></div>
                       <div class="input-group">
                         <div class="input-group-addon">$</div>
-                        <%= f.text_field :after_value, class: 'form-control', placeholder: "Enter After Value Price" %>
+                        <%= f.number_field :after_value, class: 'form-control', value: number_to_currency(f.object.after_value.to_f, delimiter: '', unit: '')%>
                       </div>
                     </div>
                   </div>
@@ -184,8 +186,8 @@
                     <div class="col-md-12">
                       <div class="form-check">
                         <label class="form-check-label">
-                          <input class="form-check-input" type="checkbox" id="financing">
-                          Financing?
+                          <input class="form-check-input" type="checkbox" id="cashMoney">
+                          Paying Cash?
                         </label>
                       </div>
                     </div>
@@ -193,22 +195,25 @@
                   <div class="row cash">
                     <div class="col-md-4">
                       <%= f.label :down_Payment %>
+                      <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="The dollar amount of the loan that was paid upfront." data-placement="top"></div>
                       <div class="input-group">
                         <div class="input-group-addon">$</div>
-                        <%= f.text_field :down_payment, class: 'form-control', placeholder: "Enter Down Payment Amount" %>
+                        <%= f.number_field :down_payment, class: 'form-control', value: number_to_currency(f.object.down_payment.to_f, delimiter: '', unit: '')%>
                       </div>
                     </div>
                     <div class="col-md-4">
                       <%= f.label :interest %>
+                      <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="" data-placement="top"></div>
                       <div class="input-group">
-                        <%= f.text_field :interest, class: 'form-control', placeholder: "Enter Interest Percentage" %>
+                        <%= f.number_field :interest, :step => 'any', class: "number form-control", in: 0...11 %>
                         <div class="input-group-addon">%</div>
                       </div>
                     </div>
                     <div class="col-md-4 amortNew">
                       <%= f.label :loan_Term %>
+                      <div class="info glyphicon glyphicon-question-sign" data-toggle="tooltip" title="" data-placement="bottom"></div>
                       <div class="input-group">
-                        <%= f.text_field :loan_term, class: 'form-control', placeholder: "Enter Loan Term in Years" %>
+                        <%= f.number_field :loan_term, class: "form-control" %>
                         <div class="input-group-addon">years</div>
                       </div>
                     </div>
@@ -226,11 +231,11 @@
                 </div>
               <button id="activate-step-3" class="btn btn-primary btn-md">Next</button>
             </div>
-            <div class="row">
+            <!-- <div class="row">
               <div class="col-md-12">
                 <div id="ResultNew"></div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -248,14 +253,14 @@
                     <%= f.label :purchase_Cost_Inspection %>
                     <div class="input-group">
                       <div class="input-group-addon">$</div>
-                      <%= f.text_field :purchase_cost_inspection, class: 'form-control', placeholder: "Enter Inspection Cost" %>
+                      <%= f.number_field :purchase_cost_inspection, class: 'form-control', value: number_to_currency(f.object.purchase_cost_inspection.to_f, delimiter: '', unit: '') %>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <%= f.label :purchase_Cost_Appraisal %>
                     <div class="input-group">
                       <div class="input-group-addon">$</div>
-                      <%= f.text_field :purchase_cost_appraisal, class: 'form-control', placeholder: "Enter Appraisal Cost" %>
+                      <%= f.number_field :purchase_cost_appraisal, class: 'form-control', value: number_to_currency(f.object.purchase_cost_appraisal.to_f, delimiter: '', unit: '') %>
                     </div>
                   </div>
                 </div>
@@ -263,7 +268,7 @@
                   <div class="col-md-6">
                     <%= f.label :closing_Costs %>
                     <div class="input-group">
-                      <%= f.text_field :closing_costs, class: 'form-control', placeholder: "Enter Closing Cost" %>
+                      <%= f.number_field :closing_costs, class: 'form-control', in: 0...11 %>
                       <div class="input-group-addon">%</div>
                     </div>
                   </div>
@@ -288,14 +293,14 @@
                     <%= f.label :rehab_cost_exterior %>
                     <div class="input-group">
                       <div class="input-group-addon">$</div>
-                      <%= f.text_field :rehab_cost_exterior, class: 'form-control', placeholder: "Enter Rehab Cost for Exterior" %>
+                      <%= f.number_field :rehab_cost_exterior, class: 'form-control', value: number_to_currency(f.object.rehab_cost_exterior.to_f, delimiter: '', unit: '') %>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <%= f.label :rehab_cost_interior %>
                     <div class="input-group">
                       <div class="input-group-addon">$</div>
-                      <%= f.text_field :rehab_cost_interior, class: 'form-control', placeholder: "Enter Rehab Cost for Interior" %>
+                      <%= f.number_field :rehab_cost_interior, class: 'form-control', value: number_to_currency(f.object.rehab_cost_interior.to_f, delimiter: '', unit: '') %>
                     </div>
                 </div>
                 <div class="row">
@@ -303,14 +308,14 @@
                     <%= f.label :rehab_cost_electrical %>
                     <div class="input-group">
                       <div class="input-group-addon">$</div>
-                      <%= f.text_field :rehab_cost_electrical, class: 'form-control', placeholder: "Enter Rehab Cost for Electrical" %>
+                      <%= f.number_field :rehab_cost_electrical, class: 'form-control', value: number_to_currency(f.object.rehab_cost_electrical.to_f, delimiter: '', unit: '') %>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <%= f.label :rehab_cost_plumbing %>
                     <div class="input-group">
                       <div class="input-group-addon">$</div>
-                      <%= f.text_field :rehab_cost_plumbing, class: 'form-control', placeholder: "Enter Rehab Cost for Plumbing" %>
+                      <%= f.number_field :rehab_cost_plumbing, class: 'form-control', value: number_to_currency(f.object.rehab_cost_plumbing.to_f, delimiter: '', unit: '') %>
                     </div>
                   </div>
                 </div>
@@ -319,14 +324,14 @@
                     <%= f.label :rehab_cost_appliances %>
                     <div class="input-group">
                       <div class="input-group-addon">$</div>
-                      <%= f.text_field :rehab_cost_appliances, class: 'form-control', placeholder: "Enter Rehab Cost for Appliances" %>
+                      <%= f.number_field :rehab_cost_appliances, class: 'form-control', value: number_to_currency(f.object.rehab_cost_appliances.to_f, delimiter: '', unit: '') %>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <%= f.label :rehab_cost_landscaping %>
                     <div class="input-group">
                       <div class="input-group-addon">$</div>
-                      <%= f.text_field :rehab_cost_landscaping, class: 'form-control', placeholder: "Enter Rehab Cost for Landscaping" %>
+                      <%= f.number_field :rehab_cost_landscaping, class: 'form-control', value: number_to_currency(f.object.rehab_cost_landscaping.to_f, delimiter: '', unit: '') %>
                     </div>
                   </div>
                 </div>
@@ -335,7 +340,7 @@
                     <%= f.label :rehab_cost_misc %>
                     <div class="input-group">
                       <div class="input-group-addon">$</div>
-                      <%= f.text_field :rehab_cost_misc, class: 'form-control', placeholder: "Enter Misc Rehab Cost" %>
+                      <%= f.number_field :rehab_cost_misc, class: 'form-control', value: number_to_currency(f.object.rehab_cost_misc.to_f, delimiter: '', unit: '') %>
                     </div>
                   </div>
                 </div>
@@ -359,7 +364,7 @@
                     <%= f.label :income_gross_rent %>
                     <div class="input-group">
                       <div class="input-group-addon">$</div>
-                      <%= f.text_field :income_gross_rent, class: 'form-control', placeholder: "Enter Gross Rent Amount" %>
+                      <%= f.number_field :income_gross_rent, class: 'form-control', value: number_to_currency(f.object.income_gross_rent.to_f, delimiter: '', unit: '') %>
                       <div class="input-group-addon">per month</div>
                     </div>
                   </div>
@@ -367,7 +372,7 @@
                     <%= f.label :income_other_rent %>
                     <div class="input-group">
                       <div class="input-group-addon">$</div>
-                      <%= f.text_field :income_other_rent, class: 'form-control', placeholder: "Enter Other Income Amount" %>
+                      <%= f.number_field :income_other_rent, class: 'form-control', value: number_to_currency(f.object.income_other_rent.to_f, delimiter: '', unit: '') %>
                       <div class="input-group-addon">per month</div>
                     </div>
                   </div>
@@ -392,14 +397,14 @@
                   <div class="col-md-6">
                     <%= f.label :assumptions_appreciation %>
                     <div class="input-group">
-                      <%= f.text_field :assumptions_appreciation, class: 'form-control', placeholder: "Enter Appreciation Projection Percentage" %>
+                      <%= f.number_field :assumptions_appreciation, class: 'form-control', in: 0...11 %>
                       <div class="input-group-addon">% per year</div>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <%= f.label :assumptions_vacancy %>
                     <div class="input-group">
-                      <%= f.text_field :assumptions_vacancy, class: 'form-control', placeholder: "Enter Vacancy Projection Percentage" %>
+                      <%= f.number_field :assumptions_vacancy, class: 'form-control', in: 0...11 %>
                       <div class="input-group-addon">% per year</div>
                     </div>
                   </div>
@@ -408,14 +413,14 @@
                   <div class="col-md-6">
                     <%= f.label :assumptions_Income_Increase %>
                     <div class="input-group">
-                      <%= f.text_field :assumptions_income_increase, class: 'form-control', placeholder: "Enter Income Increase Projection Percentage" %>
+                      <%= f.number_field :assumptions_income_increase, class: 'form-control', in: 0...11 %>
                       <div class="input-group-addon">% per year</div>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <%= f.label :assumptions_Expense_Increase %>
                     <div class="input-group">
-                      <%= f.text_field :assumptions_expense_increase, class: 'form-control', placeholder: "Enter Expense Increase Projection Percentage" %>
+                      <%= f.number_field :assumptions_expense_increase, class: 'form-control', in: 0...11 %>
                       <div class="input-group-addon">% per year</div>
                     </div>
                   </div>
@@ -425,13 +430,13 @@
                     <%= f.label :assumptions_land_value %>
                     <div class="input-group">
                       <div class="input-group-addon">$</div>
-                      <%= f.text_field :assumptions_land_value, class: 'form-control', placeholder: "Enter Land Value Projection Amount" %>
+                      <%= f.number_field :assumptions_land_value, class: 'form-control', value: number_to_currency(f.object.assumptions_land_value.to_f, delimiter: ''  , unit: '') %>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <%= f.label :assumptions_selling_cost %>
                     <div class="input-group">
-                      <%= f.text_field :assumptions_selling_cost, class: 'form-control', placeholder: "Enter Selling Cost Projection Percentage" %>
+                      <%= f.number_field :assumptions_selling_cost, class: 'form-control', in: 0...11 %>
                       <div class="input-group-addon">%</div>
                     </div>
                   </div>
@@ -455,7 +460,7 @@
                     <%= f.label :expenses_taxes %>
                     <div class="input-group">
                       <div class="input-group-addon">$</div>
-                      <%= f.text_field :expenses_taxes, class: 'form-control', placeholder: "Enter Taxes Amount" %>
+                      <%= f.number_field :expenses_taxes, class: 'form-control', value: number_to_currency(f.object.expenses_taxes.to_f, delimiter: '', unit: '') %>
                       <div class="input-group-addon">per year</div>
                     </div>
                   </div>
@@ -463,7 +468,7 @@
                     <%= f.label :expenses_insurance %>
                     <div class="input-group">
                       <div class="input-group-addon">$</div>
-                      <%= f.text_field :expenses_insurance, class: 'form-control', placeholder: "Enter Insurance Amount" %>
+                      <%= f.number_field :expenses_insurance, class: 'form-control', value: number_to_currency(f.object.expenses_insurance.to_f, delimiter: '', unit: '') %>
                       <div class="input-group-addon">per year</div>
                     </div>
                   </div>
@@ -472,14 +477,14 @@
                   <div class="col-md-6">
                     <%= f.label :expenses_management %>
                     <div class="input-group">
-                      <%= f.text_field :expenses_management, class: 'form-control', placeholder: "Enter Management Amount" %>
+                      <%= f.number_field :expenses_management, class: 'form-control', value: number_to_currency(f.object.expenses_management.to_f, delimiter: '', unit: '') %>
                       <div class="input-group-addon">% per year</div>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <%= f.label :expenses_maintanance %>
                     <div class="input-group">
-                      <%= f.text_field :expenses_maintanance, class: 'form-control', placeholder: "Enter Maintance Amount" %>
+                      <%= f.number_field :expenses_maintanance, class: 'form-control', value: number_to_currency(f.object.expenses_maintanance.to_f, delimiter: '', unit: '') %>
                       <div class="input-group-addon">% per year</div>
                     </div>
                   </div>
@@ -488,7 +493,7 @@
                   <div class="col-md-6">
                     <%= f.label :expenses_expenditures %>
                     <div class="input-group">
-                      <%= f.text_field :expenses_expenditures, class: 'form-control', placeholder: "Enter Capital Expenditures Amount" %>
+                      <%= f.number_field :expenses_expenditures, class: 'form-control', value: number_to_currency(f.object.expenses_expenditures.to_f, delimiter: '', unit: '') %>
                       <div class="input-group-addon">% per year</div>
                     </div>
                   </div>
@@ -496,7 +501,7 @@
                     <%= f.label :expenses_landscaping %>
                     <div class="input-group">
                       <div class="input-group-addon">$</div>
-                      <%= f.text_field :expenses_landscaping, class: 'form-control', placeholder: "Enter Landscaping Amount" %>
+                      <%= f.number_field :expenses_landscaping, class: 'form-control', value: number_to_currency(f.object.expenses_landscaping.to_f, delimiter: '', unit: '') %>
                       <div class="input-group-addon">per year</div>
                     </div>
                   </div>
@@ -506,7 +511,7 @@
                     <%= f.label :expenses_misc  %>
                     <div class="input-group">
                       <div class="input-group-addon">$</div>
-                      <%= f.text_field :expenses_misc, class: 'form-control', placeholder: "Enter Misc Landscaping Amount" %>
+                      <%= f.number_field :expenses_misc, class: 'form-control', value: number_to_currency(f.object.expenses_misc.to_f, delimiter: '', unit: '') %>
                       <div class="input-group-addon">per year</div>
                     </div>
                   </div>

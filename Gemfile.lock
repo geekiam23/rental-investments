@@ -181,6 +181,8 @@ GEM
       rspec-mocks (~> 3.6.0)
       rspec-support (~> 3.6.0)
     rspec-support (3.6.0)
+    rubillow (0.0.7)
+      nokogiri (~> 1.5)
     sass (3.5.1)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -253,6 +255,7 @@ DEPENDENCIES
   rails_12factor
   responders
   rspec-rails
+  rubillow
   sass-rails (~> 5.0)
   shoulda
   spring
@@ -264,4 +267,4 @@ DEPENDENCIES
   wkhtmltopdf-binary
 
 BUNDLED WITH
-   1.15.0
+   1.15.4

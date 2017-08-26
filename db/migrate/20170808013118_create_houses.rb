@@ -22,6 +22,7 @@ class CreateHouses < ActiveRecord::Migration
       # Housing Numbers
       t.decimal :purchase_price, precision: 10, scale: 2, :default => 0
       t.decimal :after_value, precision: 10, scale: 2, :default => 0
+      t.boolean :financing
       t.integer :down_payment, :default => 0
       t.decimal :interest, precision: 5, scale: 2, :default => 0
       t.integer :loan_term, :default => 0
