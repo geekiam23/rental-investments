@@ -16,6 +16,7 @@
   <thead>
     <tr style="background-color:#337ab7">
       <th>Name</th>
+      <th>Purchase Price</th>
       <th>Total Cash Needed</th>
       <th>Total Expenses</th>
 			<th>Cash Flow</th>
@@ -27,6 +28,7 @@
 		<% @houses.each do |house| %>
     	<tr>
 				<td><%= link_to house.name, house, "data-turbolinks": "false" %></td>
+				<td>$<%= number_with_precision(house.purchase_price, :precision => 2, :delimiter => ',') %></td>
 				<td>$<%= number_with_precision(house.totalCashNeeded, :precision => 2, :delimiter => ',') %></td>
         <td>$<%= number_with_precision(house.totalExpenses, :precision => 2, :delimiter => ',') %></td>
 				<td>$<%= number_with_precision(house.cashFlow, :precision => 2, :delimiter => ',') %></td>
@@ -36,6 +38,7 @@
 		<% end %>
     <tr >
       <td><b>Total:</b></td>
+      <td><b>$<%= number_with_precision(@houses.sum(&:purchase_price), :precision => 2, :delimiter => ',') %></b></td>
       <td><b>$<%= number_with_precision(@houses.sum(&:totalCashNeeded), :precision => 2, :delimiter => ',') %></b></td>
       <td><b>$<%= number_with_precision(@houses.sum(&:totalExpenses), :precision => 2, :delimiter => ',') %></b></td>
       <td><b>$<%= number_with_precision(@houses.sum(&:cashFlow), :precision => 2, :delimiter => ',') %></b></td>

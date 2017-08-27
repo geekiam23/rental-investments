@@ -215,7 +215,7 @@ var calcVariables = {
     var expenditures_amount = year_rent * expenditures_decimal;
     var management_decimal = expenses_management / 100;
     var management_amount = operation_income * management_decimal;
-    var expenses_total = expenses_taxes + expenses_insurance + maintanance_amount + expenditures_amount + management_amount + expenses_landscaping;
+    var expenses_total = expenses_taxes + expenses_insurance + maintanance_amount + expenditures_amount + management_amount + expenses_landscaping + expenses_misc;
     $('.maintananceAmount').html("$" + numberWithCommas(maintanance_amount.toFixed(2)));
     $('.expendituresAmount').html("$" + numberWithCommas(expenditures_amount.toFixed(2)));
     $('.managementAmount').html("$" + numberWithCommas(management_amount.toFixed(2)));

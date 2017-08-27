@@ -186,8 +186,7 @@
                     <div class="col-md-12">
                       <div class="form-check">
                         <label class="form-check-label">
-                          <input class="form-check-input" type="checkbox" id="cashMoney">
-                          Paying Cash?
+                          <p><%= f.check_box :financing, id: "cashMoney" %> Financing?</p>
                         </label>
                       </div>
                     </div>
@@ -397,14 +396,14 @@
                   <div class="col-md-6">
                     <%= f.label :assumptions_appreciation %>
                     <div class="input-group">
-                      <%= f.number_field :assumptions_appreciation, class: 'form-control', in: 0...11 %>
+                      <%= f.number_field :assumptions_appreciation, class: 'form-control' %>
                       <div class="input-group-addon">% per year</div>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <%= f.label :assumptions_vacancy %>
                     <div class="input-group">
-                      <%= f.number_field :assumptions_vacancy, class: 'form-control', in: 0...11 %>
+                      <%= f.number_field :assumptions_vacancy, class: 'form-control' %>
                       <div class="input-group-addon">% per year</div>
                     </div>
                   </div>
@@ -413,14 +412,14 @@
                   <div class="col-md-6">
                     <%= f.label :assumptions_Income_Increase %>
                     <div class="input-group">
-                      <%= f.number_field :assumptions_income_increase, class: 'form-control', in: 0...11 %>
+                      <%= f.number_field :assumptions_income_increase, class: 'form-control' %>
                       <div class="input-group-addon">% per year</div>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <%= f.label :assumptions_Expense_Increase %>
                     <div class="input-group">
-                      <%= f.number_field :assumptions_expense_increase, class: 'form-control', in: 0...11 %>
+                      <%= f.number_field :assumptions_expense_increase, class: 'form-control' %>
                       <div class="input-group-addon">% per year</div>
                     </div>
                   </div>
@@ -436,7 +435,7 @@
                   <div class="col-md-6">
                     <%= f.label :assumptions_selling_cost %>
                     <div class="input-group">
-                      <%= f.number_field :assumptions_selling_cost, class: 'form-control', in: 0...11 %>
+                      <%= f.number_field :assumptions_selling_cost, class: 'form-control' %>
                       <div class="input-group-addon">%</div>
                     </div>
                   </div>

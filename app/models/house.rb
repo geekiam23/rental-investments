@@ -29,7 +29,7 @@ class House < ActiveRecord::Base
     maintanance_amount = rentForYear * expenses_maintanance / 100;
     expenditures_amount = rentForYear * expenses_expenditures / 100;
     management_amount = operation_income * expenses_management / 100;
-    expenses_taxes + expenses_insurance + maintanance_amount + expenditures_amount + management_amount + expenses_landscaping;
+    expenses_taxes + expenses_insurance + maintanance_amount + expenditures_amount + management_amount + expenses_landscaping + expenses_misc;
   end
 
   def netOperatingIncome
