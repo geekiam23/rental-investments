@@ -1,28 +1,53 @@
-== README
+# Rental Investments
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### SaaS Rental Investment Tool
 
-Things you may want to cover:
+Users can determine if a rental investment is a good or bad investment.
 
-* Ruby version
+[Demo Site](https://rental-investment.herokuapp.com/)
 
-* System dependencies
+## Project Objectives
 
-* Configuration
+- Users can sign up for a free account by providing a user name, password and email
+- Users can sign in and out of Rental Investments
+- Users with a standard account, can create, read, update, and delete their records
+- User roles available: admin, standard, or premium
+- Development database is seeded automatically with users and houses
+- Users can upgrade account from a free to a paid plan
+- Users can create private houses
+- Users can houses with other users
 
-* Database creation
+## Built With
 
-* Database initialization
+#### Languages and Frameworks:
+- Ruby 2.3.3
+- Rails 4.2.5
+- Bootstrap
+- Javascript
 
-* How to run the test suite
+#### Databases:
+- SQLite (Test, Development)
+- PostgreSQL (Production)
 
-* Services (job queues, cache servers, search engines, etc.)
+#### Tools and Gems:
+- Gon for translation of database into JavaScript variables
+- Devise for user authentication
+- Pundit for user authorization
+- Figaro for secure configuration
+- Faker for seeding fake data
 
-* Deployment instructions
+## Setup and Configuration
 
-* ...
+#### Setup:
 
+- Environment variables were set using Figaro and are stored in config/application.yml (ignored by git).
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+- The config/application.example.yml file illustrates how environment variables should be stored.
+
+#### To run Rental Investments locally:
+
+1. Clone the repository
+2. Run `bundle install`
+3. Create and migrate the database with `rake db:create` and `rake db:migrate`
+4. Start the server using `rails server`
+5. Run the app on `localhost:3000`
